@@ -6,7 +6,11 @@
 
     <groupId>hi.car</groupId>
     <artifactId>withmecar</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>wirhmecar_pojo</module>
+    </modules>
 
 
 </project>
