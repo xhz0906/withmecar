@@ -7,7 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="withmecar" />
+        <module name="withmecar_ht" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="zxgl" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="withmecar_ht" options="-parameters" />
+      <module name="zxgl" options="-parameters" />
+    </option>
   </component>
 </project>
