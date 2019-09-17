@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="utf-8" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        .tree-closed {
+            height: 40px;
+        }
+
+        .tree-expanded {
+            height: auto;
+        }
+
+        #div-details {
+            height: 300px;
+        }
+
+        .trs {
+            width: 50px;
+            height: 30px;
+        }
+
+        #car1Div {
+            width: 100%;
+        }
+
+        #car2Div {
+            width: 100%;
+        }
+
+        .fatherDiv {
+            height: 76px;
+            background-color: #faebcc;
+            border: 1px solid seashell;
+            align-content: center;
+        }
+
+        .childDiv {
+            float: left;
+            width: 200px;
+            height: 80px;
+            align-content: center;
+        }
+
+        .goodname {
+            font-size: 25px;
+        }
+
+        .goodprice {
+            color: red;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">众筹平台 - 控制面板</a></div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-top:8px;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-success dropdown-toggle"
+                                data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i> 张三 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li style="margin-left:10px;padding-top:8px;">
+                    <button type="button" class="btn btn-default btn-danger">
+                        <span class="glyphicon glyphicon-question-sign"></span> 帮助
+                    </button>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="查询">
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="tree">
+                <ul style="padding-left:0px;" class="list-group">
+                    <li class="list-group-item tree-closed">
+                        <a href="main.html"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 会员 <span class="badge" style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 资讯管理 <span class="badge"
+                                                                                style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addScience"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addScience"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="Scienceexamine"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 流程图</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 标签定义 <span class="badge"
+                                                                                style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 标签定义</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge"
+                                                                                 style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="Routeexamine"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 自有商品管理 <span class="badge"
+                                                                                  style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 新增自有商品</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品预览</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 编辑自有商品</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 活动管理 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 活动列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 推荐活动</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 类型管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 渠道管理</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 角色管理 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 角色管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增角色</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 编辑角色</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 管理员列表 <span class="badge"
+                                                                                       style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 管理员列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增管理员</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 编辑管理员</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 操作日志 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 操作日志</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 个人中心 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 个人中心</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 修改密码</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 会员详情</h3>
+                    <ol class="breadcrumb">
+                        <li><a href="main1">后台首页</a></li>
+                        <li><a href="findAllMemberPro">所有会员</a></li>
+                        <li class="active"><span th:text="${memberProById.nickname}"></span>的信息</li>
+                    </ol>
+                </div>
+                <div class="panel-body" id="div-details">
+                    <table id="tab1">
+                        <tr class="trs">
+                            <tb>账号：<span th:text="${memberProById.mobile}"></span><br></tb>
+                        </tr>
+                        <tr class="trs">
+                            <tb> 昵称：<span th:text="${memberProById.nickname}"></span></tb>
+                            <tb> 姓名：<span th:text="${memberProById.name}"></span></tb>
+                        </tr>
+                        <tr class="trs">
+                            <tb>
+                                <div th:if="${memberProById.level == 1}">
+                                    性别：男
+                                </div>
+                                <div th:if="${memberProById.level == 2}">
+                                    性别：女
+                                </div>
+                                <div th:if="${memberProById.level == 0}">
+                                    性别：未完善！
+                                </div>
+                            </tb>
+                            <tb>邮箱：<span th:text="${memberProById.email}"></span></tb>
+                            <br>
+                        </tr>
+                        <tr class="trs">
+                            标签：
+                            <span th:each="t:${tagById}">
+                                <tb th:text="${t.name}"></tb>
+                            </span><br>
+
+                        </tr>
+                        <tr class="trs">
+                            地址：<span th:text="${memberProById.address}"></span>
+                        </tr>
+                    </table>
+
+
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" id="test">
+                        <li role="presentation" class="active"><a href="#popularity1" id="butu1">我的座驾</a></li>
+                        <li role="presentation"><a href="#popularity2" aria-controls="popularity2" id="butu2">我的活动</a>
+                        </li>
+                        <li role="presentation"><a href="#popularity3" aria-controls="popularity3" id="butu3">我的积分</a>
+                        </li>
+                        <li role="presentation"><a href="#" id="butu4">资讯收藏</a></li>
+                        <li role="presentation"><a href="#" id="butu5">关注车型</a></li>
+                    </ul>
+                </div>
+                <div class="jx_content">
+                    <!--我的座驾-->
+                    <div id="popularity1" class="divsmill">
+                        <div>
+                            <h1>已有座驾</h1>
+                            <div id="car1Div">
+
+                            </div>
+                        </div>
+                        <div>
+                            <h1>期望座驾</h1>
+                            <div id="car2Div">
+                            </div>
+                        </div>
+                    </div>
+                    <!--我的活动-->
+                    <div id="popularity2" class="divsmill">
+                        <div>
+                            <h1>参加活动</h1>
+                        </div>
+                        <div>
+                            <h1>关注活动</h1>
+                        </div>
+                    </div>
+                    <!--我的积分-->
+                    <div id="popularity3" class="divsmill">
+                        <div>
+                            <h1>总积分</h1>
+                        </div>
+                        <div>
+                            <h1>记录</h1>
+                        </div>
+                    </div>
+                    <!--资讯收藏-->
+                    <div id="popularity4" class="divsmill">
+                        <div>
+                            <h1>资讯概述</h1>
+                        </div>
+                    </div>
+                    <!--关注车型-->
+                    <div id="popularity5" class="divsmill">
+                        <div>
+                            <h1>车型概述</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:inline="javascript">
+    $(function () {
+        var memberId = [[${memberProById.id}]];
+        window.onload = function () {
+            getCarByType1("#car1Div");
+            getCarByType2("#car2Div");
+            $("#popularity1").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        };
+
+        function getCarByType1(parentDiv) {
+            var type = 1;
+            $.post("findCarById", {"memberId": memberId, "type": type}, function (carById) {
+                var datas = eval(carById);
+                for (var key in datas) {
+                    var goodsdiv = $("<div></div>");
+                    goodsdiv.attr("class", "fatherDiv");
+                    var gooddiv = $("<div></div>");
+                    gooddiv.attr("class", "childDiv");
+                    var gbrandname = $("<font></font>");
+                    gbrandname.text("主品牌名称" + datas[key].brandName)
+                    gbrandname.attr("class", "goodname");
+                    var genglishName = $("<font></font>");
+                    genglishName.text("英文名称" + datas[key].englishName)
+                    genglishName.attr("class", "goodname");
+                    var gname = $("<font></font>");
+                    gname.text("车型名称：" + datas[key].name);
+                    gname.attr("class", "goodname");
+                    var gpriceHigh = $("<font></font>");
+                    gpriceHigh.text("最高价：" + datas[key].priceHigh)
+                    gpriceHigh.attr("class", "goodprice");
+                    var gpriceLow = $("<font></font>");
+                    gpriceLow.text("最低价：" + datas[key].priceLow)
+                    gpriceLow.attr("class", "goodprice");
+                    var gupdateTime = $("<font></font>");
+                    gupdateTime.text("最后更新时间：" + datas[key].updateTime)
+                    gupdateTime.attr("class", "goodindent");
+                    gooddiv.append(gbrandname);
+                    gooddiv.append("<br>");
+                    var gooddiv2 = $("<div></div>");
+                    gooddiv2.attr("class", "childDiv");
+                    gooddiv2.append(gpriceHigh);
+                    var gooddiv3 = $("<div></div>");
+                    gooddiv3.attr("class", "childDiv");
+                    gooddiv3.append(gpriceLow);
+                    var gooddiv4 = $("<div></div>");
+                    gooddiv4.attr("class", "childDiv");
+                    gooddiv4.append(gupdateTime);
+                    var gooddiv5 = $("<div></div>");
+                    gooddiv5.attr("class", "childDiv");
+                    gooddiv5.append(genglishName);
+                    gooddiv.append("<br>");
+                    var gooddiv6 = $("<div></div>");
+                    gooddiv6.attr("class", "childDiv");
+                    gooddiv6.append(gname);
+                    $(goodsdiv).append(gooddiv);
+                    $(goodsdiv).append(gooddiv5);
+                    $(goodsdiv).append(gooddiv6);
+                    $(goodsdiv).append(gooddiv2);
+                    $(goodsdiv).append(gooddiv3);
+                    $(goodsdiv).append(gooddiv4);
+                    $(parentDiv).append(goodsdiv);
+                }
+            })
+        }
+
+        function getCarByType2(parentDiv) {
+            var type = 2;
+            $.post("findCarById", {"memberId": memberId, "type": type}, function (carById) {
+                var datas = eval(carById);
+                for (var key in datas) {
+                    var goodsdiv = $("<div></div>");
+                    goodsdiv.attr("class", "fatherDiv");
+                    var gooddiv = $("<div></div>");
+                    gooddiv.attr("class", "childDiv");
+                    var gbrandname = $("<font></font>");
+                    gbrandname.text("主品牌名称" + datas[key].brandName)
+                    gbrandname.attr("class", "goodname");
+                    var genglishName = $("<font></font>");
+                    genglishName.text("英文名称" + datas[key].englishName)
+                    genglishName.attr("class", "goodname");
+                    var gname = $("<font></font>");
+                    gname.text("车型名称：" + datas[key].name);
+                    gname.attr("class", "goodname");
+                    var gpriceHigh = $("<font></font>");
+                    gpriceHigh.text("最高价：" + datas[key].priceHigh)
+                    gpriceHigh.attr("class", "goodprice");
+                    var gpriceLow = $("<font></font>");
+                    gpriceLow.text("最低价：" + datas[key].priceLow)
+                    gpriceLow.attr("class", "goodprice");
+                    var gupdateTime = $("<font></font>");
+                    gupdateTime.text("最后更新时间：" + datas[key].updateTime)
+                    gupdateTime.attr("class", "goodindent");
+                    gooddiv.append(gbrandname);
+                    gooddiv.append("<br>");
+                    var gooddiv2 = $("<div></div>");
+                    gooddiv2.attr("class", "childDiv");
+                    gooddiv2.append(gpriceHigh);
+                    var gooddiv3 = $("<div></div>");
+                    gooddiv3.attr("class", "childDiv");
+                    gooddiv3.append(gpriceLow);
+                    var gooddiv4 = $("<div></div>");
+                    gooddiv4.attr("class", "childDiv");
+                    gooddiv4.append(gupdateTime);
+                    var gooddiv5 = $("<div></div>");
+                    gooddiv5.attr("class", "childDiv");
+                    gooddiv5.append(genglishName);
+                    gooddiv.append("<br>");
+                    var gooddiv6 = $("<div></div>");
+                    gooddiv6.attr("class", "childDiv");
+                    gooddiv6.append(gname);
+                    $(goodsdiv).append(gooddiv);
+                    $(goodsdiv).append(gooddiv5);
+                    $(goodsdiv).append(gooddiv6);
+                    $(goodsdiv).append(gooddiv2);
+                    $(goodsdiv).append(gooddiv3);
+                    $(goodsdiv).append(gooddiv4);
+                    $(parentDiv).append(goodsdiv);
+                }
+            })
+        }
+
+        $("#test li").click(function () {
+            $(this).siblings('li').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $("#butu1").click(function () {
+            $("#popularity1").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        });
+        $("#butu2").click(function () {
+            $("#popularity2").show();
+            $("#popularity1").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        });
+
+        $("#butu3").click(function () {
+            $("#popularity3").show();
+            $("#popularity2").hide();
+            $("#popularity1").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        })
+
+        $("#butu4").click(function () {
+            $("#popularity4").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity1").hide();
+            $("#popularity5").hide();
+        });
+
+        $("#butu5").click(function () {
+            $("#popularity5").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity1").hide();
+        });
+
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.MemberMapper">
+    <select id="findAllMemberPro" resultType="hi.car.pojo.MemberProfile">
+        SELECT
+            *
+        from
+            member_profile;
+    </select>
+    <select id="findMemberProById" resultType="hi.car.pojo.MemberProfile" parameterType="int">
+        select
+            *
+        from
+            member_profile
+        where
+            id = #{id}
+    </select>
+    <select id="findTagById" resultType="hi.car.pojo.Tag" parameterType="int">
+        SELECT * from tag where tag.id in(SELECT mt.tag_id FROM member_tag mt where mt.member_id = #{memberId});
+    </select>
+    <select id="findCarById" resultType="hi.car.pojo.Car" parameterType="map">
+        SELECT * FROM car where id in (SELECT car_id FROM member_car where type=#{type} and member_id=#{memberId});
+    </select>
+</mapper>

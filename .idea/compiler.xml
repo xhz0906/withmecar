@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wirhmecar_pojo" />
         <module name="withmecar_ht" />
+        <module name="wirhmecar_pojo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="car-member" target="1.8" />
+      <module name="j1904carpojo" target="1.8" />
       <module name="zxgl" target="1.8" />
     </bytecodeTargetLevel>
   </component>
