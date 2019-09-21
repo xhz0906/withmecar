@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="UTF-8" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        .tree-closed {
+            height: 40px;
+        }
+
+        .tree-expanded {
+            height: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="head">
+
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="right">
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 编辑管理员</h3>
+                    <ol class="breadcrumb">
+                        <li><a href="main1">后台首页</a></li>
+                        <li><a href="admin">管理员列表</a></li>
+                    </ol>
+                </div>
+                <div class="panel-body" id="div-details">
+                    <form id="form1" action="updateAdminUser" method="post" onsubmit="return click">
+                        <div class="form-group">
+                            <label for="input8">用户名</label>
+                            <input th:value="${adminUserById.username}" name="username" type="text" class="form-control" id="input8" placeholder="username" style="width:500px">
+                            <input type="hidden" th:value="${adminUserById.id}" name="id"/>
+                            <input type="hidden" name="consumer" th:value="session.user.username"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">密码</label>
+                            <input th:value="${adminUserById.password}" name="password" type="password" class="form-control" id="password" placeholder="New Password" style="width:500px">
+                            <span id="sp2"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="input2">所属角色</label>
+                            <select id="input2" class="form-control" style="width:500px" name="isSuper">
+                                <option value="1">超级管理员</option>
+                                <option value="2">普通管理员</option>
+                                <option id="adminSuper3" value="3">资讯管理员</option>
+                                <option id="adminSuper4" value="4">会员管理员</option>
+                                <option id="adminSuper5" value="5">标签管理员</option>
+                                <option id="adminSuper6" value="6">活动管理员</option>
+                                <option id="adminSuper7" value="7">自有商品管理员</option>
+                                <option id="adminSuper8" value="8">车库型管理员</option>
+                                <option id="adminSuper9" value="9">消息管理员</option>
+                                <option id="adminSuper10" value="10">角色管理员</option>
+                                <option id="adminSuper11" value="11">日志管理员</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input3">姓名</label>
+                            <input th:value="${adminUserById.name}" name="name" type="text" class="form-control" id="input3" placeholder="name" style="width:500px">
+                        </div>
+                        <div class="form-group">
+                            <label for="input4">所属部门</label>
+                            <input th:value="${adminUserById.dept}" name="dept" type="text" class="form-control" id="input4" placeholder="affiliated function" style="width:500px">
+                        </div>
+                        <div class="form-group">
+                            <label for="input5">手机号</label>
+                            <input th:value="${adminUserById.phone}" name="phone" type="text" class="form-control" id="input5" placeholder="Phone" style="width:500px">
+                        </div>
+                        <div class="form-group">
+                            <label for="input6">邮箱</label>
+                            <input th:value="${adminUserById.email}" type="email" name="email" class="form-control" id="input6" placeholder="Email" style="width:500px">
+                        </div>
+                        <div class="form-group">
+                            <label for="input7">备注</label>
+                            <input th:value="${adminUserById.remark}" type="text" name="remark" class="form-control" id="input7" placeholder="remarks" style="width:500px">
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript"  th:inline="javascript">
+
+    $(function () {
+        var rname = /^[a-z0-9_-]{3,16}$/;
+        var rpwd = /^[a-zA-Z0-9]{6,18}$/;
+        $("#password").blur(function () {
+            var pwd = $("#password").val();
+            if (pwd.length != 0){
+                if (!rpwd.test(pwd)){
+                    var ff = $("<font color='red'>请输入6-18位密码</font>")
+                    $("#sp2").append(ff);
+                    $("#password").val("");
+                }
+            }
+        });
+
+        $("#password").focus(function () {
+            $("#password").val("");
+            $("#sp2").empty();
+        });
+
+        var isSuper = [[${adminUserById.isSuper}]];
+        $(document).ready(function() {
+            $("#head").load("header");
+            $("#right").load("htRight");
+        });
+        $("#input2").val(isSuper);
+
+        $(".list-group-item").click(function () {
+            // jquery对象的回调方法中的this关键字为DOM对象
+            // $(DOM) ==> JQuery
+            if ($(this).find("ul")) { // 3 li
+                $(this).toggleClass("tree-closed");
+                if ($(this).hasClass("tree-closed")) {
+                    $("ul", this).hide("fast");
+                } else {
+                    $("ul", this).show("fast");
+                }
+            }
+        });
+    });
+    function click(){
+        var x1=$("#input8").val();
+        var x2=$("#password").val();
+        var x4=$("#input3").val();
+        var x5=$("#input4").val();
+        var x6=$("#input5").val();
+        var x7=$("#input6").val();
+        var x8=$("#input8").val();
+        if (x1.length!=0 && x2.length!=0 && x4.length!=0 && x5.length!=0 && x6.length!=0 && x7.length!=0 && x8.length!=0){
+            return true;
+        }else {
+            alert("请完善资料");
+            return false;
+        }
+
+    }
+</script>
+</body>
+</html>

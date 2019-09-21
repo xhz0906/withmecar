@@ -13,317 +13,151 @@
     <style>
         .tree li {
             list-style-type: none;
-            cursor:pointer;
+            cursor: pointer;
         }
+
         .tree-closed {
-            height : 40px;
+            height: 40px;
         }
+
         .tree-expanded {
-            height : auto;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div><a class="navbar-brand" style="font-size:32px;" href="#">众筹平台 - 控制面板</a></div>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li style="padding-top:8px;">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
-                                <i class="glyphicon glyphicon-user"></i> 张三 <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
-                                <li class="divider"></li>
-                                <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li style="margin-left:10px;padding-top:8px;">
-                        <button type="button" class="btn btn-default btn-danger">
-                            <span class="glyphicon glyphicon-question-sign"></span> 帮助
-                        </button>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="查询"/>
-                </form>
-            </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="header">
+
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="right">
+
         </div>
-    </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <div class="tree">
-                    <ul style="padding-left:0px;" class="list-group">
-                        <li class="list-group-item tree-closed" >
-                            <a href="main.html"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-ok"></i> 会员 <span class="badge" style="float:right">3</span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-ok"></i> 资讯管理 <span class="badge" style="float:right">3</span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="addScience"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="addScience"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="Scienceexamine"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 流程图</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-ok"></i> 标签定义 <span class="badge" style="float:right">3</span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 标签定义</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge" style="float:right">3</span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="Routeexamine"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-ok"></i> 自有商品管理 <span class="badge" style="float:right">3</span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品列表</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 新增自有商品</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品预览</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 编辑自有商品</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-th-large"></i> 活动管理 <span class="badge" style="float:right">1 </span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 活动列表</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 推荐活动</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 类型管理</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 渠道管理</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">1 </span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-th-large"></i> 角色管理 <span class="badge" style="float:right">1 </span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 角色管理</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增角色</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 编辑角色</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-th-large"></i> 管理员列表 <span class="badge" style="float:right">1 </span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 管理员列表</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增管理员</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 编辑管理员</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-th-large"></i> 操作日志 <span class="badge" style="float:right">1 </span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 操作日志</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item tree-closed">
-                            <span><i class="glyphicon glyphicon-th-large"></i> 个人中心 <span class="badge" style="float:right">1 </span></span>
-                            <ul style="margin-top:10px;display:none;">
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 个人中心</a>
-                                </li>
-                                <li style="height:30px;">
-                                    <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 修改密码</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 会员管理</h3>
+                    <ol class="breadcrumb">
+                        <li><a href="main1">后台首页</a></li>
+                        <li><a href="findAllMemberPro">所有会员</a></li>
+                    </ol>
                 </div>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 会员管理</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form action="hotelQuery" method="post" class="form-inline" role="form" style="float:left;">
-                            <div class="form-group has-feedback">
-                                <div class="input-group">
-                                    <div class="input-group-addon">查询条件</div>
-                                    <input name="uuu" class="form-control has-success" type="text" placeholder="请输入查询条件"
-                                           autocomplete="off">
-                                </div>
+                <div class="panel-body">
+                    <form action="findMemberProMoHu" method="post" class="form-inline" role="form" style="float:left;">
+                        <div class="form-group has-feedback">
+                            <div class="input-group">
+                                <div class="input-group-addon">查询条件</div>
+                                <input name="xxx" class="form-control has-success" type="text" placeholder="请输入查询条件"
+                                       autocomplete="off">
                             </div>
-                            <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询
-                            </button>
-                        </form>
-                        <!--action="deleteUsers"-->
-                        <form id="dor" method="post">
-                            <button type="button" id="Importscenic" class="btn btn-danger"
-                                    style="float:right;margin-left:20px;"><i class=" glyphicon glyphicon-save"></i> 导入
-                            </button>
-                            <button type="button" id="Exportscenic" class="btn btn-danger"
-                                    style="float:right;margin-left:20px;"><i class=" glyphicon glyphicon-open"></i> 导出
-                            </button>
-                            <button type="button" id="deleteHodels" class="btn btn-danger"
-                                    style="float:right;margin-left:10px;"><i class=" glyphicon glyphicon-remove"></i> 删除
-                            </button>
-                            <br>
-                            <hr style="clear:both;">
-                            <div class="table-responsive">
-                                <table class="table  table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th width="30">#</th>
-                                        <th width="30"><input id="all" type="checkbox"></th>
-                                        <th>序号</th>
-                                        <th>账号</th>
-                                        <th>姓名</th>
-                                        <th>性别</th>
-                                        <th>注册时间</th>
-                                        <th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="amp:${allMemberPro}">
-                                        <td th:text="${amp.id}"></td>
-                                        <td><input name="ids" th:value="${amp.id}" type="checkbox"></td>
-                                        <td th:text="${amp.mobile}"></td>
-                                        <td th:text="${amp.nickname}"></td>
-                                        <td th:text="${amp.name}"></td>
-                                        <td th:text="${amp.level}"></td>
+                        </div>
+                        <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询
+                        </button>
+                    </form>
+                    <!--action="deleteUsers"-->
+                    <form id="dor" method="post">
 
-                                        <td th:text="${amp.register_time}"></td>
-<!--                                        <td th:text="${#dates.format(amp.register_time,'yyyy-mm-dd')}"></td>-->
-                                        <td>
-                                            <a th:href="@{findMemberProById(id=${amp.id})}" type="button" class="btn btn-primary btn-xs">
-                                                <i class="glyphicon glyphicon-check">详情</i></a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
+                        <button type="button" id="Exportscenic" class="btn btn-danger"
+                                style="float:right;margin-left:20px;"><i class=" glyphicon glyphicon-open"></i> 导出
+                        </button>
 
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan="10" align="center">
-                                            <!--<ul class="pagination">
-                                                <li><a th:href="@{hotelMaintain(page=1)}">首页</a></li>
-                                                <li><a th:href="@{hotelMaintain(page=${currentPage+(-1)})}">上一页</a></li>
-                                                <li><a th:href="@{hotelMaintain(page=${currentPage+1})}">下一页</a></li>
-                                                <li><a th:href="@{hotelMaintain(page=${currentPage})}">尾页</a></li>
-                                            </ul>-->
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </form>
-                    </div>
+                        <br>
+                        <hr style="clear:both;">
+                        <div class="table-responsive">
+                            <table class="table  table-bordered">
+                                <thead>
+                                <tr>
+                                    <th width="30">#</th>
+                                    <th width="30"><input id="all" type="checkbox"></th>
+                                    <th>账号</th>
+                                    <th>昵称</th>
+                                    <th>姓名</th>
+                                    <th>性别</th>
+                                    <th>注册时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="amp:${allMemberPro}">
+                                    <td th:text="${amp.id}"></td>
+                                    <td><input name="ids" th:value="${amp.id}" type="checkbox"></td>
+                                    <td th:text="${amp.mobile}"></td>
+                                    <td th:text="${amp.nickname}"></td>
+                                    <td th:text="${amp.name}"></td>
+                                    <td>
+                                        <div th:if="${amp.level == 1}">
+                                            <p>男</p>
+                                        </div>
+                                        <div th:if="${amp.level == 2}">
+                                            <p>女</p>
+                                        </div>
+                                    </td>
+
+                                    <td th:text="${amp.register_time}"></td>
+                                    <!--                                        <td th:text="${#dates.format(amp.register_time,'yyyy-mm-dd')}"></td>-->
+                                    <td>
+                                        <a th:href="@{findMemberProById(id=${amp.id})}" type="button"
+                                           class="btn btn-primary btn-xs">
+                                            <i class="glyphicon glyphicon-check">详情</i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                                <tfoot>
+                                <tr>
+                                    <td colspan="10" align="center">
+                                        <!--<ul class="pagination">
+                                            <li><a th:href="@{hotelMaintain(page=1)}">首页</a></li>
+                                            <li><a th:href="@{hotelMaintain(page=${currentPage+(-1)})}">上一页</a></li>
+                                            <li><a th:href="@{hotelMaintain(page=${currentPage+1})}">下一页</a></li>
+                                            <li><a th:href="@{hotelMaintain(page=${currentPage})}">尾页</a></li>
+                                        </ul>-->
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <script src="jquery/jquery-2.1.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="script/docs.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $(".list-group-item").click(function(){
-                // jquery对象的回调方法中的this关键字为DOM对象
-                // $(DOM) ==> JQuery
-                if ( $(this).find("ul") ) { // 3 li
-                    $(this).toggleClass("tree-closed");
-                    if ( $(this).hasClass("tree-closed") ) {
-                        $("ul", this).hide("fast");
-                    } else {
-                        $("ul", this).show("fast");
-                    }
-                }
-            });
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            $("#head").load("header");
+            $("#right").load("htRight");
         });
-    </script>
+        $("#Exportscenic").click(function () {
+            var fileName = "会员信息表.xls";
+            $.post("ExportMemberPro", {"fileName": fileName}, function (data) {
+                if (data == true) {
+                    alert("导出会员信息成功！");
+                } else {
+                    alert("导出会员信息失败！");
+                }
+            })
+        })
+        $(".list-group-item").click(function () {
+            // jquery对象的回调方法中的this关键字为DOM对象
+            // $(DOM) ==> JQuery
+            if ($(this).find("ul")) { // 3 li
+                $(this).toggleClass("tree-closed");
+                if ($(this).hasClass("tree-closed")) {
+                    $("ul", this).hide("fast");
+                } else {
+                    $("ul", this).show("fast");
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

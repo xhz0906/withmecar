@@ -20,6 +20,6 @@ public class MemberProfile {
      private int city;
      private int district;
      private String address;
-     private int register_time;
+     private String register_time;
      private int point;
 }

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="UTF-8" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        .tree-closed {
+            height: 40px;
+        }
+
+        .tree-expanded {
+            height: auto;
+        }
+        #selectxx{
+            margin-left: 20px;
+            float: left;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="head">
+
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="right">
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 会员详情</h3>
+                    <ol class="breadcrumb">
+                        <li><a href="main1">后台首页</a></li>
+                        <li><a href="admin">管理员列表</a></li>
+                    </ol>
+                </div>
+                <div class="panel-body" id="div-details">
+                    <form action="findAdminMoHu" method="post" class="form-inline" role="form" style="float:left;">
+                        <div class="form-group has-feedback">
+                            <div class="input-group">
+                                <div class="input-group-addon">查询条件</div>
+                                <input name="xxx" class="form-control has-success" type="text" placeholder="请输入查询条件"
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询
+                        </button>
+                    </form>
+                    <div id="selectxx" class="dropup">
+                        <select style="width:220px;height: 35px;"  class="form-control" id="adClass">
+                            <option id="adminAll" value="0"><a href="admin">所有管理员</a></option>
+                            <option id="adminSuper1" value="1">超级管理员</option>
+                            <option id="adminCommon" value="2">普通管理员</a></option>
+                            <option id="adminSuper3" value="3">资讯管理员</option>
+                            <option id="adminSuper4" value="4">会员管理员</option>
+                            <option id="adminSuper5" value="5">标签管理员</option>
+                            <option id="adminSuper6" value="6">活动管理员</option>
+                            <option id="adminSuper7" value="7">自有商品管理员</option>
+                            <option id="adminSuper8" value="8">车库型管理员</option>
+                            <option id="adminSuper9" value="9">消息管理员</option>
+                            <option id="adminSuper10" value="10">角色管理员</option>
+                            <option id="adminSuper11" value="11">日志管理员</option>
+
+                        </select>
+                    </div>
+                    <form id="dor" method="post">
+
+                        <button type="button" id="addAdminUser" class="btn btn-danger"
+                                style="float:right;margin-left:20px;"><i class=" glyphicon glyphicon-open"></i> 新增
+                        </button>
+                        <br>
+                        <hr style="clear:both;">
+                        <div class="table-responsive">
+                            <table class="table  table-bordered">
+                                <thead>
+                                <tr>
+                                    <th width="30">#</th>
+                                    <th width="30"><input id="all" type="checkbox"></th>
+                                    <th>管理员姓名</th>
+                                    <th>登录账号</th>
+                                    <th>角色</th>
+                                    <th>邮箱</th>
+                                    <th>创建时间</th>
+                                    <th>启用状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="amp:${adminUsers}">
+                                    <td th:text="${amp.id}"></td>
+                                    <td><input name="ids" th:value="${amp.id}" type="checkbox"></td>
+                                    <td th:text="${amp.name}"></td>
+                                    <td th:text="${amp.username}"></td>
+                                    <td>
+                                        <div th:if="${amp.isSuper == 1}">
+                                            <p  style="color: red">超级管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 2}">
+                                            <p style="color: #d43f3a">普通管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 3}">
+                                            <p style="color: #d43f3a">资讯管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 4}">
+                                            <p style="color: #d43f3a">会员管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 5}">
+                                            <p style="color: #d43f3a">标签管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 6}">
+                                            <p style="color: #d43f3a">活动管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 7}">
+                                            <p style="color: #d43f3a">自有商品管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 8}">
+                                            <p style="color: #d43f3a">车库型管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 9}">
+                                            <p style="color: #d43f3a">消息管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 10}">
+                                            <p style="color: #d43f3a">角色管理员</p>
+                                        </div>
+                                        <div th:if="${amp.isSuper == 11}">
+                                            <p style="color: #d43f3a">日志管理员</p>
+                                        </div>
+                                    </td>
+                                    <td th:text="${amp.email}"></td>
+                                    <td th:text="${amp.createTime}"></td>
+                                    <td>
+                                        <div th:if="${amp.status == 1}">
+                                            <p  style="color: red">启用中</p>
+                                        </div>
+                                        <div th:if="${amp.status == 0}">
+                                            <p style="color: #d43f3a">未启用</p>
+                                        </div>
+                                    </td>
+                                    <!--                                        <td th:text="${#dates.format(amp.register_time,'yyyy-mm-dd')}"></td>-->
+                                    <td>
+                                        <a th:href="@{findAdminUserById(id=${amp.id})}" type="button"
+                                           class="btn btn-primary btn-xs">
+                                            <i class="glyphicon glyphicon-check">编辑</i></a>
+                                        <!-- Button trigger modal -->
+                                        <a type="button" class="btn btn-primary btn-xs" th:onclick="del([[${amp.id}]])" data-toggle="modal" data-target="#myModal" value="删除">
+                                            删除
+                                        </a>
+<!--
+                                        &lt;!&ndash; Modal &ndash;&gt;
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">是否删除</h4>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
+                                                        <a th:href="@{deleteAdminUser(id=${amp.id})}" type="button"
+                                                           class="btn btn-primary btn-xs">
+                                                            <i class="glyphicon glyphicon-check">删除</i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <a th:href="@{updateStatus1(id=${amp.id},status=1)}" type="button"
+                                           class="btn btn-primary btn-xs">
+                                            <i class="glyphicon glyphicon-check">启用</i></a>
+                                        <a th:href="@{updateStatus1(id=${amp.id},status=0)}" type="button"
+                                           class="btn btn-primary btn-xs">
+                                            <i class="glyphicon glyphicon-check">禁用</i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                                <tfoot>
+                                <tr>
+                                    <td colspan="10" align="center">
+                                        <ul class="pagination">
+                                            <li><a th:href="@{admin(page=1)}">首页</a></li>
+                                            <li><a th:href="@{admin(page=${currentPage+(-1)})}">上一页</a></li>
+                                            <li><a th:href="@{admin(page=${currentPage+1})}">下一页</a></li>
+                                            <li><a th:href="@{admin(page=${currentPage})}">尾页</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" th:inline="javascript">
+
+    function del(id){
+        if (confirm("你确定需要删除吗")!= true){
+            return false;
+        }
+        location.href = "deleteAdminUser?id="+id;
+    }
+    $(function () {
+        $(document).ready(function() {
+            $("#head").load("header");
+            $("#right").load("htRight");
+        });
+
+        $("#adminAll").click(function () {
+            location.href="admin";
+        });
+        $("#adminSuper1").click(function () {
+            location.href="findAdmin?isSuper=1";
+        });
+        $("#adminCommon").click(function () {
+            location.href="findAdmin?isSuper=2";
+        });
+        $("#adminSuper3").click(function () {
+            location.href="findAdmin?isSuper=3";
+        });
+        $("#adminSuper4").click(function () {
+            location.href="findAdmin?isSuper=4";
+        });
+        $("#adminSuper5").click(function () {
+            location.href="findAdmin?isSuper=5";
+        });
+        $("#adminSuper6").click(function () {
+            location.href="findAdmin?isSuper=6";
+        });
+        $("#adminSuper7").click(function () {
+            location.href="findAdmin?isSuper=7";
+        });
+        $("#adminSuper8").click(function () {
+            location.href="findAdmin?isSuper=8";
+        });
+        $("#adminSuper9").click(function () {
+            location.href="findAdmin?isSuper=9";
+        });
+        $("#adminSuper10").click(function () {
+            location.href="findAdmin?isSuper=10";
+        });
+        $("#adminSuper11").click(function () {
+            location.href="findAdmin?isSuper=11";
+        });
+        $("#addAdminUser").click(function () {
+            location.href="admin1";
+        })
+        $(".list-group-item").click(function () {
+            // jquery对象的回调方法中的this关键字为DOM对象
+            // $(DOM) ==> JQuery
+            if ($(this).find("ul")) { // 3 li
+                $(this).toggleClass("tree-closed");
+                if ($(this).hasClass("tree-closed")) {
+                    $("ul", this).hide("fast");
+                } else {
+                    $("ul", this).show("fast");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,9 +1,7 @@
 package hi.cc.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import hi.car.pojo.Car;
-import hi.car.pojo.MemberProfile;
-import hi.car.pojo.Tag;
+import hi.car.pojo.*;
 import hi.cc.mapper.MemberMapper;
 import hi.cc.service.MemberServiceXT;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +43,38 @@ public class MemberServiceXTImpl implements MemberServiceXT {
         map.put("memberId",memberId);
         map.put("type",type);
         return memberMapper.findCarById(map);
+    }
+
+    @Override
+    public String findCityById(int id) {
+        String cityName = memberMapper.findCityById(id);
+        return cityName;
+    }
+
+    @Override
+    public List<MemberPoint> findMemberPointById(int memberId) {
+
+        return memberMapper.findMemberPointById(memberId);
+    }
+
+    @Override
+    public List<Activity> findFavActivityById(int memberId) {
+        return null;
+    }
+
+    @Override
+    public List<Article> findFavArticleById(int memberId) {
+        return memberMapper.findFavArticleById(memberId);
+    }
+
+    @Override
+    public List<Car> findFavCarById(int memberId) {
+        return memberMapper.findFavCarById(memberId);
+    }
+
+    @Override
+    public List<MemberProfile> findMemberProMoHu(String xxx) {
+
+        return memberMapper.findMemberProMoHu(xxx);
     }
 }

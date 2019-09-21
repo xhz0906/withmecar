@@ -8,5 +8,5 @@ public class MemberTag {
     private int id;
     private int memberId;
     private int tagId;
-    private int createTime;
+    private String createTime;
 }

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.AdminMapperxt">
+    <resultMap id="adminUserMap" type="hi.car.pojo.AdminUser">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="name" column="name"></result>
+        <result property="salt" column="salt"></result>
+        <result property="phone" column="phone"></result>
+        <result property="email" column="email"></result>
+        <result property="status" column="status"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="isSuper" column="is_super"></result>
+        <result property="consumer" column="consumer"></result>
+        <result property="remark" column="remark"></result>
+        <result property="dept" column="dept"></result>
+    </resultMap>
+    <resultMap id="adminMenuAuthMap" type="hi.car.pojo.AdminMenuAuth">
+        <id property="id" column="id"></id>
+        <result property="controller" column="controller"></result>
+        <result property="action" column="action"></result>
+        <result property="name" column="name"></result>
+        <result property="classname" column="classname"></result>
+        <result property="status" column="status"></result>
+        <result property="sort" column="sort"></result>
+        <result property="type" column="type"></result>
+        <result property="parentId" column="prarent_id"></result>
+    </resultMap>
+    <select id="allAdminUser" resultMap="adminUserMap">
+        select * from admin_user
+    </select>
+    <select id="findAdminUserByIsSuper" resultMap="adminUserMap" parameterType="int">
+        select * from admin_user where is_super = #{isSuper}
+    </select>
+    <!--//   模糊查询-->
+    <select id="findAdminUserMoHu" resultMap="adminUserMap" parameterType="string">
+        select * from admin_user where  username LIKE "%"#{xxx}"%" or phone like "%"#{xxx}"%" or name like "%"#{xxx}"%"
+    </select>
+    <!--模糊查询出是数量-->
+    <select id="getCountAdminMoHu" resultType="int" parameterType="string">
+        select count(id) from admin_user where  username LIKE "%"#{xxx}"%" or phone like "%"#{xxx}"%" or name like "%"#{xxx}"%"
+    </select>
+<!--    对管理员的启用状态status进行设置-->
+    <!--public boolean upDateAdminUserStatus(Map<> map);-->
+    <update id="upDateAdminUserStatus" parameterType="map">
+        update admin_user set status= #{status} where id = #{id}
+    </update>
+    <!--//  根据id查询对应人员信息-->
+ <!--   public AdminUser fingAdminUserById(int id);-->
+    <select id="findAdminUserById" resultMap="adminUserMap" parameterType="int">
+        select * from admin_user where id = #{id}
+    </select>
+   <!-- //  新增管理员
+    public boolean insertAdminUser();-->
+    <insert id="insertAdminUser" parameterType="adminuser">
+        insert admin_user values (default , #{username} ,#{password},#{name},#{salt} ,#{phone} ,#{email} ,#{status},#{createTime} ,#{isSuper},#{consumer},#{remark},#{dept});
+    </insert>
+    <!--//   修改管理员信息
+    public boolean updateAdminUser(int id);-->
+    <update id="updateAdminUser" parameterType="adminuser">
+        update admin_user
+        <set>
+            is_super = #{isSuper},
+            <trim prefixOverrides=",">
+                <if test="username!=null">
+                    username=#{username},
+                </if>
+                <if test="password!=null">
+                    password = #{password},
+                </if>
+                <if test="name!=null">
+                    name = #{name},
+                </if>
+                <if test="salt != null">
+                    salt = #{salt} ,
+                </if>
+                <if test="phone != null">
+                    phone = #{phone} ,
+                </if>
+                <if test="email != null">
+                    email = #{email} ,
+                </if>
+                <if test="status != 0">
+                    status = default,
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime} ,
+                </if>
+
+                <if test="consumer != null">
+                    consumer = #{consumer},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark},
+                </if>
+                <if test="dept != null">
+                    dept = #{dept}
+                </if>
+            </trim>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+   <!-- //  根据id删除管理员adminUser
+    public boolean deleteAdminUser(int id);-->
+    <delete id="deleteAdminUser" parameterType="int">
+        delete from admin_user where id = #{id}
+    </delete>
+    <!--//  根据id删除管理员-角色表
+    public boolean deleteAdminUserRole(int id);-->
+    <delete id="deleteAdminUserRole" parameterType="int">
+        delete from  admin_user_role where user_id = #{id}
+    </delete>
+    <!--//  根据Id查询管理员数量
+    public int getCountAllAdmin();-->
+    <select id="getCountAllAdmin" resultType="int">
+        SELECT count(id) FROM admin_user
+    </select>
+    <!--//  根据id查询出超级管理员、或在其他管理员的数量
+    public int getCountAdminByIsSuper();-->
+    <select id="getCountAdminByIsSuper" resultType="int" parameterType="int">
+        SELECT count(id) FROM admin_user where is_super=#{isSuper}
+    </select>
+    <!--根据用户名查询人员信息-->
+    <select id="findLoginNameAdminInfo" parameterType="string" resultMap="adminUserMap">
+        select * from admin_user where username=#{username}
+    </select>
+    <!--根据用户名查询权限-->
+    <select id="findLoginNameAdminMenuInfo" parameterType="string" resultMap="adminMenuAuthMap">
+        SELECT
+         DISTINCT 	ama.*
+         FROM
+         admin_user au,
+         admin_role ar,
+         admin_user_role aur,
+         admin_role_menu arm,
+         admin_menu_auth ama
+       where
+        au.id = aur.user_id and
+        aur.role_id = ar.id and
+        ar.id = arm.role_id and
+        ama.id = arm.menu_id and
+        au.username = #{username}
+    </select>
+
+    <!--//  根据id修改密码
+    public boolean updatePasswordById(int id);-->
+    <update id="updatePasswordById" parameterType="map">
+        update admin_user set password = #{password} where id = #{id}
+    </update>
+   <!-- // 修改admin-user-role的方法 根据userId
+    public boolean updateAdminUserRole (Map<String,Integer> map);-->
+    <update id="updateAdminUserRole">
+        update admin_user_role set role_id = #{rid} where user_id = #{uid}
+    </update>
+   <!-- // 新增admin-user-role的方法 根据userId
+    public boolean saveAdminUserRole (Map<String,Integer> map);-->
+    <insert id="saveAdminUserRole" parameterType="map">
+        INSERT admin_user_role VALUES (DEFAULT,#{uid},#{rid})
+    </insert>
+    <!--
+    //    根据username判断是否存在
+    public int findAdminUserByUsername(String username);-->
+    <select id="findAdminUserByUsername" parameterType="string" resultType="int">
+        select count(*) from admin_user where username = #{username}
+    </select>
+ </mapper>

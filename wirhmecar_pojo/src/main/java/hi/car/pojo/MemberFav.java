@@ -9,7 +9,7 @@ public class MemberFav {
     private int memberId;
     private int favType;
     private int contentId;
-    private int favTime;
+    private String favTime;
     private String favIp;
 
 }

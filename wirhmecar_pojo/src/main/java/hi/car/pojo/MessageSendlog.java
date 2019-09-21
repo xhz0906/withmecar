@@ -16,13 +16,13 @@ public class MessageSendlog implements Serializable {
 
     private Integer received;
 
-    private Integer receiveTime;
+    private String receiveTime;
 
     private Byte viewed;
 
-    private Integer viewTime;
+    private String viewTime;
 
     private Byte viewDetail;
 
-    private Integer viewDetailTime;
+    private String viewDetailTime;
 }
