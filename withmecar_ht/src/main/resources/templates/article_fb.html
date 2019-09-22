@@ -31,14 +31,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <li style="padding-top:8px;">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-user"></i> 张三 <span class="caret"></span>
+                        <button type="button" class="btn btn-default btn-success dropdown-toggle"
+                                data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user" th:text="${session.user.username}"></i>  <span class="caret" ></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
                             <li class="divider"></li>
-                            <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                            <li><a href="logout"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
                         </ul>
                     </div>
                 </li>
@@ -66,7 +67,7 @@
                         <span><i class="glyphicon glyphicon-ok"></i> 会员 <span class="badge" style="float:right">3</span></span>
                         <ul style="margin-top:10px;display:none;">
                             <li style="height:30px;">
-                                <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
+                                <a href="findAllMemberPro"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
                             </li>
 
                         </ul>
@@ -104,22 +105,22 @@
                         <span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge" style="float:right">3</span></span>
                         <ul style="margin-top:10px;display:none;">
                             <li style="height:30px;">
-                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
+                                <a href="findCarBrand" ><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="Routeexamine"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
+                                <a href="findManufacturer"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
+                                <a href="findCarModel"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
+                                <a href="findCar" ><i class="glyphicon glyphicon-check"></i> 车款管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
+                                <a href="findParamType"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
+                                <a href="findParam"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
                             </li>
 
                         </ul>
