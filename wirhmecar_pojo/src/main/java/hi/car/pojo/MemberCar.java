@@ -16,6 +16,6 @@ public class MemberCar implements Serializable {
     private int currentMileage;//	当前里程		int
     private String remark;//	备注		varchar(500)
     private int type;//	座驾类型		tinyint
-    private int createTime;//	创建时间		int(11)
-    private int updateTime;//	最后更新时间		int(11)
+    private String createTime;//	创建时间		int(11)
+    private String updateTime;//	最后更新时间		int(11)
 }

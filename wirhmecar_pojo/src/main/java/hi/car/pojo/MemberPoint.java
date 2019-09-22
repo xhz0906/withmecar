@@ -11,5 +11,5 @@ public class MemberPoint {
      private int type;
      private String description;
      private String remark;
-     private int create_time;
+     private String createTime;
 }

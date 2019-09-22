@@ -8,11 +8,12 @@ public class AdminUser implements Serializable {
     private int id;
     private String username;
     private String password;
+    private String name;
     private String salt;
     private String phone;
     private String email;
     private int status;
-    private int creatTime;
+    private String createTime;
     private int isSuper;
     private String consumer;
     private String remark;

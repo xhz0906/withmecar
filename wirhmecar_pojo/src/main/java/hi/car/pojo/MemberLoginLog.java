@@ -7,7 +7,7 @@ public class MemberLoginLog {
 
      private int id;
      private int memberId;
-     private int loginTime;
+     private String loginTime;
      private int isFirst;
      private String loginIp;
 }

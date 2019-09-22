@@ -14,9 +14,9 @@ public class Message implements Serializable {
 
     private Integer isSchedule;
 
-    private Integer scheduleTime;
+    private String scheduleTime;
 
-    private Integer sendTime;
+    private String sendTime;
 
     private String content;
 }

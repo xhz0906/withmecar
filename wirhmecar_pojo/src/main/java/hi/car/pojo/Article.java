@@ -1,7 +1,10 @@
 package hi.car.pojo;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class Article implements Serializable {
 //    id	bigint
     private int id;

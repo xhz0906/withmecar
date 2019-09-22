@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="utf-8" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        .tree-closed {
+            height: 40px;
+        }
+
+        .tree-expanded {
+            height: auto;
+        }
+
+        #div-details {
+            height: 300px;
+        }
+
+        .trs {
+            width: 50px;
+            height: 30px;
+        }
+
+        #car1Div {
+            width: 100%;
+        }
+
+        #car2Div {
+            width: 100%;
+        }
+
+        .fatherDiv {
+            height: 76px;
+            background-color: #faebcc;
+            border: 1px solid seashell;
+            align-content: center;
+        }
+
+        .childDiv {
+            float: left;
+            width: 200px;
+            height: 80px;
+            align-content: center;
+        }
+
+        .goodname {
+            font-size: 22px;
+        }
+
+        .goodprice {
+            color: red;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="head">
+
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="right">
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 会员详情</h3>
+                    <ol class="breadcrumb">
+                        <li><a href="main1">后台首页</a></li>
+                        <li><a href="findAllMemberPro">所有会员</a></li>
+                        <li class="active"><span th:text="${memberProById.nickname}"></span>的信息</li>
+                    </ol>
+                </div>
+                <div class="panel-body" id="div-details">
+                    <table id="tab1">
+                        <tr class="trs">
+                            <font class="goodname"><tb>账号：<span th:text="${memberProById.mobile}" class="goodname"></span><br></tb></font>
+                        </tr>
+                        <tr class="trs goodname">
+                            <font class="goodname"><tb> 昵称：<span th:text="${memberProById.nickname}"></span></tb></font>
+                            <p class="goodname"><tb> 姓名：<span th:text="${memberProById.name}"></span></tb></p>
+                        </tr>
+                        <tr class="trs">
+                            <tb>
+                                <div th:if="${memberProById.level == 1}">
+                                    <p class="goodname">性别：男</p>
+                                </div>
+                                <div th:if="${memberProById.level == 2}">
+                                    <p class="goodname">性别：女</p>
+                                </div>
+                                <div th:if="${memberProById.level == 0}">
+                                    <p class="goodname">性别：未完善</p>
+                                </div>
+                            </tb>
+                            <p class="goodname"><tb>邮箱：<span th:text="${memberProById.email}"></span></tb></p>
+                        </tr>
+                        <tr class="trs">
+                            <strong class="goodname">标签：</strong>
+                            <span th:each="t:${tagById}">
+                                <span class="goodprice"><tb th:text="${t.name}"></tb></span>
+                            </span><br>
+                        </tr>
+                        <tr class="trs">
+                            <strong class="goodname">地址：<span th:text="${abc}"></span><span th:text="${memberProById.address}"></span></strong>
+
+                        </tr>
+                    </table>
+
+
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" id="test">
+                        <li role="presentation" class="active"><a href="#popularity1" id="butu1">我的座驾</a></li>
+                        <li role="presentation"><a href="#popularity2" aria-controls="popularity2" id="butu2">我的活动</a>
+                        </li>
+                        <li role="presentation"><a href="#popularity3" aria-controls="popularity3" id="butu3">我的积分</a>
+                        </li>
+                        <li role="presentation"><a href="#" id="butu4">资讯收藏</a></li>
+                        <li role="presentation"><a href="#" id="butu5">关注车型</a></li>
+                    </ul>
+                </div>
+                <div class="jx_content">
+                    <!--我的座驾-->
+                    <div id="popularity1" class="divsmill">
+                        <div>
+                            <h1>已有座驾</h1>
+                            <div id="car1Div">
+                            </div>
+                        </div>
+                        <div>
+                            <h1>期望座驾</h1>
+                            <div id="car2Div">
+                            </div>
+                        </div>
+                    </div>
+                    <!--我的活动-->
+                    <div id="popularity2" class="divsmill">
+                        <div>
+                            <h1>参加活动</h1>
+                        </div>
+                        <div>
+                            <h1>关注活动</h1>
+                        </div>
+                    </div>
+                    <!--我的积分-->
+                    <div id="popularity3" class="divsmill">
+                        <div>
+                            <h1>总积分<span th:text="${memberProById.point}"/></h1>
+                        </div>
+                        <div>
+                            <h1>记录</h1>
+                            <div th:each="mpt:${memberPointById}">
+                                <p><span th:text="${mpt.description}" class="goodname"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="goodprice" th:text="${mpt.point}"></span><span class="goodprice">分</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="goodname">时间：</span><span class="goodname" th:text="${mpt.createTime}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--资讯收藏-->
+                    <div id="popularity4" class="divsmill">
+                        <div>
+                            <h1>资讯概述</h1>
+                        </div>
+                        <table  class="table table-bordered">
+                            <th>
+                            <td>序号</td>
+                            <td>资讯标题</td>
+                            <td>资讯来源</td>
+                            <td>资讯作者</td>
+                            <td>资讯摘要</td>
+                            <td>封面图片</td>
+                            <td>资讯内容</td>
+                            <td>提交时间</td>
+                            </th>
+                            <tr th:each="mfa:${favArticleById}">
+                                <td></td>
+                                <td th:text="${mfa.id}"></td>
+                                <td th:text="${mfa.title}"></td>
+                                <td th:text="${mfa.source}"></td>
+                                <td th:text="${mfa.author}"></td>
+                                <td th:text="${mfa.summary}"></td>
+                                <td>
+                                    <img th:src="@{${mfa.coverPic}}"/>
+                                </td>
+                                <td th:text="${mfa.content}"></td>
+                                <td th:text="${mfa.submitTime}"></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!--关注车型-->
+                    <div id="popularity5" class="divsmill">
+                        <div>
+                            <h1>车型概述</h1>
+                        </div>
+                        <table  class="table table-bordered">
+                            <th>
+                                <td>序号</td>
+                                <td>名称</td>
+                                <td>品牌</td>
+                                <td>形态名称</td>
+                                <td>最低价</td>
+                                <td>最高价</td>
+                                <td>更新时间</td>
+                            </th>
+                            <tr th:each="mfc:${favCarById}">
+                                <td></td>
+                                <td th:text="${mfc.id}"></td>
+                                <td th:text="${mfc.name}"></td>
+                                <td th:text="${mfc.makeName}"></td>
+                                <td th:text="${mfc.bodyFormName}"></td>
+                                <td th:text="${mfc.priceLow}"></td>
+                                <td th:text="${mfc.priceHigh}"></td>
+                                <td th:text="${mfc.updateTime}"></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:inline="javascript">
+    $(function () {
+        var memberId = [[${memberProById.id}]];
+        window.onload = function () {
+            getCarByType1("#car1Div");
+            getCarByType2("#car2Div");
+            $("#popularity1").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        };
+
+        function getCarByType1(parentDiv) {
+            var type = 1;
+            $.post("findCarById", {"memberId": memberId, "type": type}, function (carById) {
+                var datas = eval(carById);
+                for (var key in datas) {
+                    var goodsdiv = $("<div></div>");
+                    goodsdiv.attr("class", "fatherDiv");
+                    var gooddiv = $("<div></div>");
+                    gooddiv.attr("class", "childDiv");
+                    var gbrandname = $("<font></font>");
+                    gbrandname.text("主品牌名称: " + datas[key].brandName)
+                    gbrandname.attr("class", "goodname");
+                    var genglishName = $("<font></font>");
+                    genglishName.text("英文名称:" + datas[key].englishName)
+                    genglishName.attr("class", "goodname");
+                    var gname = $("<font></font>");
+                    gname.text("车型名称：" + datas[key].name);
+                    gname.attr("class", "goodname");
+                    var gpriceHigh = $("<font></font>");
+                    gpriceHigh.text("最高价：" + datas[key].priceHigh)
+                    gpriceHigh.attr("class", "goodprice");
+                    var gpriceLow = $("<font></font>");
+                    gpriceLow.text("最低价：" + datas[key].priceLow)
+                    gpriceLow.attr("class", "goodprice");
+                    var gupdateTime = $("<font></font>");
+                    gupdateTime.text("最后更新时间：" + datas[key].updateTime)
+                    gupdateTime.attr("class", "goodindent");
+                    gooddiv.append(gbrandname);
+                    gooddiv.append("<br>");
+                    var gooddiv2 = $("<div></div>");
+                    gooddiv2.attr("class", "childDiv");
+                    gooddiv2.append(gpriceHigh);
+                    var gooddiv3 = $("<div></div>");
+                    gooddiv3.attr("class", "childDiv");
+                    gooddiv3.append(gpriceLow);
+                    var gooddiv4 = $("<div></div>");
+                    gooddiv4.attr("class", "childDiv");
+                    gooddiv4.append(gupdateTime);
+                    var gooddiv5 = $("<div></div>");
+                    gooddiv5.attr("class", "childDiv");
+                    gooddiv5.append(genglishName);
+                    gooddiv.append("<br>");
+                    var gooddiv6 = $("<div></div>");
+                    gooddiv6.attr("class", "childDiv");
+                    gooddiv6.append(gname);
+                    $(goodsdiv).append(gooddiv);
+                    $(goodsdiv).append(gooddiv5);
+                    $(goodsdiv).append(gooddiv6);
+                    $(goodsdiv).append(gooddiv2);
+                    $(goodsdiv).append(gooddiv3);
+                    $(goodsdiv).append(gooddiv4);
+                    $(parentDiv).append(goodsdiv);
+                }
+            })
+        }
+
+        function getCarByType2(parentDiv) {
+            $(document).ready(function() {
+                $("#head").load("header");
+                $("#right").load("htRight");
+            });
+            var type = 2;
+            $.post("findCarById", {"memberId": memberId, "type": type}, function (carById) {
+                var datas = eval(carById);
+                for (var key in datas) {
+                    var goodsdiv = $("<div></div>");
+                    goodsdiv.attr("class", "fatherDiv");
+                    var gooddiv = $("<div></div>");
+                    gooddiv.attr("class", "childDiv");
+                    var gbrandname = $("<font></font>");
+                    gbrandname.text("主品牌名称:" + datas[key].brandName)
+                    gbrandname.attr("class", "goodname");
+                    var genglishName = $("<font></font>");
+                    genglishName.text("英文名称:" + datas[key].englishName)
+                    genglishName.attr("class", "goodname");
+                    var gname = $("<font></font>");
+                    gname.text("车型名称：" + datas[key].name);
+                    gname.attr("class", "goodname");
+                    var gpriceHigh = $("<font></font>");
+                    gpriceHigh.text("最高价：" + datas[key].priceHigh+"万")
+                    gpriceHigh.attr("class", "goodprice");
+                    var gpriceLow = $("<font></font>");
+                    gpriceLow.text("最低价："+ datas[key].priceLow+"万")
+                    gpriceLow.attr("class", "goodprice");
+                    var gupdateTime = $("<font></font>");
+                    gupdateTime.text("最后更新时间：" + datas[key].updateTime)
+                    gupdateTime.attr("class", "goodname");
+                    gooddiv.append(gbrandname);
+                    gooddiv.append("<br>");
+                    var gooddiv2 = $("<div></div>");
+                    gooddiv2.attr("class", "childDiv");
+                    gooddiv2.append(gpriceHigh);
+                    var gooddiv3 = $("<div></div>");
+                    gooddiv3.attr("class", "childDiv");
+                    gooddiv3.append(gpriceLow);
+                    var gooddiv4 = $("<div></div>");
+                    gooddiv4.attr("class", "childDiv");
+                    gooddiv4.append(gupdateTime);
+                    var gooddiv5 = $("<div></div>");
+                    gooddiv5.attr("class", "childDiv");
+                    gooddiv5.append(genglishName);
+                    gooddiv.append("<br>");
+                    var gooddiv6 = $("<div></div>");
+                    gooddiv6.attr("class", "childDiv");
+                    gooddiv6.append(gname);
+                    $(goodsdiv).append(gooddiv);
+                    $(goodsdiv).append(gooddiv5);
+                    $(goodsdiv).append(gooddiv6);
+                    $(goodsdiv).append(gooddiv2);
+                    $(goodsdiv).append(gooddiv3);
+                    $(goodsdiv).append(gooddiv4);
+                    $(parentDiv).append(goodsdiv);
+                }
+            })
+        }
+
+        $("#test li").click(function () {
+            $(this).siblings('li').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $("#butu1").click(function () {
+            $("#popularity1").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        });
+        $("#butu2").click(function () {
+            $("#popularity2").show();
+            $("#popularity1").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        });
+
+        $("#butu3").click(function () {
+            $("#popularity3").show();
+            $("#popularity2").hide();
+            $("#popularity1").hide();
+            $("#popularity4").hide();
+            $("#popularity5").hide();
+        })
+
+        $("#butu4").click(function () {
+            $("#popularity4").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity1").hide();
+            $("#popularity5").hide();
+        });
+
+        $("#butu5").click(function () {
+            $("#popularity5").show();
+            $("#popularity2").hide();
+            $("#popularity3").hide();
+            $("#popularity4").hide();
+            $("#popularity1").hide();
+        });
+
+
+    });
+</script>
+</body>
+</html>

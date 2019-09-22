@@ -21,6 +21,6 @@ public class MemberProfileLog {
     private int ity;
     private int district;
     private String address;
-    private int registerTime;
-    private int updateTime;
+    private String registerTime;
+    private String updateTime;
 }
