@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.CarManufacturerMapper">
+    <resultMap id="carManufacturer" type="hi.car.pojo.CarManufacturer">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="brandId" column="brand_id"></result>
+        <result property="brandName" column="brand_name"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="updateTime" column="update_time"></result>
+        <association property="carBrand" javaType="CarBrand" select="hi.cc.mapper.CarBrandMapper.getCarBrandById" column="brand_id">
+        </association>
+    </resultMap>
+    <select id="findManufacturer" resultMap="carManufacturer">
+        select * from car_manufacturer
+    </select>
+    <insert id="saveCarManufacturer" parameterType="map">
+          insert into car_manufacturer(id,name,brand_name,create_time) values(default,
+        #{name},
+        #{brandName},
+        #{createTime})
+    </insert>
+    <delete id="deleteCarManufacturer" parameterType="list">
+        delete from car_manufacturer where id=#{id}
+    </delete>
+    <select id="findCarManufacturer" resultMap="carManufacturer">
+        select * from car_manufacturer where id=#{id}
+    </select>
+    <update id="updateCarManufacturer" parameterType="map">
+        update car_manufacturer set
+        name=#{name},
+        brand_name=#{brandName},
+        update_time=#{updateTime}
+        where
+        id=#{id}
+    </update>
+    <!--通过name修改厂商 id-->
+    <update id="updateId" parameterType="map">
+        update car_manufacturer set
+        brand_id=${brandId}
+        where
+        brand_name=#{brandName}
+    </update>
+    <!--查出所有厂商名-->
+    <select id="findManufacturerName" resultType="string">
+        select name from car_manufacturer
+    </select>
+    <!--查出总数-->
+    <select id="getMaxCount"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_manufacturer
+    </select>
+</mapper>

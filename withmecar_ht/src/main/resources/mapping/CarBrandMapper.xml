@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.CarBrandMapper">
+    <resultMap id="resultCarBrand" type="hi.car.pojo.CarBrand">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="otherName" column="other_name"></result>
+        <result property="englishName" column="english_name"></result>
+        <result property="logoUrl" column="logo_url"></result>
+        <result property="logoMeaning" column="logo_meaning"></result>
+        <result property="firstChar" column="first_char"></result>
+        <result property="spell" column="spell"></result>
+        <result property="allSpell" column="all_spell"></result>
+        <result property="nameSpell" column="name_spell"></result>
+        <result property="nameAllSpell" column="name_all_spell"></result>
+        <result property="introduction" column="introduction"></result>
+        <result property="saleStatus" column="sale_status"></result>
+        <result property="isEnable" column="is_enable"></result>
+        <result property="isRemoved" column="is_removed"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="updateTime" column="update_time"></result>
+        <result property="doTime" column="do_time"></result>
+        <result property="syncTime" column="sync_time"></result>
+    </resultMap>
+    <select id="findCarBrand" resultMap="resultCarBrand">
+        select * from car_brand
+    </select>
+    <insert id="saveCarBrand" parameterType="map">
+        insert into car_brand(id,name,logo_url,create_time) values(default,
+        #{name},
+        #{logo},
+        #{createTime})
+    </insert>
+    <delete id="deleteCarBrand" parameterType="list">
+        delete from car_brand where id=#{id}
+    </delete>
+    <select id="findBrand" resultMap="resultCarBrand">
+        select * from car_brand where id=#{id}
+    </select>
+    <update id="updateCarBrand" parameterType="map">
+        update car_brand set
+        name=#{name},
+        logo_url=#{logo},
+        update_time=#{updateTime}
+        where
+        id=#{id}
+    </update>
+    <select id="getCarBrandById" parameterType="int" resultMap="resultCarBrand">
+        select * from car_brand where id=#{brand_id}
+    </select>
+    <select id="findBrand1" resultType="string">
+        select name from car_logo
+    </select>
+    <!--通过name查询品牌 id-->
+    <select id="saveId"  parameterType="string" resultType="int">
+        select id from car_brand where name=#{brandName}
+    </select>
+    <!--查询品牌logo-->
+    <select id="findBrandLogo" resultType="string">
+        select logo from car_logo
+        </select>
+    <!--通过logo查品牌名-->
+    <select id="findBrandName" parameterType="string" resultType="string">
+        select name from car_logo where logo=#{brandLogo}
+    </select>
+    <select id="findBrandName1" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM car_brand WHERE name=#{brandName} and logo_url=#{brandLogo}
+    </select>
+    <!--通过logo查品牌名-->
+    <select id="findBrandName2" parameterType="string" resultType="string">
+        select name from car_brand where logo_url=#{brandLogo}
+    </select>
+    <!--查出总数-->
+    <select id="getMaxCount"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_brand
+    </select>
+</mapper>

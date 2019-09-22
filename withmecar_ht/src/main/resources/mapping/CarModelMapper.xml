@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.CarModelMapper">
+    <resultMap id="modelMap" type="hi.car.pojo.CarModel">
+        <id property="id" column="id"></id>
+        <result property="brandId" column="brand_id"></result>
+        <result property="brandName" column="brand_name"></result>
+        <result property="makeName" column="make_“name"></result>
+        <result property="name" column="name"></result>
+        <result property="displayName" column="display_name"></result>
+        <result property="otherName" column="other_name"></result>
+        <result property="englishName" column="english_name"></result>
+        <result property="countryClass" column="country_class"></result>
+        <result property="countryClassName" column="country_class_name"></result>
+        <result property="bodyForm" column="body_form"></result>
+        <result property="bodyFormName" column="body_form_name"></result>
+        <result property="priceLow" column="priceLow"></result>
+        <result property="priceHigh" column="price_high"></result>
+        <result property="level" column="level"></result>
+        <result property="levelName" column="level_name"></result>
+        <result property="levelSecond" column="level_second"></result>
+        <result property="levelSecondName" column="level_second_name"></result>
+        <result property="saleStatus" column="sale_status"></result>
+        <result property="allSpell" column="all_spell"></result>
+        <result property="countryId" column="country_id"></result>
+        <result property="countryName" column="country_name"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="updateTime" column="update_time"></result>
+        <result property="syncTime" column="sync_time"></result>
+    </resultMap>
+    <select id="findCarModel" resultMap="modelMap">
+        select * from car_model
+    </select>
+    <!--查出所有类型名-->
+    <select id="findType" resultType="string">
+        select name from car_type
+    </select>
+    <insert id="saveCarModel" parameterType="map">
+         insert into car_model(id,name,brand_name,level_name,create_time) values(default,
+        #{name},
+        #{brandName},
+        #{levelName},
+        #{createTime})
+    </insert>
+    <delete id="deleteCarModel" parameterType="int">
+        delete from car_model where id=#{id}
+    </delete>
+    <select id="findModel" resultMap="modelMap" parameterType="int">
+        select * from car_model where id=#{id}
+    </select>
+    <update id="updateId" parameterType="map">
+        update car_model set
+        brand_id=${brandId}
+        where
+        brand_name=#{brandName}
+    </update>
+    <update id="updateModel" parameterType="map">
+        update car_model set
+        name=#{name},
+        brand_name=#{brandName},
+        update_time=#{updateTime},
+        level_name=#{levelName}
+        where
+        id=#{id}
+    </update>
+    <!--查出总数-->
+    <select id="getMaxCount"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_model
+    </select>
+</mapper>

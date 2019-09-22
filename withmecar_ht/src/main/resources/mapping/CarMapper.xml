@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.CarMapper">
+    <resultMap id="carMap" type="hi.car.pojo.Car">
+        <id property="id" column="id"></id>
+        <result property="brandId" column="brand_id"></result>
+        <result property="brandName" column="brand_name"></result>
+        <result property="makeId" column="make_id"></result>
+        <result property="makeName" column="make_name"></result>
+        <result property="name" column="name"></result>
+        <result property="displayName" column="display_name"></result>
+        <result property="otherName" column="other_name"></result>
+        <result property="englishName" column="english_name"></result>
+        <result property="countryClass" column="country_class"></result>
+        <result property="countryClassName" column="country_class_name"></result>
+        <result property="bodyForm" column="body_form"></result>
+        <result property="bodyFormName" column="body_form_name"></result>
+        <result property="priceLow" column="price_low"></result>
+        <result property="priceHigh" column="price_high"></result>
+        <result property="level" column="level"></result>
+        <result property="levelName" column="level_name"></result>
+        <result property="levelSecond" column="level_second"></result>
+        <result property="levelSecondName" column="level_second_name"></result>
+        <result property="saleStatus" column="sale_status"></result>
+        <result property="allSpell" column="all_spell"></result>
+        <result property="countryId" column="country_id"></result>
+        <result property="countryName" column="country_name"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="updateTime" column="update_time"></result>
+        <result property="syncTime" column="sync_time"></result>
+        <association property="carModelImage" javaType="CarModelImage" select="hi.cc.mapper.CarMapper.getYearById" column="id"></association>
+    </resultMap>
+    <resultMap id="carModelImage" type="hi.car.pojo.CarModelImage">
+        <id property="id" column="id"></id>
+        <result property="modelId" column="model_id"></result>
+        <result property="year" column="year"></result>
+        <result property="imgUrl" column="img_url"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="updateTime" column="update_time"></result>
+        <result property="syncTime" column="sync_time"></result>
+     </resultMap>
+    <!--通过车型id查年款-->
+    <select id="getYearById" parameterType="int" resultMap="carModelImage">
+            select year from car_model_image where model_id=#{id}
+    </select>
+    <!--同步添加指定年款-->
+    <insert id="saveCarYear" parameterType="map">
+        INSERT INTO car_model_image(id,model_id,year) VALUES(DEFAULT,#{id},#{year})
+    </insert>
+    <!--同步修改指定年款-->
+    <update id="updateCarYear" parameterType="map">
+        update car_model_image set year=#{year} where model_id=#{id}
+    </update>
+    <!--查出车款-->
+    <select id="findCar" resultMap="carMap">
+        select * from car
+    </select>
+    <!--查指定id-->
+    <select id="findCarId" resultType="int">
+        select id from car
+    </select>
+    <!--通过品牌名修改品牌id-->
+    <update id="updateId" parameterType="map">
+        update car set
+        brand_id=${brandId}
+        where
+        brand_name=#{brandName}
+    </update>
+    <!--查出所有车系名-->
+    <select id="findMake" resultType="string">
+        select name from car_model
+    </select>
+    <!--查出所有年款名-->
+    <select id="findYear" resultType="string">
+        select year from car_year
+    </select>
+    <insert id="saveCar" parameterType="map">
+          insert into car(id,name,brand_name,make_name,level_name,create_time) values(default,
+        #{name},
+        #{brandName},
+        #{makeName},
+        #{levelName},
+        #{createTime})
+
+    </insert>
+    <!--删除-->
+    <delete id="deleteCar" parameterType="int">
+        delete from car where id=#{id}
+    </delete>
+    <delete id="deleteCarYear" parameterType="int">
+        delete from car_model_image where model_id=#{id}
+    </delete>
+    <!--通过id查指定属性-->
+    <select id="findCar1" parameterType="int" resultMap="carMap">
+     select * from car where id=#{id}
+    </select>
+    <update id="updateCar" parameterType="map">
+         update car set
+        name=#{name},
+        brand_name=#{brandName},
+        make_name=#{makeName},
+        level_name=#{levelName},
+        update_time=#{updateTime}
+        where
+        id=#{id}
+    </update>
+    <!--查出总数-->
+    <select id="getMaxCount"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car
+    </select>
+    <select id="findConfig" parameterType="int" resultMap="carMap">
+        select * from car where id=#{id}
+    </select>
+    <update id="updateConfig" parameterType="map">
+        update car set
+        all_spell=#{allSpell},
+        country_class_name=#{countryClassName},
+        body_form_name=#{bodyFormName},
+        price_low=#{priceLow},
+        price_high=#{priceHigh},
+        country_name=#{countryName},
+        update_time=#{updateTime}
+        where
+        id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="utf-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/doc.min.css">
+    <style>
+        .tree li {
+            list-style-type: none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div><a class="navbar-brand" style="font-size:32px;" href="user.html">伴我汽车 - 添加品牌信息</a></div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-top:8px;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
+                            <i style="float: left" class="glyphicon glyphicon-user"></i>
+                            <!--<div style="float: left" th:text=""></div>-->
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="logout"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li style="margin-left:10px;padding-top:8px;">
+                    <button type="button" class="btn btn-default btn-danger">
+                        <span class="glyphicon glyphicon-question-sign"></span> 帮助
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="tree">
+                <ul style="padding-left:0px;" class="list-group">
+                    <li class="list-group-item tree-closed" >
+                        <a href="main.html"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 会员 <span class="badge" style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 资讯管理 <span class="badge" style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addScience"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addScience"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="Scienceexamine"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 流程图</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 标签定义 <span class="badge" style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 标签定义</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-expanded">
+                        <span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge" style="float:right">6</span></span>
+                        <ul style="margin-top:10px;">
+                            <li style="height:30px;">
+                                <a href="findCarBrand" ><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="findManufacturer" style="color: red;"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="findCarModel"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="findCar"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="findParamType"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="findParam"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-ok"></i> 自有商品管理 <span class="badge" style="float:right">3</span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 新增自有商品</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品预览</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="addRoute"><i class="glyphicon glyphicon-check"></i> 编辑自有商品</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 活动管理 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 活动列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 推荐活动</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 类型管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 渠道管理</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 角色管理 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 角色管理</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增角色</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 编辑角色</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 管理员列表 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 管理员列表</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增管理员</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 编辑管理员</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 操作日志 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 操作日志</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item tree-closed">
+                        <span><i class="glyphicon glyphicon-th-large"></i> 个人中心 <span class="badge" style="float:right">1 </span></span>
+                        <ul style="margin-top:10px;display:none;">
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 个人中心</a>
+                            </li>
+                            <li style="height:30px;">
+                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 修改密码</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <ol class="breadcrumb">
+                <li><a href="main">首页</a></li>
+                <li><a href="meManager">会员列表</a></li>
+                <li class="active">添加会员</li>
+            </ol>
+            <div class="panel panel-default" >
+                <div class="panel-heading">表单数据<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-question-sign"></i></div></div>
+                <div class="panel-body">
+                    <form role="form" >
+                        <div class="form-group">
+                            <label for="name">厂商名称</label>
+                            <input id="name" name="name"  type="text" class="form-control" autocomplete="off"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="brandName">所属品牌</label><br/>
+                            <img width=100 height=100 src="img/car_logo3.jpg" name="x1" id="x1">
+                            <SELECT onChange="document.x1.src=options[selectedIndex].value"  id="brandLogo" name="brandLogo" style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择-- </option>
+                            </SELECT>
+                            <SELECT  id="brandName" name="brandName" style="width:220px;height: 35px;"  class="hidden">
+                            </SELECT>
+                        </div>
+                        <!-- <div class="form-group">
+                           <label for="exampleInputEmail1">邮箱地址</label>
+                           <input id="inputSuccess3" name="email" type="email" class="form-control" autocomplete="off">
+                           <p class="help-block label label-warning">请输入合法的邮箱地址, 格式为： xxxx@xxxx.com</p>
+                       </div>
+                       <div class="form-group">
+                           <label for="exampleInputRealname">真实姓名</label>
+                           <input id="inputSuccess4" name="realname" type="text" class="form-control" autocomplete="off">
+                       </div>
+                       <div class="form-group">
+                           <label for="exampleInputTel">电话</label>
+                           <input id="inputSuccess5" name="tel" type="text" class="form-control" autocomplete="off">
+                       </div>
+                       <div class="form-group">
+                           <label for="exampleInputsex">性别</label>
+                           <div id="sex">
+                               <input type="radio" name="sex" value="男" checked> 男
+                               <input type="radio" name="sex" value="女"> 女
+                           </div>
+
+                       </div>
+                       <div class="form-group">
+                           <label for="exampleInputBirth">出生日期</label>
+                           <input id="inputSuccess6" name="birth" type="text" class="form-control" autocomplete="off">
+                       </div>
+-->
+                        <a id="commit" class="btn btn-success" onclick="change()"><i class="glyphicon glyphicon-edit"  ></i> 添加</a>
+                        <button type="reset" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">帮助</h4>
+            </div>
+            <div class="modal-body">
+                <div class="bs-callout bs-callout-info">
+                    <h4>测试标题1</h4>
+                    <p>测试内容1，测试内容1，测试内容1，测试内容1，测试内容1，测试内容1</p>
+                </div>
+                <div class="bs-callout bs-callout-info">
+                    <h4>测试标题2</h4>
+                    <p>测试内容2，测试内容2，测试内容2，测试内容2，测试内容2，测试内容2</p>
+                </div>
+            </div>
+            <!--
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script type="text/javascript">
+    $.post("findBrandLogo",{"type":0},function (data1) {
+        $.post("findBrand",{"type":0},function (data2) {
+            for (var i = 0; i < data2.length||i<data1.length; i++) {
+                var option = $("<option value='" + data1[i] + "'>" + data2[i] + "</option>");
+                $("#brandLogo").append(option);
+            }
+        })
+    })
+    function change() {
+        var name=$("#name").val();
+        var brandLogo=$("#brandLogo").val();
+        $.post("findBrandName",{"brandLogo":brandLogo},function (data) {
+            var brandName=data;
+            if(name == null || name == ""){
+                alert("厂商名称不能为空");
+                return false;
+            }
+            window.location.href="saveCarManufacturer?name="+name+"&brandName="+brandName;
+        })
+
+    }
+
+    $(function () {
+        $(".list-group-item").click(function(){
+            if ( $(this).find("ul") ) {
+                $(this).toggleClass("tree-closed");
+                if ( $(this).hasClass("tree-closed") ) {
+                    $("ul", this).hide("fast");
+                } else {
+                    $("ul", this).show("fast");
+                }
+            }
+        });
+    });
+    $("tbody .btn-success").click(function(){
+        window.location.href = "assignRole.html";
+    });
+    $("tbody .btn-primary").click(function(){
+        window.location.href = "edit.html";
+    });
+
+</script>
+</body>
+</html>
