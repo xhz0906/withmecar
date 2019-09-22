@@ -237,6 +237,7 @@
                             <label for="brandName">所属品牌</label><br/>
                             <img width=100 height=100 src="img/car_logo3.jpg" name="x1" id="x1">
                             <SELECT onChange="document.x1.src=options[selectedIndex].value"  id="brandLogo" name="brandLogo" style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择品牌-- </option>
                             </SELECT>
                             <SELECT  id="brandName" name="brandName" style="width:220px;height: 35px;"  class="hidden">
                             </SELECT>
@@ -244,21 +245,25 @@
                         <div class="form-group">
                             <label for="manuName">所属厂商</label>
                             <SELECT  id="manuName" name="manuName" style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择厂商-- </option>
                             </SELECT>
                         </div>
                         <div class="form-group">
                             <label for="makeName">所属车系</label>
                             <SELECT  id="makeName" name="makeName" style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择车系-- </option>
                             </SELECT>
                         </div>
                         <div class="form-group">
                             <label for="year">所属年款</label>
                             <SELECT  id="year" name="year" style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择车款-- </option>
                             </SELECT>
                         </div>
                         <div class="form-group">
                             <label for="carType">类型</label>
                             <SELECT  id="carType" name="carType" style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择类型-- </option>
                             </SELECT>
                         </div>
                         <a id="commit" type="submit" class="btn btn-success" onclick="change()"><i class="glyphicon glyphicon-edit" ></i> 修改</a>

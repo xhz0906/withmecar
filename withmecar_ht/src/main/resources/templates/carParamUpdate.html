@@ -109,7 +109,7 @@
                             </li>
                             <li style="height:30px;">
                                 <a href="findCarModel"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
-                            </li>a
+                            </li>
                             <li style="height:30px;">
                                 <a href="findCar"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
                             </li>
@@ -236,11 +236,13 @@
                             <input id="id" th:value="${carParam.id}" type="hidden">
                             <label for="type">参数分类名称</label>
                             <SELECT  id="type"  name="type" th:value="${carParam.type}"  style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择参数分类-- </option>
                             </SELECT>
                         </div>
                         <div class="form-group">
                             <label for="state">状态</label>
                             <SELECT  id="state" name="state" th:value="${carParam.state}"  style="width:220px;height: 35px;"  class="form-control">
+                                <option selected="selected" value="0">--请选择状态-- </option>
                                 <option>生效</option>
                                 <option>未生效</option>
                             </SELECT>
