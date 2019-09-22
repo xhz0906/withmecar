@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="utf-8" xmlns:th="http://www.thymeleaf.org">
+<html lang="UTF-8">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/main.css">
+	<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link href="css/css.css" rel="stylesheet">
+	<link href="css/chosen.css" rel="stylesheet">
+	<link href="favicon.ico" rel="SHORTCUT ICON">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="script/docs.min.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jqpublic.js"></script>
 	<style>
 		.tree li {
 			list-style-type: none;
@@ -21,89 +30,42 @@
 		.tree-expanded {
 			height : auto;
 		}
+		#imgdiv{
+			width: 300px;
+			height: 200px;
+		}
+		#phone{
+			width: 300px;
+		}
+		#check{
+			width: 200px;
+		}
+		#imgview{
+			width: 150px;
+			height: 150px;
+		}
 	</style>
 </head>
-<style type="text/css">
-	ul.pagination1 {
-		display: inline-block;
-		padding: 0;
-		margin: 0;
-	}
 
-	ul.pagination1 li {display: inline;}
-
-	ul.pagination1 li a {
-		color: black;
-		float: left;
-		padding: 8px 16px;
-		text-decoration: none;
-		border-radius: 5px;
-	}
-
-	ul.pagination1 li a.active {
-		background-color: #4CAF50;
-		color: white;
-		border-radius: 5px;
-	}
-	#class td,#class th{
-		text-align: center;
-		vertical-align: middle;
-	}
-	.button2 {
-		background-color: #316AC5;
-		border: none;
-		color: #f9f9f9;
-		padding: 2px 7px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 12px;
-		margin: 2px 1px;
-		cursor: pointer;
-		-webkit-transition-duration: 0.4s; /* Safari */
-		transition-duration: 0.4s;
-	}
-	.button3 {
-		background-color: #CC0000;
-		border: none;
-		color: #f9f9f9;
-		padding: 2px 7px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 12px;
-		margin: 2px 1px;
-		cursor: pointer;
-		-webkit-transition-duration: 0.4s; /* Safari */
-		transition-duration: 0.4s;
-	}
-	.button1,.btn-primary {
-		border-radius: 6px;
-	}
-	.btn-primary:hover {
-		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 35px 0 rgba(0,0,0,0.19);
-	}
-</style>
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<div><a class="navbar-brand" style="font-size:32px;" href="#">伴我汽车 - 控制面板</a></div>
+			<div><a class="navbar-brand" style="font-size:32px;" href="#">众筹平台 - 控制面板</a></div>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li style="padding-top:8px;">
 					<div class="btn-group">
-						<button type="button" class="btn btn-default btn-success dropdown-toggle"
-								data-toggle="dropdown">
-							<i class="glyphicon glyphicon-user" th:text="${session.user.username}"></i>  <span class="caret" ></span>
+						<button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
+							<i class="glyphicon glyphicon-user"></i> 张三 <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
 							<li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
 							<li class="divider"></li>
-							<li><a href="logout"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+							<li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
 						</ul>
 					</div>
 				</li>
@@ -140,19 +102,19 @@
 						<span><i class="glyphicon glyphicon-ok"></i> 资讯管理 <span class="badge" style="float:right">3</span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="addScience"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
+								<a href="addArticle"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
 							</li>
 							<li style="height:30px;">
-								<a href="addScience"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
+								<a href="article_sh"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
 							</li>
 							<li style="height:30px;">
-								<a href="Scienceexamine"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
+								<a href="article_fb"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
 							</li>
 							<li style="height:30px;">
-								<a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
+								<a href="articlelist"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
 							</li>
 							<li style="height:30px;">
-								<a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 流程图</a>
+								<a href="liuchengtu"><i class="glyphicon glyphicon-check"></i> 流程图</a>
 							</li>
 						</ul>
 					</li>
@@ -165,26 +127,26 @@
 
 						</ul>
 					</li>
-					<li class="list-group-item tree-expanded">
-						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 车型库管理 <span class="badge" style="float:right">6</span></span>
-						<ul style="margin-top:10px;">
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge" style="float:right">3</span></span>
+						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="findCarBrand" style="color: red;"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
+								<a href="addRoute"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="findManufacturer"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
+								<a href="Routeexamine"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="findCarModel"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
+								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="findCar"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
+								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="findParamType"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
+								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="findParam"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
+								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
 							</li>
 
 						</ul>
@@ -285,98 +247,124 @@
 				</ul>
 			</div>
 		</div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<ol class="breadcrumb">
+				<li><a href="main">首页</a></li>
+				<li><a href="addarticle">咨询管理</a></li>
+				<li><a href="#">草稿箱</a></li>
+			</ol>
 			<div class="panel panel-default">
-			  <div class="panel-heading">
-				<h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 品牌列表</h3>
-			  </div>
-			  <div class="panel-body">
-<form class="form-inline" role="form" style="float:left;">
-  <div class="form-group has-feedback">
-    <div class="input-group">
-      <div class="input-group-addon">查询条件</div>
-      <input class="form-control has-success" type="text" placeholder="请输入查询条件">
-    </div>
-  </div>
-  <button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
-</form>
-<a type="button" class="btn btn-primary" style="float:right;" href="carBrandAdd"><i class="glyphicon glyphicon-plus"></i> 新增</a>
-				  <br>
- <hr style="clear:both;">
-          <div class="table-responsive" id="class">
-            <table class="table  table-bordered">
-              <thead>
-                <tr >
-                  <th width="30">序号</th>
-                  <th>品牌名称</th>
-                  <th>logo</th>
-                  <th>创建时间</th>
-					<th>修改时间</th>
-                  <th width="100">操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="c:${carBrand}">
-                  <td th:text="${c.id}" id="del"></td>
-                  <td th:text="${c.name}"></td>
-                  <td><img th:src="${c.logoUrl}" style="width: 50px; height: 50px;"></td>
-                  <td th:text="${c.createTime}"></td>
-					<td th:text="${c.updateTime}"></td>
-                  <td style="width:130px;">
-				      <a type="button" class="button2 button1" th:href="@{updateCarBrand1(id=${c.id})}"><i class=" glyphicon glyphicon-pencil">编辑</i></a>
-					  <a type="button" class="button3 button1"  th:onclick="del([[${c.id}]])"><i class=" glyphicon glyphicon-remove">删除</i></a>
-				  </td>
-                </tr>
-              </tbody>
-			  <tfoot>
-			     <tr >
-				     <td colspan="6" align="center">
-						 <ul class="pagination1">
-							 <a class="btn btn-default" th:href="@{findCarBrand(page=1)}">首页</a>
-							 <a class="btn btn-default" th:href="@{findCarBrand(page=${currentPage+(-1)})}">上一页</a>
-							 <a class="btn btn-default" th:href="@{findCarBrand(page=${currentPage+1})}">下一页</a>
-							 <a class="btn btn-default" th:href="@{findCarBrand(page=${maxPage})}">末页</a>
-						 </ul>
-					 </td>
-				 </tr>
-
-			  </tfoot>
-            </table>
-          </div>
-			  </div>
+				<div class="panel-heading">< 新增资讯<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-question-sign"></i></div></div>
+				<div class="panel-body">
+						<table class="form-group">
+							<th>资讯标题:</th>
+							<td><input type="text" class="form-control" id="articleTitle" value="withmecar">
+							</td>
+						</table>
+							<div class="form-group has-success has-feedback">
+								资讯来源:<select class="form-control" id="check">
+									<option value="汽车之家">汽车之家</option>
+									<option value="易车">易车</option>
+									<option value="太平洋汽车">太平洋汽车</option>
+									<option value="瓜子二手车">瓜子二手车</option>
+									<option value="原创">原创</option>
+								</select>
+							</div>
+						<div class="form-group">
+							<label for="artMs">咨询描述:</label>
+							<input  type="text" class="form-control" id="artMs" value="2019年汽车行业发展...">
+						</div>
+								<div>
+								<span>上传图片：</span><br>
+								<img style="height: 250px;width: 350px" id="preview" src="http://temp.im/466x466/4CD964/fff" alt="广告图片占位符"/>
+								<br/>
+								<input type="file" name="file" id="photo" onchange="imgPreview(this)" />
+								</div>
+						<table class="form-group">
+							<th>作者:</th>
+							<td><input type="text" class="form-control" id="aAuthor" value="zz" >
+							</td>
+						</table>
+						<div class="form-group">
+							<label >正文:</label><br>
+							<textarea type="text"  id="aText" placeholder="天书上说的，那些都是杜撰的..."  style="width:800px; height:200px;">
+							</textarea>
+						</div>
+						<button id="submit" class="btn btn-success">提交</button>
+						<button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i>重置</button>
+				</div>
 			</div>
-        </div>
-      </div>
-    </div>
+		</div>
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+	function imgPreview(fileDom){
+		//判断是否支持FileReader
+		if (window.FileReader) {
+			var reader = new FileReader();
+		} else {
+			alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+		}
 
-    <script src="jquery/jquery-2.1.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="script/docs.min.js"></script>
-        <script type="text/javascript">
-			function del(id){
-				if(confirm("您确定要删除么?")!=true){
-					return false;
+		//获取文件
+		var file = fileDom.files[0];
+		var imageType = /^image\//;
+		//是否是图片
+		if (!imageType.test(file.type)) {
+			alert("请选择图片！");
+			return;
+		}
+		//读取完成
+		reader.onload = function(e) {
+			//获取图片dom
+			var img = document.getElementById("preview");
+			//图片路径设置为读取的图片
+			img.src = e.target.result;
+		};
+		reader.readAsDataURL(file);
+	}
+</script>
+<script type="text/javascript">
+	$(function () {
+		$("#submit").click(function () {
+			var aTitle=$("#articleTitle").val();
+			var aCheck=$("#check").val();
+			var artMs=$("#artMs").val();
+			var photo=$("#photo").val();
+			var photoname="";
+			if (typeof (photoname)!="underfined"){
+			    photoname=photo.split("\\").pop();
+			    photoname=photoname.substring(0,photoname.lastIndexOf("."));
+            }
+			var Author=$("#aAuthor").val();
+			var aText=$("#aText").val();
+			if (confirm("是否确认编辑")){
+				alert("编辑成功，等待审核中...");
+			} else {
+				return false;
+			};
+			location.href="addArticleResult?aTitle="+aTitle+"&aCheck="+aCheck+"&artMs="+artMs+"&photoname="+photoname+"&Author="+Author+"&aText="+aText;
+		})
+
+		$(".list-group-item").click(function(){
+			if ( $(this).find("ul") ) {
+				$(this).toggleClass("tree-closed");
+				if ( $(this).hasClass("tree-closed") ) {
+					$("ul", this).hide("fast");
+				} else {
+					$("ul", this).show("fast");
 				}
-				window.location.href="deleteCarBrand?id="+id;
 			}
-            $(function () {
-			    $(".list-group-item").click(function(){
-				    if ( $(this).find("ul") ) {
-						$(this).toggleClass("tree-closed");
-						if ( $(this).hasClass("tree-closed") ) {
-							$("ul", this).hide("fast");
-						} else {
-							$("ul", this).show("fast");
-						}
-					}
-				});
-            });
-            $("tbody .btn-success").click(function(){
-                window.location.href = "assignRole.html";
-            });
-            $("tbody .btn-primary").click(function(){
-                window.location.href = "edit.html";
-            });
-        </script>
-  </body>
+		});
+	});
+	$("tbody .btn-success").click(function(){
+		window.location.href = "assignRole.html";
+	});
+	$("tbody .btn-primary").click(function(){
+		window.location.href = "edit.html";
+	});
+</script>
+
+</body>
 </html>

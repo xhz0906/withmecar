@@ -30,7 +30,7 @@ public class CarModelController {
     private CarBrandService carBrandService;
     @RequestMapping("/findCarModel")
     public String findCarModel(@RequestParam(required = false,defaultValue = "1") int page,
-                               @RequestParam(required = false,defaultValue = "6") int rows,Model model){
+                               @RequestParam(required = false,defaultValue = "10") int rows,Model model){
         int maxPage =carModelService.getMaxPage(rows);
         if (page > maxPage){
             page = 1;
@@ -44,6 +44,13 @@ public class CarModelController {
         model.addAttribute("currentPage",page);
         model.addAttribute("maxPage",maxPage);
         return "carModel";
+    }
+    @RequestMapping("findModel1")
+    @ResponseBody
+    public List<String> findModel1(){
+        List<String> model1 = carModelService.findModel1();
+        System.out.println("model1 = " + model1);
+        return model1;
     }
     @RequestMapping("/carModelAdd")
     public String carModelAdd(){
@@ -59,6 +66,7 @@ public class CarModelController {
     @ResponseBody
     public List<String> findType(){
         List<String> type = carModelService.findType();
+        System.out.println("type = " + type);
         return type;
     }
     @RequestMapping("/saveCarModel")

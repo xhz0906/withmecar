@@ -32,6 +32,9 @@
     <select id="findCarModel" resultMap="modelMap">
         select * from car_model
     </select>
+    <select id="findModel1" resultType="string">
+        select name from car_model1
+    </select>
     <!--查出所有类型名-->
     <select id="findType" resultType="string">
         select name from car_type

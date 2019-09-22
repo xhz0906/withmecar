@@ -18,7 +18,7 @@ public class CarParamController {
     private CarParamService carParamService;
     @RequestMapping("/findParam")
     public String findParam(@RequestParam(required = false,defaultValue = "1") int page,
-                            @RequestParam(required = false,defaultValue = "6") int rows, Model model){
+                            @RequestParam(required = false,defaultValue = "10") int rows, Model model){
         int maxPage =carParamService.getMaxPage(rows);
         if (page > maxPage){
             page = 1;

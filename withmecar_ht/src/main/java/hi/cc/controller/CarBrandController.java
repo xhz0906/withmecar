@@ -28,7 +28,7 @@ public class CarBrandController {
      */
     @RequestMapping("/findCarBrand")
     public String findCarBrand(@RequestParam(required = false,defaultValue = "1") int page,
-                               @RequestParam(required = false,defaultValue = "6") int rows,
+                               @RequestParam(required = false,defaultValue = "10") int rows,
                                Model model){
         int maxPage = carBrandService.getMaxPage(rows);
         if (page > maxPage){

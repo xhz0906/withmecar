@@ -26,6 +26,12 @@ public class CarModelServiceImpl implements CarModelService {
     }
 
     @Override
+    public List<String> findModel1() {
+        List<String> model1 = carModelMapper.findModel1();
+        return model1;
+    }
+
+    @Override
     public int getMaxPage(int rows) {
         int count=carModelMapper.getMaxCount();
         return count%rows==0?count/rows:count/rows+1;

@@ -12,6 +12,11 @@ public interface CarModelService {
      */
     public List<CarModel> findCarModel(int page,int rows);
     /**
+     * 查询车系
+     * @return
+     */
+    public List<String> findModel1();
+    /**
      * 得出最大页
      * @param rows
      * @return

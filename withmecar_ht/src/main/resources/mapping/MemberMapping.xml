@@ -2,54 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="hi.cc.mapper.MemberMapper">
-    <resultMap id="carMapper" type="hi.car.pojo.Car">
-        <id property="id" column="id"></id>
-        <result property="brandId" column="brand_id"></result>
-        <result property="brandName" column="brand_name"></result>
-        <result property="makeId" column="make_id"></result>
-        <result property="makeName" column="make_name"></result>
-        <result property="name" column="name"></result>
-        <result property="displayName" column="display_name"></result>
-        <result property="otherName" column="other_name"></result>
-        <result property="englishName" column="english_name"></result>
-        <result property="countryClass" column="country_class"></result>
-        <result property="countryClassName" column="country_class_name"></result>
-        <result property="bodyForm" column="body_form"></result>
-        <result property="bodyFormName" column="body_form_name"></result>
-        <result property="priceLow" column="price_low"></result>
-        <result property="priceHigh" column="price_high"></result>
-        <result property="level" column="level"></result>
-        <result property="levelName" column="level_name"></result>
-        <result property="levelSecond" column="level_second"></result>
-        <result property="levelSecondName" column="level_second_name"></result>
-        <result property="saleStatus" column="sale_status"></result>
-        <result property="allSpell" column="all_spell"></result>
-        <result property="countryId" column="country_id"></result>
-        <result property="countryName" column="country_name"></result>
-        <result property="createTime" column="create_time"></result>
-        <result property="updateTime" column="update_time"></result>
-        <result property="syncTime" column="sync_time"></result>
-    </resultMap>
-    <resultMap id="memberpoint" type="hi.car.pojo.MemberPoint">
-        <id property="id" column="id"></id>
-        <result property="memberId" column="member_id"></result>
-        <result property="point" column="point"></result>
-        <result property="type" column="type"></result>
-        <result property="description" column="description"></result>
-        <result property="remark" column="remark"></result>
-        <result property="createTime" column="create_time"></result>
-
-    </resultMap>
-    <resultMap id="articleMap" type="hi.car.pojo.Article">
-        <id property="id" column="id"/>
-        <result property="title" column="title"/>
-        <result property="source" column="source"/>
-        <result property="author" column="author"/>
-        <result property="summary" column="summary"/>
-        <result property="coverPic" column="cover_pic"/>
-        <result property="content" column="content"/>
-        <result property="submitTime" column="submit_time"/>
-    </resultMap>
     <select id="findAllMemberPro" resultType="hi.car.pojo.MemberProfile">
         SELECT
             *
@@ -67,24 +19,7 @@
     <select id="findTagById" resultType="hi.car.pojo.Tag" parameterType="int">
         SELECT * from tag where tag.id in(SELECT mt.tag_id FROM member_tag mt where mt.member_id = #{memberId});
     </select>
-    <select id="findCarById" resultMap="carMapper" parameterType="map">
+    <select id="findCarById" resultType="hi.car.pojo.Car" parameterType="map">
         SELECT * FROM car where id in (SELECT car_id FROM member_car where type=#{type} and member_id=#{memberId});
-    </select>
-
-    <select id="findCityById" resultType="string">
-        select cityname from city where id = #{id}
-    </select>
-
-    <select id="findMemberPointById" resultMap="memberpoint" parameterType="memberpoint">
-        select * from member_point where member_id = #{memeberId}
-    </select>
-    <select id="findFavCarById" resultMap="carMapper" parameterType="int">
-        SELECT * FROM car WHERE id in(SELECT content_id FROM member_fav WHERE fav_type =3 and member_id = #{memberId})
-    </select>
-    <select id="findFavArticleById" resultMap="articleMap" parameterType="int">
-       SELECT * FROM article WHERE id in(SELECT content_id FROM member_fav WHERE fav_type =1 and member_id =#{memberId})
-    </select>
-    <select id="findMemberProMoHu" resultType="hi.car.pojo.MemberProfile" parameterType="string">
-        select * from member_profile  where name LIKE "%"#{xxx}"%" or level like "%"#{xxx}"%" or nickname like "%"#{xxx}"%" or mobile LIKE "%"#{xxx}"%"
     </select>
 </mapper>

@@ -15,6 +15,11 @@ public interface CarModelMapper {
      */
     public List<CarModel> findCarModel();
     /**
+     * 查询车系
+     * @return
+     */
+    public List<String> findModel1();
+    /**
      * 查询汽车车系总个数
      * @return
      */
