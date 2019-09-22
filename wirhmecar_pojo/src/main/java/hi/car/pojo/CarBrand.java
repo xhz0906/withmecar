@@ -37,10 +37,10 @@ public class CarBrand {
     private String introduction;//介绍
     private int saleStatus;//在售状态
     private int isEnables;//是否激活
-    private int isremoved;//是否删除
-    private int createTime;//创建时间
-    private int updateTime;//最后更新时间
-    private int doTime;//
-    private int sync_time;//同步时间
+    private int isRemoved;//是否删除
+    private String createTime;//创建时间
+    private String updateTime;//最后更新时间
+    private String doTime;//
+    private String syncTime;//同步时间
 
 }

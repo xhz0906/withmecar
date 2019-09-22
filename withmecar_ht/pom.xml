@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <!--分页插件 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -40,7 +41,6 @@
             <artifactId>jackson-core</artifactId>
             <version>2.9.9</version>
         </dependency>
-        <!--添加pojo-->
         <!--shiro-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -95,7 +95,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.9.3</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>

@@ -28,9 +28,9 @@ public class CarModel {
     private String allSpell;//    车型名称全拼	all_spell	varchar(50)
     private int countryId;//    所属国家	country_id	int
     private String countryName;//    所属国家名称	country_name	varchar(500)
-    private int createTime;//    创建时间	create_time	int(11)
-    private int updateTime;//    最后更新时间	update_time	int(11)
-    private int syncTime;//    同步时间	sync_time	int(11)
+    private String createTime;//创建时间
+    private String updateTime;//最后更新时间
+    private String syncTime;//同步时间
 
 
 }

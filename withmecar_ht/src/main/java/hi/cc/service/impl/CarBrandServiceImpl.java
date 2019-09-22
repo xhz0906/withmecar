@@ -4,14 +4,13 @@ import com.github.pagehelper.PageHelper;
 import hi.car.pojo.CarBrand;
 import hi.cc.mapper.CarBrandMapper;
 import hi.cc.service.CarBrandService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@SuppressWarnings("unchecked")
 @Service
 public class CarBrandServiceImpl implements CarBrandService {
     @Resource
