@@ -1,4 +1,4 @@
-package com.qf.j1904.pojo;
+package hi.car.pojo;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class Product implements Serializable {
-    private Integer id;
+    private int id;
 
     private String name;
 
@@ -14,7 +14,7 @@ public class Product implements Serializable {
 
     private String service;
 
-    private Integer createTime;
+    private String createTime;
 
-    private Integer updateTime;
+    private String updateTime;
 }

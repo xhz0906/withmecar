@@ -3,7 +3,6 @@ package hi.car.pojo;
 import lombok.Data;
 
 import java.io.Serializable;
-
 @Data
 public class Article implements Serializable {
 //    id	bigint
@@ -55,7 +54,7 @@ public class Article implements Serializable {
 //    submit_uid	int
     private int submitUid;
 //    submit_time	int(11)
-    private int submitTime;
+    private String submitTime;
 //    state	int
     private int state;
 //    state_order	int
@@ -74,7 +73,7 @@ public class Article implements Serializable {
 //    publish_uid	int
     private int publishUid;
 //    publish_uname	varchar(200)
-    private String publishUnam;
+    private String publishUname;
 //    publish_time	int(11)
     private int publishTime;
 //    unpublish_uid	int

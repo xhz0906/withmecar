@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="utf-8" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+	.tree li {
+        list-style-type: none;
+		cursor:pointer;
+	}
+	.tree-closed {
+	    height : 40px;
+	}
+	.tree-expanded {
+	    height : auto;
+	}
+	</style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div><a class="navbar-brand" style="font-size:32px;" href="#">"伴我汽车"管理端</a></div>
+        </div>
+    
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+			<div class="tree">
+				<ul style="padding-left:0px;" class="list-group">
+					<li class="list-group-item tree-closed" >
+						<a href="main"><i class="glyphicon glyphicon-dashboard"></i> 管理员菜单</a> 
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 会员管理 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>会员管理</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 资讯管理 <span class="badge" style="float:right">4</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="user.html"><i class="glyphicon glyphicon-user"></i> 草稿箱</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="role.html"><i class="glyphicon glyphicon-king"></i> 资讯审核</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="permission.html"><i class="glyphicon glyphicon-lock"></i> 资讯发布</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="permission.html"><i class="glyphicon glyphicon-lock"></i> 资讯列表</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 标签定义 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>标签定义</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 车型库管理 <span class="badge" style="float:right">6</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>品牌管理</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>厂商管理</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>车系管理</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>车款管理</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>参数分类管理</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>参数管理</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 自有商品管理 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="zyspgl.html"><i class="glyphicon glyphicon-user"></i>自有商品管理</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 活动管理 <span class="badge" style="float:right">4</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>活动列表</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>推荐活动</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>类型管理</a> 
+							</li>
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>渠道管理</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 消息管理 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>消息管理</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 标签管理 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>标签管理</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 角色管理 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>角色管理</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 管理员列表 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>管理员列表</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 操作日志 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>操作日志</a> 
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item tree-closed">
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 个人中心 <span class="badge" style="float:right">1</span></span> 
+						<ul style="margin-top:10px;display:none;">
+							<li style="height:30px;">
+								<a href="huiyuanguanli.html"><i class="glyphicon glyphicon-user"></i>个人中心</a> 
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class="glyphicon glyphicon-th"></i>商品预览</h3>
+				</div>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+							<tr>
+								<td>标题</td>
+								<td>服务</td>
+								<td>活动描述</td>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="pi:${fpi}">
+								<td th:text="${pi.name}"></td>
+								<td th:text="${pi.service}"></td>
+								<td th:text="${pi.description}"></td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				<hr>
+				<hr>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+							<tr>
+								<td>品牌名</td>
+								<td>logo</td>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="ci:${fci}">
+								<td th:text="${ci.name}"></td>
+								<td th:text="${ci.logo}"></td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				<hr>
+				<hr>
+					<button type="button" class="btn btn-success" style="float:right;" ><i class=" glyphicon glyphicon-check"></i>修改</button>
+					<button type="button" class="btn btn-danger"onclick="submit1()" ><i class="glyphicon glyphicon-log-out"></i> 退出</button>
+				</div>
+			</div>
+
+        </div>
+      </div>
+    </div>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="script/docs.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+			    $(".list-group-item").click(function(){
+                    // jquery对象的回调方法中的this关键字为DOM对象
+                    // $(DOM) ==> JQuery
+				    if ( $(this).find("ul") ) { // 3 li
+						$(this).toggleClass("tree-closed");
+						if ( $(this).hasClass("tree-closed") ) {
+							$("ul", this).hide("fast");
+						} else {
+							$("ul", this).show("fast");
+						}
+					}
+				});
+            });
+			function submit1() {
+				location.href='zyspgl'
+			}
+        </script>
+  </body>
+</html>

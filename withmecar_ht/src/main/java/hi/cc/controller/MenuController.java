@@ -1,7 +1,9 @@
 package hi.cc.controller;
 
+import hi.car.pojo.AdminRole;
 import hi.car.pojo.AdminRoleMenu;
 import hi.cc.service.MenuService;
+import hi.cc.service.RoleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,6 @@ import java.util.List;
 public class MenuController {
     @Resource
     private MenuService menuService;
-
 
     @RequiresPermissions(value = {"roleaddxx"})
     @RequestMapping("/addrole")

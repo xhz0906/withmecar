@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.ZiYouShangPingMapper">
+    <select id="findAllProduct" resultType="hi.car.pojo.Product">
+        SELECT
+            *
+        from
+        product
+    </select>
+    <select id="ap" resultType="hi.car.pojo.Product">
+        INSERT
+        INTO
+        product
+        VALUES
+        (#{id},#{name},#{description},#{service},#{createTime},#{updateTime})
+    </select>
+    <delete id="dp" parameterType="int">
+        delete
+        from
+        product
+        where
+           id = #{id}
+    </delete>
+    <select id="fci" parameterType="int" resultType="hi.car.pojo.CarLogo">
+        SELECT
+        *
+        from
+        car_logo
+        WHERE
+        id=#{id}
+    </select>
+    <select id="fpi" parameterType="int" resultType="hi.car.pojo.Product">
+        SELECT
+        *
+        from
+        product
+        WHERE
+        id=#{id}
+    </select>
+    <select id="totaCount" resultType="int">
+        select
+        count(id)
+        from
+        product
+    </select>
+
+</mapper>

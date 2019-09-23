@@ -13,9 +13,9 @@ public class CarModelImage {
     同步时间	sync_time	int(11)*/
     private int id;
     private int modelId;
-    private String year;
+    private String year;//车型年款
     private String imgUrl;
-    private int createTime;
-    private int updateTime;
-    private int syncTime;
+    private String createTime;//创建时间
+    private String updateTime;//最后更新时间
+    private String syncTime;//同步时间
 }

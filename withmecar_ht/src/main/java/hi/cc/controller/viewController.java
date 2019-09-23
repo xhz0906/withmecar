@@ -57,4 +57,13 @@ public class viewController {
     public String admin2(){
         return "administrator-details2";
     }
+
+    @RequestMapping("/addproduct")
+    public String addproduct(){
+        return "addproduct";
+    }
+    @RequestMapping("/productyl")
+    public String productyl(){
+        return "productyl";
+    }
 }

@@ -3,6 +3,7 @@ package hi.cc;
 import hi.car.pojo.*;
 import hi.cc.mapper.AdminMapperxt;
 import hi.cc.mapper.MemberMapper;
+import hi.cc.mapper.ZiYouShangPingMapper;
 import hi.cc.service.AdminUserServiceXT;
 import hi.cc.service.MemberServiceXT;
 import hi.cc.service.RoleService;
@@ -38,6 +39,13 @@ public class WithmecarHtApplicationTests {
 
     @Resource
     RoleService roleService;
+    @Resource
+    ZiYouShangPingMapper ziYouShangPingMapper;
+    @Test
+    public void testAdmin8(){
+        List<Product> allProduct = ziYouShangPingMapper.findAllProduct();
+        System.out.println("allProduct = " + allProduct);
+    }
     @Test
     public void testAdmin7(){
 //        i

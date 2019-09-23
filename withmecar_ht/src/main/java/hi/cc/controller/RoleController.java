@@ -22,7 +22,7 @@ public class RoleController {
     public String index(){
         return "main";
     }*/
-   @RequiresPermissions(value = {"rolexx"})
+   /*@RequiresPermissions(value = {"rolexx"})*/
     @RequestMapping("/shows")
     private String showAll(Model model){
        System.out.println("model = xx");
@@ -38,7 +38,7 @@ public class RoleController {
         c = roleService.saveRoleByName(roleName);
         return c;
     }
-   @RequiresPermissions(value = {"rolebjxx"})
+   /*@RequiresPermissions(value = {"rolebjxx"})*/
     @RequestMapping("/edit")
     public String editRole(int roleId,Model model, HttpServletRequest request){
         model.addAttribute("roleId",roleId);
@@ -53,7 +53,7 @@ public class RoleController {
         model.addAttribute("juese",roleMenUtils.test1(roleId,34));
         model.addAttribute("guanliyuan",roleMenUtils.test1(roleId,35));
         model.addAttribute("rizhi", roleMenUtils.test1(roleId, 36));
-        return "editrole";
+        return "redirect:shows";
     }
 
 }

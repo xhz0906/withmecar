@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.CarParamTypeMapper">
+    <select id="findParamType" resultType="hi.car.pojo.CarParamType">
+        select * from car_param_type
+    </select>
+    <!--查出总数-->
+    <select id="getMaxCount"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_param_type
+    </select>
+    <insert id="saveCarParamType" parameterType="map">
+        insert car_param_type values(default,#{name},#{state})
+    </insert>
+    <!--通过id查出指定name-->
+    <select id="findCarParamType" parameterType="int" resultType="hi.car.pojo.CarParamType">
+        select * from car_param_type where id=#{id}
+    </select>
+    <update id="updateCarParamType" parameterType="map">
+        update car_param_type set
+        name=#{name},
+        state=#{state}
+        where
+        id=#{id}
+    </update>
+    <delete id="deleteCarParamType" parameterType="int">
+        delete from car_param_type where id=#{id}
+    </delete>
+</mapper>

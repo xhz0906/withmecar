@@ -50,7 +50,6 @@ public class MyRealm extends AuthorizingRealm {
             Set<String> perms = new HashSet<>();
             for (AdminMenuAuth perm: adminMenuInfo){
                 String controller = perm.getController();
-                System.out.println("controller = " + controller);
                 perms.add(controller);
             }
             SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();

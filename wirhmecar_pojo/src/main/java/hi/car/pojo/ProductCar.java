@@ -1,4 +1,4 @@
-package com.qf.j1904.pojo;
+package hi.car.pojo;
 
 import lombok.Data;
 

@@ -36,7 +36,7 @@ public class CarMake {
     private String introduction;
     private int isEnabled;
     private int isRemoved;
-    private int createTime;
-    private int updateTime;
-    private int syncTime;
+    private String createTime;//创建时间
+    private String updateTime;//最后更新时间
+    private String syncTime;//同步时间
 }

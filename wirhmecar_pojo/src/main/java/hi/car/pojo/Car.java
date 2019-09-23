@@ -55,8 +55,9 @@ public class Car {
     private String allSpell;
     private int countryId;
     private String countryName;
-    private int createTime;
-    private int updateTime;
-    private int syncTime;
-
+    private String createTime;
+    private String updateTime;
+    private String syncTime;
+    private CarModelImage carModelImage=new CarModelImage();
+    private CarImage carImage=new CarImage();
 }
