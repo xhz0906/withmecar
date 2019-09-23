@@ -19,11 +19,11 @@ public interface ArticleService {
     List<Article> findAllArticleCg(int page, int rows);
     List<Article> findAllArticleSh();
     //审核资讯 通过 驳回
-    boolean tgArticle(int id);
+    boolean tgArticle(Article article);
     boolean bhArticle(int id);
     //发布资讯
     List<Article> findFbArticle();
-    boolean fbArticle(int aid);
+    boolean fbArticle(Article article);
     //查询资讯状态通过id
     int findArticleStateById(int aid);
     //是否推荐

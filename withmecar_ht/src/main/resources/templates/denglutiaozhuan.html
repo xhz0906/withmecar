@@ -7,7 +7,7 @@
 <body>
 <div class="message_c_sad">
 <p>注册成功, <span id="pDom" style="color:red">5</span> 秒后自动跳转登陆页面！</p>
-<p><a href="logIn.html">如果您的浏览器没有自动跳转，请点击这里</a></p>
+<p><a href="login">如果您的浏览器没有自动跳转，请点击这里</a></p>
 </div>
 </body>
 </html>
@@ -18,7 +18,7 @@
 		let myTimer = setInterval(()=>{
 			count--;
 			if(count<=0){
-				window.location.href='logIn.html';
+				window.location.href='login';
 			}
 			$("#pDom").innerHTML = count;
 		},1000);

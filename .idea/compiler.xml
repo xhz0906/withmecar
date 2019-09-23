@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="withmecar_ht" />
         <module name="wirhmecar_pojo" />
+        <module name="withmecar_ht" />
+        <module name="withmecar_qt" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="withmecar_ht" options="-parameters" />
+      <module name="withmecar_qt" options="-parameters" />
       <module name="zxgl" options="-parameters" />
     </option>
   </component>

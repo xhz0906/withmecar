@@ -15,7 +15,7 @@
         insert
         member_profile(id,nickname,name,gender,level,avatar_url,mobile_code,mobile,email,description,country,province,city,district,address,register_time,point)
         values
-        (#{memProfile.id},#{memProfile.nickname},#{memProfile.name},#{memProfile.gender},#{memProfile.level},#{memProfile.avatar_url},#{memProfile.mobileCode},#{memProfile.mobile},#{memProfile.email},#{memProfile.description},#{memProfile.country},#{memProfile.province},#{memProfile.city},#{memProfile.district},#{memProfile.address},#{memProfile.registerTime},#{memProfile.point})
+        (#{memProfile.id},#{memProfile.nickname},#{memProfile.name},#{memProfile.gender},#{memProfile.level},#{memProfile.avatar_url},#{memProfile.mobile_code},#{memProfile.mobile},#{memProfile.email},#{memProfile.description},#{memProfile.country},#{memProfile.province},#{memProfile.city},#{memProfile.district},#{memProfile.address},#{memProfile.register_time},#{memProfile.point})
     </insert>
     <!--
 

@@ -1,22 +1,20 @@
 package hi.cc.controller;
 
+import hi.car.pojo.AdminUser;
 import hi.car.pojo.Article;
 import hi.cc.service.ArticleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -25,10 +23,6 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
-    /*@RequestMapping("/main")
-    public String showHt(){
-        return "main";
-    }*/
     //草稿箱
     @RequestMapping("/article")
     public String loadArticle(@RequestParam(required = false,defaultValue = "1")int page,
@@ -70,6 +64,7 @@ public class ArticleController {
         boolean bool=articleService.addArticle(article);
         return bool?"redirect:article":"hi";
     }
+
     //提交资讯
     @RequestMapping("/subArticleId")
     public String subArticle(int id){
@@ -121,10 +116,25 @@ public class ArticleController {
         model.addAttribute("art",article);
         return "shArticle";
     }
+    //添加名字
+    private Article addName(int id,HttpServletRequest request){
+        HttpSession session=request.getSession();
+        AdminUser shuser=(AdminUser)session.getAttribute("user");
+        String shuserName=shuser.getUsername();
+        Article article=articleService.loadArticleById(id);
+        if (article.getLastAuditUsername()==null){
+            article.setLastAuditUsername(shuserName);
+        }else {
+            article.setPublishUname("xhz");
+        }
+
+        return article;
+    }
     //通过审核
     @RequestMapping("/tGshArticle")
-    public String tGshArticle(int id){
-        boolean bool=articleService.tgArticle(id);
+    public String tGshArticle(int id,HttpServletRequest request){
+        Article article=addName(id, request);
+        boolean bool=articleService.tgArticle(article);
         return bool?"redirect:article_sh":"hi";
     }
     //驳回审核
@@ -134,7 +144,6 @@ public class ArticleController {
         return bool?"redirect:article_sh":"hi";
     }
     //发布咨询
-
     @RequiresPermissions(value = {"articleissuexx"})
     @RequestMapping("/article_fb")
     public String articleFb(Model model){
@@ -142,29 +151,38 @@ public class ArticleController {
         model.addAttribute("alist",alist);
         return "article_fb";
     }
-    @RequestMapping("/fabuArt")
-    public String fabuArt(@RequestParam("aid")int aid){
-        int artId=articleService.findArticleStateById(aid);
-        if (artId==3){
-            boolean bool=articleService.fbArticle(aid);
-            return bool?"redirect:article_fb":"hi";
-        }else {
-            boolean bool=articleService.tgArticle(aid);
-            return bool?"redirect:article_fb":"hi";
-        }
 
+    @RequestMapping("/lxz")
+    @ResponseBody
+    public int lxz(int id){
+        int artId=articleService.findArticleStateById(id);
+        return artId;
+    }
+    @RequestMapping("/fabuArt")
+    public String fabuArt(@RequestParam("aid")int aid,HttpServletRequest request){
+        int artId=articleService.findArticleStateById(aid);
+        Article article=addName(aid,request);
+        boolean bool=false;
+        boolean boo=false;
+        if (artId==3){
+            boo=articleService.fbArticle(article);
+        }else {
+            bool=articleService.tgArticle(article);
+        }
+        return bool || boo?"redirect:article_fb":"hi";
     }
     //是否推荐
     @RequestMapping("/comArticle")
     public String comArticle(int aid){
         int artId=articleService.findArticleTopId(aid);
+        boolean b1=false;
+        boolean b2=false;
         if (artId==0){
-            boolean bool=articleService.comArticle(aid);
-            return bool?"redirect:article_fb":"hi";
+            b1=articleService.comArticle(aid);
         }else {
-            boolean bool=articleService.unComArticle(aid);
-            return bool?"redirect:article_fb":"hi";
+            b2=articleService.unComArticle(aid);
         }
+        return b1||b2?"redirect:article_fb":"hi";
     }
     //资讯列表页面
     @RequestMapping("/article_list")

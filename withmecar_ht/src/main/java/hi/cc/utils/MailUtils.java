@@ -28,7 +28,7 @@ public class MailUtils {
         Session session = Session.getDefaultInstance(properties,new Authenticator(){
             public PasswordAuthentication getPasswordAuthentication()
             {
-                return new PasswordAuthentication("1102736593@qq.com", "ahlpqvddphugifbj"); //发件人邮件用户名、密码
+                return new PasswordAuthentication("1102736593@qq.com", "jpytbypyhuoxiigi"); //发件人邮件用户名、密码
             }
         });
         try{
@@ -60,6 +60,7 @@ public class MailUtils {
     public String sendCode(String email,String mess,String title){
         String code = String.valueOf(new Random().nextInt(899999)+100000);
         String message = mess+code;
+        System.out.println("code = " + code);
         boolean b = sendSimpleMail(message, title, email);
         if (b){
             return code;

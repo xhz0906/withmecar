@@ -66,8 +66,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
     //通过审核
     @Override
-    public boolean tgArticle(int id) {
-        int bool=articleMapper.tgArticle(id);
+    public boolean tgArticle(Article article) {
+        int bool=articleMapper.tgArticle(article);
         return bool>0?true:false;
     }
     //驳回审核
@@ -84,8 +84,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public boolean fbArticle(int aid) {
-        boolean bool=articleMapper.fbArticle(aid);
+    public boolean fbArticle(Article article) {
+        boolean bool=articleMapper.fbArticle(article);
         return bool;
     }
 

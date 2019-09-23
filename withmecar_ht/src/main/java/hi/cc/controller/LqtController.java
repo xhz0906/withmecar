@@ -20,14 +20,13 @@ public class LqtController {
         model.addAttribute("recList",articles);
         return "Dinner";
     }
-    //我的资讯
-    @RequestMapping("/host")
-    public String host(){
-        return "Host";
+    @RequestMapping("/detailArticle")
+    public String detailArticle(int id){
+        return "xhz";
     }
-    //我要发布
-    @RequestMapping("/release")
-    public String release(){
-        return "Release";
+
+    @RequestMapping("/hh")
+    public String hh(int aid){
+        return "hh";
     }
 }

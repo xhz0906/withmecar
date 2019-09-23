@@ -42,6 +42,10 @@ public class WithmecarHtApplicationTests {
     @Resource
     ZiYouShangPingMapper ziYouShangPingMapper;
     @Test
+    public void testAdmin9(){
+        String cityById = memberMapper.findCityById(2);
+        System.out.println("cityById = " + cityById);
+    }
     public void testAdmin8(){
         List<Product> allProduct = ziYouShangPingMapper.findAllProduct();
         System.out.println("allProduct = " + allProduct);

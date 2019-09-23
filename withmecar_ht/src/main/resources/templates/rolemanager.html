@@ -24,119 +24,117 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<div><a class="navbar-brand" style="font-size:32px;" href="#">众筹平台 - 控制面板</a></div>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li style="padding-top:8px;">
-						<div class="btn-group">
-							<button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
-								<i class="glyphicon glyphicon-user"></i> 张三 <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
-								<li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
-								<li class="divider"></li>
-								<li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
-							</ul>
-						</div>
-					</li>
-					<li style="margin-left:10px;padding-top:8px;">
-						<button type="button" class="btn btn-default btn-danger">
-							<span class="glyphicon glyphicon-question-sign"></span> 帮助
-						</button>
-					</li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="查询">
-				</form>
-			</div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<div><a class="navbar-brand" style="font-size:32px;" href="#">伴我汽车 - 控制面板</a></div>
 		</div>
-	</nav>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li style="padding-top:8px;">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default btn-success dropdown-toggle"
+								data-toggle="dropdown">
+							<i class="glyphicon glyphicon-user" th:text="${session.user.username}"></i> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
+							<li class="divider"></li>
+							<li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+						</ul>
+					</div>
+				</li>
+				<li style="margin-left:10px;padding-top:8px;">
+					<button type="button" class="btn btn-default btn-danger">
+						<span class="glyphicon glyphicon-question-sign"></span> 帮助
+					</button>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-right">
+				<input type="text" class="form-control" placeholder="查询">
+			</form>
+		</div>
+	</div>
+</nav>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
 			<div class="tree">
 				<ul style="padding-left:0px;" class="list-group">
-					<li class="list-group-item tree-closed" >
-						<a href="index"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
+					<li class="list-group-item tree-closed">
+						<a href="main"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
 					</li>
 					<li class="list-group-item tree-closed">
 						<span><i class="glyphicon glyphicon-ok"></i> 会员 <span class="badge" style="float:right">3</span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="addHotel"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
+								<a href="findAllMemberPro"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
 							</li>
+
 						</ul>
 					</li>
 					<li class="list-group-item tree-closed">
-						<span><i class="glyphicon glyphicon-ok"></i> 资讯管理 <span class="badge" style="float:right">3</span></span>
+                        <span><i class="glyphicon glyphicon-ok"></i> 资讯管理 <span class="badge"
+																				style="float:right">3</span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="addScience"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
+								<a href="article"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
 							</li>
 							<li style="height:30px;">
-								<a href="addScience"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
+								<a href="article_sh"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
 							</li>
 							<li style="height:30px;">
-								<a href="Scienceexamine"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
+								<a href="article_fb"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
 							</li>
 							<li style="height:30px;">
-								<a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
+								<a href="article_fb"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
 							</li>
 							<li style="height:30px;">
-								<a href="ScienceMaintain"><i class="glyphicon glyphicon-check"></i> 流程图</a>
+								<a href="liuchengtu"><i class="glyphicon glyphicon-check"></i> 流程图</a>
 							</li>
 						</ul>
 					</li>
 					<li class="list-group-item tree-closed">
-						<span><i class="glyphicon glyphicon-ok"></i> 标签定义 <span class="badge" style="float:right">3</span></span>
+                        <span><i class="glyphicon glyphicon-ok"></i> 标签定义 <span class="badge"
+																				style="float:right">3</span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
 								<a href="addHotel"><i class="glyphicon glyphicon-check"></i> 标签定义</a>
 							</li>
+
 						</ul>
 					</li>
 					<li class="list-group-item tree-closed">
-						<span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge" style="float:right">3</span></span>
-						<ul style="margin-top:10px;display:none;">
+                        <span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge"
+																				 style="float:right">3</span></span>
+						<ul style="margin-top:10px;">
 							<li style="height:30px;">
-								<a href="addRoute"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
+								<a href="findCarBrand"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="Routeexamine"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
+								<a href="findManufacturer"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
+								<a href="findCarModel"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
+								<a href="findCar"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
+								<a href="findParamType"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
 							</li>
 							<li style="height:30px;">
-								<a href="RouteMaintain"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
+								<a href="findParam"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
 							</li>
+
 						</ul>
 					</li>
 					<li class="list-group-item tree-closed">
-						<span><i class="glyphicon glyphicon-ok"></i> 自有商品管理 <span class="badge" style="float:right">3</span></span>
+						<span><i class="glyphicon glyphicon glyphicon-tasks"></i> 自有商品管理 <span class="badge" style="float:right">1</span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品列表</a>
-							</li>
-							<li style="height:30px;">
-								<a href="addRoute"><i class="glyphicon glyphicon-check"></i> 新增自有商品</a>
-							</li>
-							<li style="height:30px;">
-								<a href="addRoute"><i class="glyphicon glyphicon-check"></i> 自有商品预览</a>
-							</li>
-							<li style="height:30px;">
-								<a href="addRoute"><i class="glyphicon glyphicon-check"></i> 编辑自有商品</a>
+								<a href="/zyspgl"><i class="glyphicon glyphicon-user"></i>自有商品管理</a>
 							</li>
 						</ul>
 					</li>
@@ -155,16 +153,18 @@
 							<li style="height:30px;">
 								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 渠道管理</a>
 							</li>
+
 						</ul>
 					</li>
+					<!--                    消息管理-->
 					<li class="list-group-item tree-closed">
-						<span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">1 </span></span>
+						<span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">2 </span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
+								<a href="messageListView"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
 							</li>
 							<li style="height:30px;">
-								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
+								<a href="addMessageView"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
 							</li>
 						</ul>
 					</li>
@@ -172,21 +172,19 @@
 						<span><i class="glyphicon glyphicon-th-large"></i> 角色管理 <span class="badge" style="float:right">1 </span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="/shows"><i class="glyphicon glyphicon-check"></i> 角色管理</a>
+								<a href="shows"><i class="glyphicon glyphicon-check"></i> 角色管理</a>
 							</li>
 						</ul>
 					</li>
 					<li class="list-group-item tree-closed">
-						<span><i class="glyphicon glyphicon-th-large"></i> 管理员列表 <span class="badge" style="float:right">1 </span></span>
+                        <span><i class="glyphicon glyphicon-th-large"></i> 管理员列表 <span class="badge"
+																					   style="float:right">1 </span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 管理员列表</a>
+								<a href="admin"><i class="glyphicon glyphicon-check"></i> 管理员列表</a>
 							</li>
 							<li style="height:30px;">
-								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增管理员</a>
-							</li>
-							<li style="height:30px;">
-								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 编辑管理员</a>
+								<a href="admin1"><i class="glyphicon glyphicon-check"></i> 新增管理员</a>
 							</li>
 						</ul>
 					</li>
@@ -202,10 +200,7 @@
 						<span><i class="glyphicon glyphicon-th-large"></i> 个人中心 <span class="badge" style="float:right">1 </span></span>
 						<ul style="margin-top:10px;display:none;">
 							<li style="height:30px;">
-								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 个人中心</a>
-							</li>
-							<li style="height:30px;">
-								<a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 修改密码</a>
+								<a href="htPersonalCenter"><i class="glyphicon glyphicon-check"></i> 个人中心</a>
 							</li>
 						</ul>
 					</li>
