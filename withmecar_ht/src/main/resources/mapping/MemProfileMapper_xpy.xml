@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.MemProfileMapper_xpy">
+
+    <select id="findByMail" parameterType="string" resultType="hi.car.pojo.MemberProfile">
+        select
+          *
+        from
+        member_profile
+        where
+        email=#{email}
+    </select>
+    <insert id="saveMemberProfile" parameterType="hi.car.pojo.MemberProfile">
+        insert
+        member_profile(id,nickname,name,gender,level,avatar_url,mobile_code,mobile,email,description,country,province,city,district,address,register_time,point)
+        values
+        (#{memProfile.id},#{memProfile.nickname},#{memProfile.name},#{memProfile.gender},#{memProfile.level},#{memProfile.avatar_url},#{memProfile.mobileCode},#{memProfile.mobile},#{memProfile.email},#{memProfile.description},#{memProfile.country},#{memProfile.province},#{memProfile.city},#{memProfile.district},#{memProfile.address},#{memProfile.registerTime},#{memProfile.point})
+    </insert>
+    <!--
+
+    -->
+</mapper>

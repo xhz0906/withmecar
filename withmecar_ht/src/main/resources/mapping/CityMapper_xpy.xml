@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.CityMapper_xpy">
+    <select id="findByType" resultType="hi.car.pojo.City" parameterType="int">
+        select
+        *
+        from
+        city
+        where
+        type=#{type}
+    </select>
+    <select id="findByPid" parameterType="int" resultType="hi.car.pojo.City">
+        select
+        *
+        from
+        city
+        where
+        pid=#{pid}
+    </select>
+    <select id="findIdByName" resultType="hi.car.pojo.City" parameterType="string">
+        select
+        *
+        from
+        city
+        where
+        cityname=#{name}
+    </select>
+</mapper>

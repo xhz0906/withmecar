@@ -41,7 +41,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 个人中心</h3>
                     <ol class="breadcrumb">
-                        <li><a href="main1">后台首页</a></li>
+                        <li><a href="main">后台首页</a></li>
                         <li><a href="htPersonalCenter">个人中心</a></li>
                     </ol>
                 </div>
@@ -49,54 +49,81 @@
                     <table class="table table-striped">
                         <tr>
                             <th>用户名：</th>
-                            <td th:text="${users.username}"></td>
+                            <td th:text="${session.user.username}"></td>
                             <td>#</td>
                         </tr>
                         <tr>
                             <th>密码：</th>
-                            <td class="edit" th:text="${users.password}"></td>
+                            <td class="edit" th:text="${session.user.password}"></td>
                             <td><input type="button" value="修改密码"></td>
                         </tr>
                         <tr style="display: none">
                             <th>密码：</th>
-                            <td class="edit" th:text="${users.password}"></td>
+                            <td class="edit" th:text="${session.user.password}"></td>
                             <td><input type="button" value="确认修改"></td>
                         </tr>
                         <tr>
                             <th>所属角色：</th>
                             <td>
-                                <div th:if="${users.isSuper}==1">
+                                <div th:if="${session.user.isSuper}==1">
                                     <p style="color: red">超级管理员</p>
                                 </div>
-                                <div th:if="${users.isSuper}==2">
+                                <div th:if="${session.user.isSuper}==2">
                                     <p style="color: red">管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==3">
+                                    <p style="color: red">资讯管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==4">
+                                    <p style="color: red">会员管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==5">
+                                    <p style="color: red">标签管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==6">
+                                    <p style="color: red">活动管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==7">
+                                    <p style="color: red">自有商品管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==8">
+                                    <p style="color: red">车型库管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==9">
+                                    <p style="color: red">消息管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==10">
+                                    <p style="color: red">角色管理员</p>
+                                </div>
+                                <div th:if="${session.user.isSuper}==10">
+                                    <p style="color: red">日志管理员</p>
                                 </div>
                             </td>
                             <td>#</td>
                         </tr>
                         <tr>
                             <th>真实姓名：</th>
-                            <td th:text="${users.name}"></td>
+                            <td th:text="${session.user.name}"></td>
                             <td>#</td>
                         </tr>
                         <tr>
                             <th>手机号：</th>
-                            <td th:text="${users.phone}"></td>
+                            <td th:text="${session.user.phone}"></td>
                             <td>#</td>
                         </tr>
                         <tr>
                             <th>邮箱：</th>
-                            <td th:text="${users.email}"></td>
+                            <td th:text="${session.user.email}"></td>
                             <td>#</td>
                         </tr>
                         <tr>
                             <th>创建人</th>
-                            <td th:text="${users.consumer}"></td>
+                            <td th:text="${session.user.consumer}"></td>
                             <td>#</td>
                         </tr>
                         <tr>
                             <th>备注：</th>
-                            <td th:text="${users.remark}"></td>
+                            <td th:text="${session.user.remark}"></td>
                             <td>#</td>
                         </tr>
                     </table>
@@ -131,7 +158,7 @@
                         }
                     });
                 } else {
-                    var id = [[${users.id}]];
+                    var id = '<%=session.getAttribute("user.id")%>';
                     var pwd2 = $("#password").val();
                     location.href = "updatePasswordById?id="+id+"&password="+pwd2;
                     $(this).html(obj_text.val());
@@ -155,7 +182,7 @@
             $("#sp2").empty();
         });
 
-        var isSuper = [[${users.isSuper}]];
+        var isSuper =  '<%=session.getAttribute("user.isSuper")%>';
         $(document).ready(function() {
             $("#head").load("header");
             $("#right").load("htRight");

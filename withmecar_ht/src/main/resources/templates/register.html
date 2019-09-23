@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册账号</title>
+	<link rel="stylesheet" type="text/css" href="css/register.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+</head>
+<body>
+
+<!-- 头部 -->
+<div class="head-background">
+	<div class="head_center">
+		<div class="main-logo adHeadPicContainer" style=" width:143px;">
+			<img src="img/head-top.png" alt="" class="wihteBgPic">
+		</div>
+	<div class="website-name">
+		<div class="main-logo adHeadPicContainer">
+			<img src="img/Carlogo.png" style="height: 50px;width: 150px;margin-left: 4px;margin-top: 9px;">
+		</div>
+		<b style="font-size: 18px;margin-top: -5px;float: left;color:#cccccc;">丨</b>
+		<b style="font-size: 18px;margin-top: -5px;float: left; margin-left:18px;">注册</b>
+	</div>		
+	</div>
+</div>
+
+<div class="wp1 relative">
+	<div class="register-content" id="registerForm">
+		<div class="reg-tab clearFix" style="visibility: visible;">
+			<a class="phone-wrap l sel" href="">
+				<i class="iconfont icon-shouji"></i>
+				<span id="tabPhone" class="tab-phone" style="width: 66px;">手机号</span>
+			</a>
+			<div class="login r">
+				已有账号
+				<a href="login" class="login-a" title="登录">登录</a>
+				<span class="ar-eg-opposite">&gt;</span>
+			</div>
+
+			<div class="reg-detail">
+					<!-- 选择国家 -->
+					<div class="input-container" id="chooseCountry">
+						<div class="l input-left">国家地区</div>
+						<div class="input-content" style="margin-left: 123px;">
+							<div class="node-input ddrop-EMU5" id="selectCountryImg">
+								<select id="selec" style="width:280px;height:42px;font-size:14px;text-align:center;background: #f7f7f7;border-style: none;">
+
+								</select>
+							</div>
+						</div>
+					</div>
+				<!-- 选择省 -->
+				<div class="input-container" id="chooseCountry">
+					<div class="l input-left">省份</div>
+					<div class="input-content" style="margin-left: 123px;">
+						<div class="node-input ddrop-EMU5" id="selectCountryImg">
+							<select id="selec1" style="width:280px;height:42px;font-size:14px;text-align:center;background: #f7f7f7;border-style: none;">
+
+							</select>
+						</div>
+					</div>
+				</div>
+				<!-- 选择市 -->
+				<div class="input-container" id="chooseCountry">
+					<div class="l input-left">市区</div>
+					<div class="input-content" style="margin-left: 123px;">
+						<div class="node-input ddrop-EMU5" id="selectCountryImg">
+							<select id="selec2" style="width:280px;height:42px;font-size:14px;text-align:center;background: #f7f7f7;border-style: none;">
+
+							</select>
+						</div>
+					</div>
+				</div>
+				<!-- 选择地区 -->
+				<div class="input-container" id="chooseCountry">
+					<div class="l input-left">县/区</div>
+					<div class="input-content" style="margin-left: 123px;">
+						<div class="node-input ddrop-EMU5" id="selectCountryImg">
+							<select id="selec3" style="width:280px;height:42px;font-size:14px;text-align:center;background: #f7f7f7;border-style: none;">
+
+							</select>
+						</div>
+					</div>
+				</div>
+						<!-- 手机号 -->
+					<div class="input-container" id="phoneInputDiv-box">
+						<div class="l input-left">
+							<div id="input_languageCode" class="ddrop-EMU5">
+								<span class="select-text ar-eg">+86(中国)</span>	
+								<div class="select-ico"></div>
+							</div>
+						</div>
+						<input id="sjh" type="text" name="username">
+						<span id="msg"></span>
+					</div>
+					<!--性别-->
+					<div class="input-container" id="chooseCountry">
+						<div class="l input-left">性别</div>
+						<div class="input-content" style="margin-left: 123px;">
+							<div class="node-input ddrop-EMU5" id="selectCountryImg">
+								<select id="sex" style="width:280px;height:42px;font-size:14px;text-align:center;background: #f7f7f7;border-style: none;">
+									<option value="1">男</option>
+									<option value="2">女</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<!--邮箱-->
+					<div class="input-container" id="phoneInputDiv-box">
+						<div class="l input-left">
+							<div id="input_languageCode" class="ddrop-EMU5">
+								<span class="select-text ar-eg">邮箱地址</span>
+							</div>
+						</div>
+						<input id="yx" type="email" name="email" autocomplete="off">
+						<span id="dyx"></span>
+					</div>
+						<!-- 密码框 -->
+					<div class="input-container" id="phoneInputDiv-box">
+						<div class="l input-left">
+							<div id="input_languageCode" class="ddrop-EMU5">
+								<span class="select-text ar-eg">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>	
+							</div>
+						</div>
+						<input id="pwd1" type="password" name="userpass" autocomplete="off" placeholder="请输入密码">
+					</div>
+					<!-- 确认密码 -->
+					<div class="input-container" id="phoneInputDiv-box">
+						<div class="l input-left">
+							<div id="input_languageCode" class="ddrop-EMU5">
+								<span class="select-text ar-eg">确认密码</span>	
+							</div>
+						</div>
+						<input id="pwd2" type="password" placeholder="确认密码">
+					</div>
+				<!-- 短信验证 -->
+				<div class="input-container" id="phoneInputDiv-box">
+					<div class="l input-left">
+						<div id="input_languageCode" class="ddrop-EMU5">
+							<span class="select-text ar-eg">邮箱验证码</span>
+						</div>
+					</div>
+					<input id="dxyz" type="text" name="userdx" placeholder="请输入邮箱验证码">
+					<button id="btn" style="height:42px;width:120px;position:absolute; left:285px;background: #f7f7f7;border-style: none;">获取验证码</button>
+				</div>
+					<!-- 注册 -->
+					<div class="reg-btn" align="center">
+						<input type="button" class="btn btn-reg sel" id="btnSubmit" value="注册" tabindex="7">
+						<div id="register_msg" style="position: relative; left: 26%;"></div>
+					</div>
+				</div>
+			<div class="box-shadow"></div>	
+		</div>
+		<div class="reg-content">
+			<p class="footer">
+				<a class="rule" href="">账号用户协议</a>
+				<em class="foot_em">|</em>
+				<a class="rule" href="">关于账号隐私与隐私的声明</a>
+				<em style="font-style: normal">|</em>
+				<a style="padding:0 10px;" href="">常见问题</a>
+		    </p>
+		    <p id="copyrightPart" class="footer">Copyright&nbsp;©&nbsp;2011-2019&nbsp;&nbsp;伴我汽车网络平台&nbsp;&nbsp;版权所有&nbsp;&nbsp;保留一切权利&nbsp;&nbsp;苏B2-20070200号&nbsp;|&nbsp;苏ICP备09062682号-9</p>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function () {
+		var code = "";
+		$("#btn").click(function () {
+			var email = $("#yx").val();
+			alert(email);
+			alert("email.length"+email.length);
+			if (email.length == 0){
+				var ff = $("<font color='red'>不能为空</font>");
+				$("#dyx").empty();
+				$("#dyx").append(ff);
+			} else {
+				$.post("checkMail",{"email":email},function (data) {
+					code = data;
+					alert("发送成功");
+					countDown();
+				})
+			}
+		});
+		var maxTime = 60;
+		function countDown() {
+			if (maxTime == 0){
+				code = "";
+				$("#btn").html("获取验证码");
+			}else {
+				$("#btn").html(maxTime+"秒后重新发送");
+				maxTime--;
+				setTimeout(countDown,1000);
+			}
+		}
+		$("#yx").blur(function () {
+			var email = $("#yx").val();
+			$.post("checkRegEmail",{"email":email},function (data) {
+				if (data == true){
+					$("#yx").val("");
+					var ff = $("<font color='red'>已被使用</font>");
+					$("#dyx").empty();
+					$("#dyx").append(ff);
+				}
+			})
+		});
+		$("#btnSubmit").click(function () {
+			var country = $("#selec").val();
+			var sheng = $("#selec1").val();
+			var shi = $("#selec2").val();
+			var xian = $("#selec3").val();
+			var phone = $("#sjh").val();
+			var email = $("#yx").val();
+			var sex = $("#sex").val();
+			var pwd1 = $("#pwd1").val();
+			var pwd2 = $("#pwd2").val();
+			var checkCode = $("#dxyz").val();
+			var ddd = false;
+			$.post("regCheckPhone",{"phone":phone},function (data) {
+				ddd = data;
+			})
+			if (ddd) {
+				alert("此手机号已被使用");
+				$("#sjh").val("");
+			} else if (pwd1.length == 0 || pwd2.length == 0) {
+				alert("请将密码填写完整")
+			} else if (pwd1 != pwd2){
+				alert("两次密码输入不一致")
+				$("#pwd2").val("");
+			} else if (checkCode.length == 0){
+				alert("验证码不能为空");
+			} else {
+				if (checkCode == code){
+					$.post("dealreg",{"country":country,"sheng":sheng,"shi":shi,"xian":xian,"phone":phone,"email":email,"sex":sex,"password":pwd1},function (data) {
+						if (data == true){
+							location.href = "denglutiaozhuan";
+						} else {
+							alert("注册失败");
+						}
+					})
+				} else {
+					alert("验证码有误，请重新输入");
+					$("#dxyz").val("");
+				}
+			}
+		});
+		$.post("regGetCountry",{"type":0},function (data) {
+			for (var i = 0; i < data.length; i++) {
+				var option = $("<option>"+data[i]+"</option>");
+				$("#selec").append(option);
+			}
+		})
+		$("#selec").blur(function () {
+			var country = $("#selec").val();
+			$.post("regGetshengfen",{"name":country},function (data) {
+				$("#selec1").empty();
+				for (var i = 0; i < data.length; i++) {
+					var option = $("<option>"+data[i]+"</option>");
+					$("#selec1").append(option);
+				}
+			})
+		});
+		$("#selec1").blur(function () {
+			var country = $("#selec1").val();
+			$.post("regGetshiqu",{"name":country},function (data) {
+				$("#selec2").empty();
+				for (var i = 0; i < data.length; i++) {
+					var option = $("<option>"+data[i]+"</option>");
+					$("#selec2").append(option);
+				}
+			})
+		});
+		$("#selec2").blur(function () {
+			var country = $("#selec2").val();
+			$.post("regGetxianqu",{"name":country},function (data) {
+				$("#selec3").empty();
+				for (var i = 0; i < data.length; i++) {
+					var option = $("<option>"+data[i]+"</option>");
+					$("#selec3").append(option);
+				}
+			})
+		});
+		$("#sjh").onblur = function(){
+			var r=/^1\d{10}$/;
+			var str=$("#sjh").value;
+			if(r.test(str)){
+				$("#msg").style.cssText=`color:green;`;
+				$("#msg").innerHTML = "√";
+			}else{
+				$("#msg").innerHTML = "手机号有误";
+				$("#msg").style.color="red";
+			}
+		}
+		$("#yx").onblur = function(){
+			var r= /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+			var str=$("#sjh").value;
+			if(r.test(str)){
+				$("#dyx").style.cssText=`color:green;`;
+				$("#dyx").innerHTML = "√";
+			}else{
+				$("#dyx").innerHTML = "格式有误";
+				$("#dyx").style.color="red";
+			}
+		}
+	})
+</script>
+</html>

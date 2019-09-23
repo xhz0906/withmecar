@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.AdminUserMapper_xpy">
+    <select id="findAdminByName" resultType="hi.car.pojo.AdminUser" parameterType="string">
+        select
+          *
+        from
+          admin_user
+        where
+          username=#{username}
+        and
+          status=1
+    </select>
+    <!--查询用户权限-->
+    <select id="finUserMenu" resultType="hi.car.pojo.AdminMenuAuth" parameterType="int">
+        select
+          ama.id,
+          ama.controller,
+          ama.action,
+          ama.name,
+          ama.classname,
+          ama.status,
+          ama.sort,
+          ama.type,
+          ama.parent_id
+        from
+          admin_user  au,
+          admin_user_role aur,
+          admin_role ar,
+          admin_role_menu arm,
+          admin_menu_auth ama
+        where
+          au.id=aur.user_id
+        and aur.role_id=ar.id
+        and ar.id=arm.role_id
+        and arm.menu_id=ama.id
+        and au.id=#{id}
+    </select>
+    <!--根据邮箱查询admin-->
+    <select id="findByEmail" parameterType="string" resultType="hi.car.pojo.AdminUser">
+        select
+        *
+        from
+        admin_user
+        where
+        email=#{email}
+        and
+        status=1
+    </select>
+</mapper>

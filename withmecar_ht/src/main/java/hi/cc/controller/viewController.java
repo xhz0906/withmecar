@@ -16,12 +16,11 @@ public class viewController {
     public String test1(){
         return "test1";
     }
-    @RequestMapping("/main1")
+    @RequestMapping("/main")
     public String main(HttpServletRequest request){
-        AdminUser adminUser = new AdminUser();
+        /*AdminUser adminUser = new AdminUser();
         adminUser.setUsername("admin");
-        request.getSession().setAttribute("user",adminUser);
-
+        request.getSession().setAttribute("user",adminUser);*/
         return "main";
     }
     @RequestMapping("/member1")
@@ -41,9 +40,7 @@ public class viewController {
 
     @RequestMapping("/header")
     public String header(HttpServletRequest request){
-        AdminUser adminUser = new AdminUser();
-        adminUser.setUsername("admin");
-        request.getSession().setAttribute("user",adminUser);
+
         return "htheader";
     }
 

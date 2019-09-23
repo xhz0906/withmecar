@@ -5,6 +5,7 @@ import hi.cc.mapper.AdminMapperxt;
 import hi.cc.mapper.MemberMapper;
 import hi.cc.service.AdminUserServiceXT;
 import hi.cc.service.MemberServiceXT;
+import hi.cc.service.RoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,15 @@ public class WithmecarHtApplicationTests {
     @Resource
     AdminUserServiceXT adminUserServiceXT;
 
+    @Resource
+    RoleService roleService;
+    @Test
+    public void testAdmin7(){
+//        i
+        List<AdminRole> all = roleService.findAll();
+        System.out.println("b = " + all);
+
+    }
 
     @Test
     public void testAdmin6(){

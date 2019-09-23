@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.RoleMapper">
+    <select id="findAll" resultType="hi.car.pojo.AdminRole">
+        select * from admin_role
+    </select>
+    <insert id="saveRoleByName" parameterType="string">
+        insert admin_role values(default,#{name},0)
+    </insert>
+    <select id="findIdByName" parameterType="string" resultType="int">
+        select id from admin_role where name=#{name}
+    </select>
+</mapper>

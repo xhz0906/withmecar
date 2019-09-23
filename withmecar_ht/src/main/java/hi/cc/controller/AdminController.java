@@ -3,6 +3,7 @@ package hi.cc.controller;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import hi.car.pojo.AdminUser;
 import hi.cc.service.AdminUserServiceXT;
+import hi.cc.utils.SimpleMD5Utils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -114,10 +116,12 @@ public class AdminController {
         int id = Integer.parseInt(request.getParameter("id"));
         boolean b1 = adminUserServiceXT.updateAdminUserRole(id, isSuper);
         System.out.println("角色修改b1 = " + b1);
+        String password = request.getParameter("password");
+        String password1 = SimpleMD5Utils.getPassword(password);
         AdminUser adminUser = new AdminUser();
         adminUser.setId(id);
         adminUser.setUsername(request.getParameter("username"));
-        adminUser.setPassword(request.getParameter("password"));
+        adminUser.setPassword(password1);
         adminUser.setName(request.getParameter("name"));
         adminUser.setPhone(request.getParameter("phone"));
         adminUser.setEmail(request.getParameter("email"));
@@ -138,10 +142,11 @@ public class AdminController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createTime = dateFormat.format(new Date());
         int isSuper = Integer.parseInt(request.getParameter("isSuper"));
-
+        String password = request.getParameter("password");
+        String password1 = SimpleMD5Utils.getPassword(password);
         AdminUser adminUser = new AdminUser();
         adminUser.setUsername(request.getParameter("username"));
-        adminUser.setPassword(request.getParameter("password"));
+        adminUser.setPassword(password1);
         adminUser.setName(request.getParameter("name"));
         adminUser.setPhone(request.getParameter("phone"));
         adminUser.setEmail(request.getParameter("email"));
@@ -178,15 +183,15 @@ public class AdminController {
         return "redirect:admin";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    /*@RequestMapping(value = "/login",method = RequestMethod.GET)
     public String showLoginForm(){
         return "logintest";
-    }
+    }*/
 
-    @RequestMapping(value = "/dealLogin",method = RequestMethod.POST)
+    /*@RequestMapping(value = "/dealLogin",method = RequestMethod.POST)
     public String login (@RequestParam("username") String username,
                          @RequestParam("password") String password){
-        /**
+        *//**
          * 1 查询用户是否存在
          * 2、用户存在查询用户信息，比对凭证
          * 3 、对输入的凭证信息加密与查出凭证比较
@@ -195,7 +200,7 @@ public class AdminController {
          * 6、返回登录成功信息
          *
          * 这些步骤统一交予shiro尽心处理
-         */
+         *//*
         try {
             Subject subject= SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(username,password);
@@ -214,7 +219,7 @@ public class AdminController {
 
 
         return "logintest";
-    }
+    }*/
 //权限不足访问的页面
     @RequestMapping("/unOauth")
     public String showUnOauth(){
@@ -230,23 +235,26 @@ public class AdminController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:login";
+        return "login";
     }
 //    跳往个人中心
     @RequestMapping("/htPersonalCenter")
-    public String htPersonalCenter(Model model,HttpServletRequest request){
+    public String htPersonalCenter(/*String user,Model model, HttpServletRequest request, HttpSession httpSession*/){
        /* request.getAttribute(user);*/
-        AdminUser admin = adminUserServiceXT.findLoginNameAdminInfo("admin");
+      /*  AdminUser admin = adminUserServiceXT.findLoginNameAdminInfo("admin");
         AdminUser adminUser = new AdminUser();
-        adminUser.setUsername("admin");
- /*       request.getSession().setAttribute("user",adminUser);*/
-        model.addAttribute("users",admin);
+        adminUser.setUsername("admin");*/
+      /*  request.getSession().setAttribute("user",adminUser);*/
+       /* AdminUser adminUser = (AdminUser) httpSession.getAttribute(user);
+        int pid = adminUser.getId();
+        model.addAttribute("pid",pid);*/
         return "htPersonalCenter";
     }
 //      修改密码的
     @RequestMapping("/updatePasswordById")
     public String updatePasswordById(Model model,int id ,String password){
-        boolean b = adminUserServiceXT.updatePasswordById(id ,password);
+        String password1 = SimpleMD5Utils.getPassword(password);
+        boolean b = adminUserServiceXT.updatePasswordById(id ,password1);
         return "redirect:htPersonalCenter";
 
     }

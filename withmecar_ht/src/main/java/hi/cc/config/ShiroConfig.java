@@ -1,6 +1,7 @@
 package hi.cc.config;
 
 import hi.cc.shiro.MyRealm;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -23,13 +24,17 @@ public class ShiroConfig {
 //        给过滤器装配安全策略
         filterFactoryBean.setSecurityManager(defaultWebSecurityManager);
         Map<String ,String> map=new HashMap<>();
-        map.put("/main1","authc"); //需要登录后才能访问
+        map.put("/main","authc"); //需要登录后才能访问
         map.put("/admin","authc"); //需要登录后才能访问
         map.put("/admin1","authc"); //需要登录后才能访问
         map.put("/admin2","authc"); //需要登录后才能访问
         map.put("/htPersonalCenter","authc"); //需要登录后才能访问
         map.put("/findAllMemberPro","authc"); //需要登录后才能访问
         map.put("/updatePasswordById","authc"); //需要登录后才能访问
+        map.put("/shows","authc"); //需要登录后才能访问
+        map.put("/addrole","authc"); //需要登录后才能访问
+        map.put("/edit","authc"); //需要登录后才能访问
+        map.put("/deleteRole","authc"); //需要登录后才能访问
 //        map.put("/one","perms[user_edit]"); // 需要登录后 并且拥有edit权限的账号
 //        map.put("/admin","perms[memberlistxx]"); // 需要登录后 并且拥有edit权限的账号
         filterFactoryBean.setLoginUrl("/login"); // 默认登录页
@@ -47,8 +52,10 @@ public class ShiroConfig {
     }
 
     @Bean("myRealm")   // bean id=“myRealm” class = “……”
-    public MyRealm myRealm(){
+    public MyRealm myRealm(@Qualifier("matcher")HashedCredentialsMatcher matcher){
         MyRealm myRealm = new MyRealm();
+        myRealm.setCredentialsMatcher(matcher);
+        myRealm.setAuthorizationCachingEnabled(false);
         return myRealm;
     }
 //    通过aop代理拦截权限设定
@@ -67,5 +74,13 @@ public class ShiroConfig {
         AuthorizationAttributeSourceAdvisor attributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         attributeSourceAdvisor.setSecurityManager(defaultWebSecurityManager);
         return attributeSourceAdvisor;
+    }
+    @Bean("matcher")
+    public HashedCredentialsMatcher matcher(){
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+        matcher.setStoredCredentialsHexEncoded(true);
+        matcher.setHashAlgorithmName("MD5");
+        matcher.setHashIterations(1024);
+        return matcher;
     }
 }

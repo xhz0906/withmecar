@@ -51,7 +51,7 @@
                             <label for="input8">用户名</label>
                             <input name="username" type="text" class="form-control" id="input8" placeholder="username" style="width:500px">
                             <span id="sp1"></span>
-                            <input type="hidden" name="consumer" th:value="session.user.username"/>
+                            <input type="hidden" name="consumer" th:value="${session.user.username}"/>
                         </div>
                         <div class="form-group">
                             <label for="password">新密码</label>
@@ -99,7 +99,6 @@
                             <label for="input7">备注</label>
                             <input type="text" name="remark" class="form-control" id="input7" placeholder="remarks" style="width:500px">
                         </div>
-                        <input type="hidden" name="consumer" value="admin"/>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                 </div>
@@ -193,7 +192,7 @@
         var x7=$("#input6").val();
         var x8=$("#input8").val();
         if (x1.length!=0 && x2.length!=0 && x3.length!=0 && x4.length!=0 && x5.length!=0 && x6.length!=0 && x7.length!=0 && x8.length!=0){
-            alert("123");
+
             return true;
         }else {
             alert("请完善资料");

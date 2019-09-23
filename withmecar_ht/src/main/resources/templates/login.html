@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<div class="beij">
+	<!-- 头部 -->
+	<div class="customer-header">
+		<div class="head_center">
+				<div class="main-logo adHeadPicContainer"> 
+					<img src="img/Carlogo.png" style="height: 50px;width: 150px;margin-left: 4px;margin-top: 9px;">
+				</div> 
+				<div class="website-name"> 
+					<b style="font-size: 18px;margin-top: -5px;float: left;color:#cccccc;">|</b> 
+					<b class="adHeadTitle">登录</b>
+				</div>
+		</div>	
+	</div>
+	<!-- 广告位 -->
+	<span>
+		<div style="background: #FFFBE4;display: block;height: 40px;text-align: center;line-height: 40px;color: #989898;">
+			<span class="prompt_icon" id="ad1">依据《网络安全法》，为保障您的帐号安全与正常使用，请尽快绑定您的手机号，感谢您的理解及支持！</span>
+		</div>
+	</span>
+	<!-- 登陆 -->
+	<div class="login_bg" id="loginform">
+		<div class="login_adBg" >
+			<div class="login_right">
+				<div class="login_h">
+					<span id="hide1" class="login_h_1">账号登陆</span>
+					<span id="show1" class="login_h_2">邮箱登陆</span>
+				</div>
+				<!-- 账号登陆 -->
+				<div id="hide2" class="login_center">
+						<input type="text" id="username"  name="username" placeholder="账号" autocomplete="off">
+						<span id="sp1"></span>
+						<input type="password" id="password"  name="userpass" placeholder="密码" autocomplete="off">
+						<span id="sp2"></span>
+						<table align="center">
+							<img src="createImage" alt="验证码" title="点击更换" onclick="this.src='createImage?'+(new Date()).getTime();"/>
+							<input id="checkcode" class="form-control" name="checkcode" placeholder="请输入验证码" type="text" autocomplete="off"/>
+							<span id="checkcode_msg" class="required"></span>
+						</table>
+					<div class="hhh">
+						<a href=""><span title="短信验证码登录" style="visibility: visible;"><i class="phoneIcon"></i>   短信验证码登录</span></a>
+					</div>
+					<input type="button" class="button-login" id="btnLogin" data-type="accountLogin" value="登录" tabindex="5" style="outline: none;">
+
+					<div class="mt-checkbox">
+						<span id="rememberNameSpan">
+							<label for="remember_name1">
+								<input id="ind" type="checkbox" checked/>
+								<label for="ind">记住手机帐号</label>
+							</label>
+						</span>
+					</div>
+					<div class="zc">
+						<a href="register">
+							注册账号
+						</a>
+						<b>|</b>
+						<a href="register">
+							忘记密码？
+						</a>
+					</div>
+					<div class="qtdlfs">
+						<div class="qtdlfs_1">
+							<i class="i-left"></i>
+							<span class="span-center">其它登陆方式</span>
+							<i class="i-right"></i>
+						</div>
+						<div class="thirdLoginDiv">
+							<span class="QQ">
+								<a href=""></a>
+							</span>
+							<span class="ZFB">
+								<a href=""></a>
+							</span>
+							<span class="WX">
+								<a href=""></a>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<!--邮箱登陆 -->
+				<div id="show2"  class="login_center" style="display:none">
+						<input type="text" id="email"  name="email" placeholder="邮箱地址" autocomplete="off"><br>
+						<button id="getCode"  class="btn btn-success">获取验证码</button>
+						<input type="code" id="code" name="userpass" placeholder="验证码" autocomplete="off">
+						<input type="button" class="button-login" id="btnLogin1" data-type="accountLogin" value="登录" tabindex="5" style="outline: none;">
+					<div class="mt-checkbox">
+						<span id="rememberNameSpan1">
+							<label for="remember_name2">
+								<input id="ind1" type="checkbox" checked/>
+								<label for="ind">记住邮箱帐号</label>
+							</label>
+						</span>
+					</div>
+					<div class="zc">
+						<a href="register">
+							注册账号
+						</a>
+						<b>|</b>
+						<a href="register">
+							忘记密码？
+						</a>
+					</div>
+					<div class="qtdlfs">
+						<div class="qtdlfs_1">
+							<i class="i-left"></i>
+							<span class="span-center">其它登陆方式</span>
+							<i class="i-right"></i>
+						</div>
+						<div class="thirdLoginDiv">
+							<span class="QQ">
+								<a href=""></a>
+							</span>
+							<span class="ZFB">
+								<a href=""></a>
+							</span>
+							<span class="WX">
+								<a href=""></a>
+							</span>
+						</div>
+					</div>
+				</div>				
+		</div>
+	</div>
+	<!-- 底部 -->
+		<div class="reg-content">
+			<p class="footer">
+				<a class="rule" href="">账号用户协议</a>
+				<em class="foot_em">|</em>
+				<a class="rule" href="">关于账号隐私与隐私的声明</a>
+				<em style="font-style: normal">|</em>
+				<a style="padding:0 10px;" href="">常见问题</a>
+		    </p>
+		    <p id="copyrightPart" class="footer">Copyright&nbsp;©&nbsp;2011-2019&nbsp;&nbsp;伴我汽车网络平台&nbsp;&nbsp;版权所有&nbsp;&nbsp;保留一切权利&nbsp;&nbsp;苏B2-20070200号&nbsp;|&nbsp;苏ICP备09062682号-9</p>
+		</div>	
+	</div>	
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		var code = "";
+		var auth = 0;
+		$("#btnLogin").click(function () {
+			var username = $("#username").val();
+			var password = $("#password").val();
+			var checkcode = $("#checkcode").val();
+			var ddd = false;
+			$.post("checkUserName",{"username":username},function (data) {
+				ddd = data;
+			})
+			if (ddd == true){
+				var ff = $("<font color='red'>此账号不能使用</font>")
+				$("#sp1").append(ff);
+			} else if (username.length ==0){
+				var ff = $("<font color='red'>登录账号不能为空</font>")
+				$("#sp1").append(ff);
+			} else if (password.length == 0){
+				var ff = $("<font color='red'>登录密码不能为空</font>")
+				$("#sp2").append(ff);
+			}  else {
+				$.post("checkAccountCode",{"checkcode":checkcode},function (data) {
+					if (data == true){
+						$.post("dealLogin",{"username":username,"password":password},function (data) {
+							if (data != 0){
+								if (data == 1){
+									alert("前台");
+									location.href = "http://localhost:9090/index?username="+username;
+								} else {
+									location.href = "main";
+								}
+							} else {
+								alert("登录失败！");
+							}
+						})
+					} else {
+						alert("验证码错误，请重新输入");
+					}
+				})
+			}
+		})
+		$("#getCode").click(function () {
+			var email = $("#email").val();
+
+			if (email.length == 0){
+				alert("请填写邮箱地址");
+			} else{
+				$.post("#",{"email":email},function (data) {
+					auth = data;
+					if (data != 0){
+						$.post("emailLogin",{"email":email},function (data) {
+							code = data;
+							alert(data);
+							alert("发送成功");
+							countDown();
+						})
+					} else {
+						alert("此邮箱还未注册");
+						$("#email").val("");
+					}
+				})
+			}
+		});
+		var maxTime = 60;
+		function countDown() {
+			if (maxTime == 0){
+				code = "";
+				$("#getCode").html("获取验证码");
+			}else {
+				$("#getCode").html(maxTime+"秒后重新发送");
+				maxTime--;
+				setTimeout(countDown,1000);
+			}
+		}
+		$("#btnLogin1").click(function () {
+			var checkCode = $("#code").val();
+			if (checkCode.length == 0){
+				alert("请填写验证码");
+			} else {
+				if (checkCode == code){
+					$.post("",{"email":email,"auth":auth},function (data) {
+						if (data == true){
+							if (auth == 1) {
+								location.href="http://localhost:9090/index?username="+username;
+							} else {
+								location.href="main";
+							}
+							auth = 0;
+						} else {
+							alert("登录失败");
+							$("#email").val("");
+							$("#code").val("");
+							auth = 0;
+						}
+					})
+				} else {
+					alert("验证码错误，请重新填写");
+					$("#code").val("");
+				}
+			}
+		});
+	})
+</script>

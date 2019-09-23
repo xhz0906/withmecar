@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.cc.mapper.MenuMapper">
+   <select id="findAll" resultType="hi.car.pojo.AdminMenuAuth">
+       select * from admin_menu_auth
+   </select>
+    <select id="findByParentId" resultType="hi.car.pojo.AdminMenuAuth" parameterType="int">
+        select * from admin_menu_auth where parent_id=#{pid}
+    </select>
+    <insert id="addMenu" parameterType="hi.car.pojo.AdminRoleMenu">
+        insert into admin_role_menu values(#{adminRoleMenu.roleId},#{adminRoleMenu.menuId})
+    </insert>
+    <select id="findRoleMen" resultType="hi.car.pojo.AdminMenuAuth" parameterType="int">
+        select
+        ama.*
+        from
+        admin_menu_auth ama,
+        admin_role_menu arm
+        where
+        ama.id=arm.menu_id
+        and arm.role_id=#{roleId}
+    </select>
+    <delete id="delMenuByRId" parameterType="int">
+        delete from admin_role_menu where role_id=#{rid}
+    </delete>
+    <select id="findRoleMenById" parameterType="int" resultType="hi.car.pojo.AdminRoleMenu">
+        select * from  admin_role_menu where role_id=#{roleId}
+    </select>
+    <delete id="delRolebyRid" parameterType="int">
+        delete from admin_role where id=#{rid}
+    </delete>
+</mapper>
