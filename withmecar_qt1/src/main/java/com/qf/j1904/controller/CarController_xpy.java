@@ -58,7 +58,7 @@ public class CarController_xpy {
     @RequestMapping("/MyCar")
     public String MyCar(int type,HttpServletRequest request,Model model){
         MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
-        MemberCar memberCar = memCarService.findMemCarById(loginMember.getId(),type);
+        List<MemberCar> memberCar = memCarService.findMemCarById(loginMember.getId(),type);
         model.addAttribute("myDriver",memberCar);
         request.getSession().setAttribute("type",type);
         return "MyCar";
@@ -68,7 +68,7 @@ public class CarController_xpy {
     public String MyCarOne(HttpServletRequest request,Model model){
         MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
         int type = (int) request.getSession().getAttribute("type");
-        MemberCar memberCar = memCarService.findMemCarById(loginMember.getId(),type);
+        List<MemberCar> memberCar = memCarService.findMemCarById(loginMember.getId(),type);
         model.addAttribute("myDriver",memberCar);
         return "MyCar";
     }
@@ -78,7 +78,7 @@ public class CarController_xpy {
         memCarService.deleteById(mcid);
         int type = (int) request.getSession().getAttribute("type");
         MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
-        MemberCar memberCar = memCarService.findMemCarById(loginMember.getId(),type);
+        List<MemberCar> memberCar = memCarService.findMemCarById(loginMember.getId(),type);
         model.addAttribute("myDriver",memberCar);
         return "MyCar";
     }
