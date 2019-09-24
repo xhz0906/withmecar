@@ -53,7 +53,7 @@ public class RoleController {
         model.addAttribute("juese",roleMenUtils.test1(roleId,34));
         model.addAttribute("guanliyuan",roleMenUtils.test1(roleId,35));
         model.addAttribute("rizhi", roleMenUtils.test1(roleId, 36));
-        return "redirect:shows";
+        return "editrole";
     }
 
 }
