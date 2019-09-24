@@ -15,6 +15,12 @@
     <select id="findManufacturer" resultMap="carManufacturer">
         select * from car_manufacturer
     </select>
+    <select id="findManufacturer1" parameterType="string" resultMap="carManufacturer">
+        select * from car_manufacturer where name=#{name}
+    </select>
+    <select id="findBrandByM" resultType="string">
+        select brand_name from car_manufacturer
+    </select>
     <insert id="saveCarManufacturer" parameterType="map">
           insert into car_manufacturer(id,name,brand_name,create_time) values(default,
         #{name},
@@ -52,5 +58,17 @@
         COUNT(name)
         FROM
         car_manufacturer
+    </select>
+    <!--查出总数-->
+    <select id="getMaxCount1" parameterType="string"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_manufacturer
+        where
+        name=#{name}
+    </select>
+    <select id="findManufacturer01" parameterType="string" resultType="string">
+        select name from car_manufacturer where brand_name=#{brandName}
     </select>
 </mapper>

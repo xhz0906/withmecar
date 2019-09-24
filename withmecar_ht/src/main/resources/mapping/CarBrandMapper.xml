@@ -78,4 +78,22 @@
         FROM
         car_brand
     </select>
+    <!--查出总数-->
+    <select id="getMaxCount1" parameterType="string"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_brand
+        where
+        name=#{brandName}
+    </select>
+    <select id="findCountry" resultType="string">
+        select country from car_country
+    </select>
+    <select id="findBrand01" resultType="string">
+        select name from car_logo where country=#{country}
+    </select>
+    <select id="findBrand02" parameterType="string" resultMap="resultCarBrand">
+        select * from car_brand where name=#{brandName}
+    </select>
 </mapper>

@@ -18,6 +18,23 @@ public interface CarManufacturerService {
      */
     public int getMaxPage(int rows);
     /**
+     * 查询厂商
+     * @return
+     */
+    public List<CarManufacturer> findManufacturer1(String name,int page,int rows);
+    /**
+     * 得出最大页
+     * @param rows
+     * @return
+     */
+    public int getMaxPage1(String name,int rows);
+    public List<String> findManufacturer01(String brandName);
+    /**
+     * 查brandname
+     * @return
+     */
+    public List<String> findBrandByM();
+    /**
      * 增加
      * @return
      */

@@ -47,6 +47,35 @@ public class CarModelController {
         model.addAttribute("maxPage",maxPage);
         return "carModel";
     }
+    @RequestMapping("/findCarModel1")
+    public String findCarModel1(@RequestParam(required = false,defaultValue = "1") int page,
+                               @RequestParam(required = false,defaultValue = "10") int rows,Model model,String name,String levelName){
+        int maxPage =carModelService.getMaxPage1(levelName,name,rows);
+        if (page > maxPage){
+            page = 1;
+        }
+        if (page < 1){
+            page = maxPage;
+        }
+        List<CarModel> carModel1 = carModelService.findCarModel1(levelName,name,page,rows);
+       model.addAttribute("carModel1",carModel1);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("maxPage",maxPage);
+        return "carModel1";
+    }
+    @RequestMapping("findModel01")
+    @ResponseBody
+    public List<String> findModel01(String levelName){
+        List<String> model01 = carModelService.findModel01(levelName);
+        return model01;
+    }
+    @ResponseBody
+    @RequestMapping("findModelBy")
+    public List<String> findModelBy(){
+        List<String> modelBy = carModelService.findModelBy();
+        return modelBy;
+    }
+
     @RequestMapping("findModel1")
     @ResponseBody
     public List<String> findModel1(){

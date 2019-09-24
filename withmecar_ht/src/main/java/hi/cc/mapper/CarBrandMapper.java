@@ -26,6 +26,11 @@ public interface CarBrandMapper {
      */
     public int getMaxCount();
     /**
+     * 查询汽车品牌总个数
+     * @return
+     */
+    public int getMaxCount1(String brandName);
+    /**
      *删除
      * @return
      */
@@ -80,4 +85,19 @@ public interface CarBrandMapper {
      * @return
      */
     public String findBrandName2(String brandLogo);
+    /*
+    查询国家
+     */
+    public List<String> findCountry();
+    /*
+  查询品牌
+   */
+    public List<String> findBrand01(String country);
+
+    /**
+     * 条件查品牌
+     * @param brandName
+     * @return
+     */
+    public List<CarBrand> findBrand02(String brandName);
 }

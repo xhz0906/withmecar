@@ -7,24 +7,89 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/doc.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/main.css">
     <style>
         .tree li {
             list-style-type: none;
             cursor:pointer;
         }
+        .tree-closed {
+            height : 40px;
+        }
+        .tree-expanded {
+            height : auto;
+        }
     </style>
 </head>
+<style type="text/css">
+    ul.pagination1 {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
 
+    ul.pagination1 li {display: inline;}
+
+    ul.pagination1 li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    ul.pagination1 li a.active {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+    }
+    #class td,#class th{
+        text-align: center;
+        vertical-align: middle;
+    }
+    .button2 {
+        background-color: #316AC5;
+        border: none;
+        color: #f9f9f9;
+        padding: 2px 7px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 2px 1px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+    .button3 {
+        background-color: #CC0000;
+        border: none;
+        color: #f9f9f9;
+        padding: 2px 7px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 2px 1px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+    .button1,.btn-primary {
+        border-radius: 6px;
+    }
+    .btn-primary:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 35px 0 rgba(0,0,0,0.19);
+    }
+</style>
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <div><a class="navbar-brand" style="font-size:32px;" href="user.html">伴我汽车 - 添加品牌信息</a></div>
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">伴我汽车 - 控制面板</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -48,10 +113,12 @@
                     </button>
                 </li>
             </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="查询">
+            </form>
         </div>
     </div>
 </nav>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -99,16 +166,16 @@
                         </ul>
                     </li>
                     <li class="list-group-item tree-expanded">
-                        <span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge" style="float:right">6</span></span>
+                        <span><i class="glyphicon glyphicon glyphicon-tasks"></i> 车型库管理 <span class="badge" style="float:right">6</span></span>
                         <ul style="margin-top:10px;">
                             <li style="height:30px;">
                                 <a href="findCarBrand" ><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findManufacturer" ><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
+                                <a href="findManufacturer"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findCarModel" style="color: red;"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
+                                <a href="findCarModel"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
                             </li>
                             <li style="height:30px;">
                                 <a href="findCar"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
@@ -117,7 +184,7 @@
                                 <a href="findParamType"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findParam"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
+                                <a href="findParam" style="color: red;"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
                             </li>
 
                         </ul>
@@ -219,122 +286,74 @@
             </div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <ol class="breadcrumb">
-                <li><a href="main">首页</a></li>
-                <li><a href="meManager">会员列表</a></li>
-                <li class="active">添加会员</li>
-            </ol>
-            <div class="panel panel-default" >
-                <div class="panel-heading">表单数据<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-question-sign"></i></div></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 参数分类管理列表</h3>
+                </div>
                 <div class="panel-body">
-                    <form role="form" >
-                        <div class="form-group">
-                            <label for="name">车系名称</label>
-                            <SELECT  id="name" name="name" style="width:220px;height: 35px;"  class="form-control">
-                                <option selected="selected" value="0">--请选择车系-- </option>
-                            </SELECT>
+                    <form class="form-inline" role="form" style="float:left;">
+                        <div class="form-group has-feedback">
+                            <div class="input-group">
+                                <div class="input-group-addon">搜索条件</div>
+                                <input class="form-control has-success" type="text" placeholder="请输入参数名称" id="param">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="carType">类型</label>
-                            <SELECT  id="carType" name="carType" style="width:220px;height: 35px;"  class="form-control">
-                                <option selected="selected" value="0">--请选择类型-- </option>
-                            </SELECT>
-                        </div>
-                     <!--   <div class="form-group">
-                            <label for="manufacturerName">厂商名称</label>
-                            <SELECT  id="manufacturerName" name="manufacturerName" style="width:220px;height: 35px;"  class="form-control">
-                            </SELECT>
-                        </div>-->
-                        <div class="form-group">
-                            <label for="brandName">所属品牌</label><br/>
-                            <img width=100 height=100 src="img/car_logo3.jpg" name="x1" id="x1">
-                            <SELECT onChange="document.x1.src=options[selectedIndex].value"  id="brandLogo" name="brandLogo" style="width:220px;height: 35px;"  class="form-control">
-                                <option selected="selected" value="0">--请选择品牌-- </option>
-                            </SELECT>
-                            <SELECT  id="brandName" name="brandName" style="width:220px;height: 35px;"  class="hidden">
-                            </SELECT>
-                        </div>
-
-                        <a id="commit" class="btn btn-success" onclick="change()"><i class="glyphicon glyphicon-edit"  ></i> 添加</a>
-                        <button type="reset" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
+                        <a  class="btn btn-warning" onclick="sear()"><i class="glyphicon glyphicon-search"></i> 搜索</a>
                     </form>
+                    <a type="button" class="btn btn-primary" style="float:right;" href="carBrandAdd"><i class="glyphicon glyphicon-plus"></i> 新增</a>
+                    <br>
+                    <hr style="clear:both;">
+                    <div class="table-responsive" id="class">
+                        <table class="table  table-bordered">
+                            <thead>
+                            <tr >
+                                <th width="30">序号</th>
+                                <th>名称</th>
+                                <td>所有分类</td>
+                                <th>状态</th>
+                                <th width="100">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="c:${carParam1}">
+                                <td th:text="${c.id}" id="del"></td>
+                                <td th:text="${c.name}"></td>
+                                <td th:text="${c.type}"></td>
+                                <td th:text="${c.state}"></td>
+                                <td style="width:130px;">
+                                    <a type="button" class="button2 button1" th:href="@{updateCarParam1(id=${c.id})}"><i class=" glyphicon glyphicon-pencil">编辑</i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr >
+                                <td colspan="6" align="center">
+                                    <ul class="pagination1">
+                                        <a class="btn btn-default" th:href="@{findParam(page=1)}">首页</a>
+                                        <a class="btn btn-default" th:href="@{findParam(page=${currentPage+(-1)})}">上一页</a>
+                                        <a class="btn btn-default" th:href="@{findParam(page=${currentPage+1})}">下一页</a>
+                                        <a class="btn btn-default" th:href="@{findParam(page=${maxPage})}">末页</a>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">帮助</h4>
-            </div>
-            <div class="modal-body">
-                <div class="bs-callout bs-callout-info">
-                    <h4>测试标题1</h4>
-                    <p>测试内容1，测试内容1，测试内容1，测试内容1，测试内容1，测试内容1</p>
-                </div>
-                <div class="bs-callout bs-callout-info">
-                    <h4>测试标题2</h4>
-                    <p>测试内容2，测试内容2，测试内容2，测试内容2，测试内容2，测试内容2</p>
-                </div>
-            </div>
-            <!--
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            -->
-        </div>
-    </div>
-</div>
+
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
 <script type="text/javascript">
-    $.post("findBrandLogo",{"type":0},function (data1) {
-        $.post("findBrand",{"type":0},function (data2) {
-            for (var i = 0; i < data2.length||i<data1.length; i++) {
-                var option = $("<option value='" + data1[i] + "'>" + data2[i] + "</option>");
-                $("#brandLogo").append(option);
-            }
-        })
-    })
-    /*$.post("findManufacturerName",{"type":0},function (data) {
-        for(var i=0;i<data.length;i++){
-            var option=$("<option >" + data[i] + "</option>");
-            $("#manufacturerName").append(option);
-        }
-    })*/
-    $.post("findModel1",{"type":0},function (data) {
-        for(var i=0;i<data.length;i++){
-            var option=$("<option >" + data[i] + "</option>");
-            $("#name").append(option);
-        }
-    })
-    $.post("findType",{"type":0},function (data) {
-        for(var i=0;i<data.length;i++){
-            var option=$("<option >" + data[i] + "</option>");
-            $("#carType").append(option);
-        }
-    })
-    function change() {
-        var name=$("#name").val();
-        var brandLogo=$("#brandLogo").val();
-        var levelName=$("#carType").val();
-        $.post("findBrandName",{"brandLogo":brandLogo},function (data) {
-            var brandName=data;
-            if(name == null || name == ""){
-                alert("车系名称不能为空");
-                return false;
-            }
-            window.location.href="saveCarModel?name="+name+"&brandName="+brandName+"&levelName="+levelName;
-        })
-
+    function sear(){
+        var param=$("#param").val();
+        location.href="findParam1?param="+param;
     }
-
-
     $(function () {
         $(".list-group-item").click(function(){
             if ( $(this).find("ul") ) {

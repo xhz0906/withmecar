@@ -29,6 +29,18 @@ public class CarParamServiceImpl implements CarParamService{
         int count=carParamMapper.getMaxCount();
         return count%rows==0?count/rows:count/rows+1;
     }
+    @Override
+    public List<CarParam> findParam1(String param,int page, int rows) {
+        PageHelper.startPage(page,rows);
+        List<CarParam> paramType = carParamMapper.findParam1(param);
+        return paramType;
+    }
+
+    @Override
+    public int getMaxPage1(String param,int rows) {
+        int count=carParamMapper.getMaxCount1(param);
+        return count%rows==0?count/rows:count/rows+1;
+    }
 
     @Override
     public CarParam findCarParam(int id) {
@@ -44,5 +56,11 @@ public class CarParamServiceImpl implements CarParamService{
         map.put("state",state);
         boolean b = carParamMapper.updateCarParam(map);
         return b;
+    }
+
+    @Override
+    public List<String> findType001() {
+        List<String> type001 = carParamMapper.findType001();
+        return type001;
     }
 }

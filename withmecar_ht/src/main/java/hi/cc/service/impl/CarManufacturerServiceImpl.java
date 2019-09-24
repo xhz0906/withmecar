@@ -33,7 +33,37 @@ public class CarManufacturerServiceImpl implements CarManufacturerService {
         int count=carManufacturerMapper.getMaxCount();
         return count%rows==0?count/rows:count/rows+1;
     }
+    /**
+     * 查询厂商
+     * @return
+     */
+    @Override
+    public List<CarManufacturer> findManufacturer1(String name,int page, int rows) {
+        PageHelper.startPage(page,rows);
+        List<CarManufacturer> manufacturer = carManufacturerMapper.findManufacturer1(name);
+        return manufacturer;
+    }
 
+    @Override
+    public int getMaxPage1(String name,int rows) {
+        int count=carManufacturerMapper.getMaxCount1(name);
+        return count%rows==0?count/rows:count/rows+1;
+    }
+
+    @Override
+    public List<String> findManufacturer01(String brandName) {
+        List<String> manufacturer01 = carManufacturerMapper.findManufacturer01(brandName);
+        return manufacturer01;
+    }
+
+    /**
+     * 查brandname
+     * @return
+     */
+    public List<String> findBrandByM(){
+        List<String> brandByM = carManufacturerMapper.findBrandByM();
+        return brandByM;
+    }
     @Override
     public boolean saveCarManufacturer(String name,String brandName,String createTime) {
         Map<String,String> map = new HashMap<>();

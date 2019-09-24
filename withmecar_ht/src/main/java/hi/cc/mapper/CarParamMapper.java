@@ -20,6 +20,16 @@ public interface CarParamMapper {
      */
     public int getMaxCount();
     /**
+     * 查询车型参数
+     * @return
+     */
+    public List<CarParam> findParam1(String param);
+    /**
+     * 查询总个数
+     * @return
+     */
+    public int getMaxCount1(String param);
+    /**
      * 根据id查出要修改的
      * @param id
      * @return
@@ -32,4 +42,7 @@ public interface CarParamMapper {
      * @return
      */
     public boolean updateCarParam(Map<String,Object> map);
+
+
+    public List<String> findType001();
 }

@@ -45,6 +45,40 @@ public class CarManufacturerController {
         model.addAttribute("maxPage",maxPage);
         return "carManufacturer";
     }
+    /**
+     * 查询厂商
+     * @return
+     */
+    @RequestMapping("/findManufacturer1")
+    public String findManufacturer1(@RequestParam(required = false,defaultValue = "1") int page,
+                                   @RequestParam(required = false,defaultValue = "10") int rows,Model model,String name){
+        int maxPage = carManufacturerService.getMaxPage1(name,rows);
+        if (page > maxPage){
+            page = 1;
+        }
+        if (page < 1){
+            page = maxPage;
+        }
+        List<CarManufacturer> manufacturer1 = carManufacturerService.findManufacturer1(name,page,rows);
+        System.out.println("manufacturer1 = " + manufacturer1);
+        model.addAttribute("manufacturer1",manufacturer1);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("maxPage",maxPage);
+        return "carManufacturer1";
+    }
+    @RequestMapping("/findManufacturer01")
+    @ResponseBody
+    public List<String> findManufacturer01(String brandName){
+        List<String> findManufacturer=carManufacturerService.findManufacturer01(brandName);
+        return findManufacturer;
+    }
+    @RequestMapping("/findBrandByM")
+    @ResponseBody
+    public List<String> findBrandByM(){
+        List<String> brandByM = carManufacturerService.findBrandByM();
+        return brandByM;
+    }
+
     @RequestMapping("/carManufacturerAdd")
     public String carBrandAdd(){
         return "carManufacturerSave";

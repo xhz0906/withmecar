@@ -294,11 +294,11 @@
                     <form class="form-inline" role="form" style="float:left;">
                         <div class="form-group has-feedback">
                             <div class="input-group">
-                                <div class="input-group-addon">查询条件</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入查询条件">
+                                <div class="input-group-addon">搜索条件</div>
+                                <input class="form-control has-success" type="text" placeholder="请输入参数名称" id="param">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        <a  class="btn btn-warning" onclick="sear()"><i class="glyphicon glyphicon-search"></i> 搜索</a>
                     </form>
                     <a type="button" class="btn btn-primary" style="float:right;" href="carBrandAdd"><i class="glyphicon glyphicon-plus"></i> 新增</a>
                     <br>
@@ -350,7 +350,10 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
 <script type="text/javascript">
-
+    function sear(){
+        var param=$("#param").val();
+        location.href="findParam1?param="+param;
+    }
     $(function () {
         $(".list-group-item").click(function(){
             if ( $(this).find("ul") ) {

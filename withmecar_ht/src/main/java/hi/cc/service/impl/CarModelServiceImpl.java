@@ -24,6 +24,14 @@ public class CarModelServiceImpl implements CarModelService {
         System.out.println("carModel = " + carModel);
         return carModel;
     }
+    @Override
+    public List<CarModel> findCarModel1(String levelName,String name,int page, int rows) {
+        PageHelper.startPage(page,rows);
+        List<CarModel> carModel = carModelMapper.findCarModel1(levelName,name);
+        System.out.println("carModel = " + carModel);
+        return carModel;
+    }
+
 
     @Override
     public List<String> findModel1() {
@@ -35,6 +43,23 @@ public class CarModelServiceImpl implements CarModelService {
     public int getMaxPage(int rows) {
         int count=carModelMapper.getMaxCount();
         return count%rows==0?count/rows:count/rows+1;
+    }
+    @Override
+    public int getMaxPage1(String levelName,String name,int rows) {
+        int count=carModelMapper.getMaxCount1(levelName,name);
+        return count%rows==0?count/rows:count/rows+1;
+    }
+
+    @Override
+    public List<String> findModel01(String levelName) {
+        List<String> model01 = carModelMapper.findModel01(levelName);
+        return model01;
+    }
+
+    @Override
+    public List<String> findModelBy() {
+        List<String> modelBy = carModelMapper.findModelBy();
+        return modelBy;
     }
 
     @Override

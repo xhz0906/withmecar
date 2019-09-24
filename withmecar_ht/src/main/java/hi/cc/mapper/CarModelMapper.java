@@ -18,13 +18,24 @@ public interface CarModelMapper {
      * 查询车系
      * @return
      */
+    public List<CarModel> findCarModel1(String levelName,String name);
+    /**
+     * 查询车系
+     * @return
+     */
     public List<String> findModel1();
     /**
      * 查询汽车车系总个数
      * @return
      */
     public int getMaxCount();
-
+    /**
+     * 查询汽车车系总个数
+     * @return
+     */
+    public int getMaxCount1(String levelName,String name);
+    public List<String> findModel01(String levelName);
+    public List<String> findModelBy();
     /**
      * 添加车系
      * @param map

@@ -229,7 +229,6 @@
                 <div class="panel-body">
                     <form role="form" >
                       <div class="form-group">
-
                             <label for="brandName">品牌名称</label>
                             <input id="brandName" name="brandName"  type="text" class="form-control" autocomplete="off"/>
                         </div>
@@ -237,7 +236,7 @@
                             <label for="brandLogo">logo</label><br/>
                             <img width=100 height=100 src="img/car_logo3.jpg" name="x1" id="x1">
                             <SELECT onChange="document.x1.src=options[selectedIndex].value;document.getElementById('brandName').value=this.options[this.selectedIndex].id;" id="brandLogo" name="brandLogo" style="width:220px;height: 35px;"  class="form-control">
-                                <option selected="selected" value="0">--请选择-- </option>
+                                <option selected="selected" value="0">--请选择品牌-- </option>
                             </SELECT>
                         </div>
                         <a id="commit"  class="btn btn-success" onclick="check()"><i class="glyphicon glyphicon-edit"  ></i> 添加</a>
