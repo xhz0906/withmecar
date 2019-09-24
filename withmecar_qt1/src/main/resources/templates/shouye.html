@@ -89,9 +89,9 @@
             </div>
         </div>
             <div class="header_right">
-                <form class="header_form" action="">
+                <form class="header_form" action="search">
                     <input type="text" class="text" placeholder="">
-                    <input type="submit" class="submit">
+                    <button type="submit" class="submit"></button>
                 </form>
             </div>
         </div>
@@ -272,15 +272,15 @@
             <div class="hr_reght1">
                 <div class="hr_reght1_1">
                     <a href="">
-                        <span>公告</span>
+                        <span>消息</span>
                     </a>
                 </div>
-                <div class="hr_reght1_2">
+                <div class="hr_reght1_2" th:each="s:${session.messageXpy}">
                     <div class="box">
                         <div class="t_news">
                             <b>测试</b>
                             <ul class="news_li">
-                                <li><a href="#" >华为华为华为华为华为</a></li>
+                                <li><a href="#" ><font th:text="${s.content}"></font></a></li>
                             </ul>
                             <ul class="swap"></ul>
                         </div>
@@ -359,8 +359,8 @@
                         <img th:src="${s.carImage.imgUrl}" alt="">
                     </p>
                     <div class="center_rxdp_1"><font th:text="${s.name}"></font></div>
-                    <p class="grid-1">最低价：￥<font th:text="${s.priceLow}"></font></p>
-                    <p>最高价：￥<font th:text="${s.priceHigh}"></font></p>
+                    <p class="grid-1">最低价：￥<font th:text="${s.priceLow}"></font>万元</p>
+                    <p>最高价：￥<font th:text="${s.priceHigh}"></font>万元</p>
                     <p class="grid-2"><font th:text="${s.countryClassName}"></font></p>
                     <p class="grid-3">
                         <em>
@@ -383,13 +383,7 @@
     <!--banner_3-->
     <div class="banner_3">
         <div class="div_h">
-            <h2 class="channel-title_fl">新品上市</h2>
-            <ul class="channel-nav_fl">
-                <li>
-                    <a href="">荣耀</a>
-                </li>
-
-            </ul>
+            <h2 class="channel-title_fl"><a href="show">新品上市</a></h2>
             <div class="channel-more_fr">
                 <a href="show">查看更多<i class="iconfont icon-jiantou"></i></a>
             </div>
@@ -406,8 +400,8 @@
                         <img th:src="${n.carImage.imgUrl}" alt="">
                     </p>
                     <div class="center_rxdp_1"><font th:text="${n.name}"></font></div>
-                    <p class="grid-1">最低价：￥<font th:text="${n.priceLow}"></font></p>
-                    <p>最高价：￥<font th:text="${n.priceHigh}"></font></p>
+                    <p class="grid-1">最低价：￥<font th:text="${n.priceLow}"></font>万元</p>
+                    <p>最高价：￥<font th:text="${n.priceHigh}"></font>万元</p>
                     <p class="grid-2"><font th:text="${n.countryClassName}"></font></p>
                     <p class="grid-3">
                         <em>
@@ -424,6 +418,38 @@
         <a href="">
             <img src="img/hb02.jpg" alt="">
         </a>
+    </div>
+
+    <div class="banner_3" th:if="${TagCar != null}" >
+        <div class="div_h">
+            <h2 class="channel-title_fl"><a href="show">精品推荐</a></h2>
+            <div class="channel-more_fr">
+                <a href="show">查看更多<i class="iconfont icon-jiantou"></i></a>
+            </div>
+        </div>
+        <ul class="banner_3_1">
+            <li class="banner_3_1_1">
+                <a href="commodity.html">
+                    <img src="img/cebiao02.jpg">
+                </a>
+            </li>
+            <li class="center_rxdp_right1" th:each="n:${TagCar}">
+                <a th:href="@{detail(cid=${n.id})}">
+                    <p class="center_p_1">
+                        <img th:src="${n.carImage.imgUrl}" alt="">
+                    </p>
+                    <div class="center_rxdp_1"><font th:text="${n.name}"></font></div>
+                    <p class="grid-1">最低价：￥<font th:text="${n.priceLow}"></font>万元</p>
+                    <p>最高价：￥<font th:text="${n.priceHigh}"></font>万元</p>
+                    <p class="grid-2"><font th:text="${n.countryClassName}"></font></p>
+                    <p class="grid-3">
+                        <em>
+                            <span>精品推荐</span>
+                        </em>
+                    </p>
+                </a>
+            </li>
+        </ul>
     </div>
     
     <!-- 口号 -->

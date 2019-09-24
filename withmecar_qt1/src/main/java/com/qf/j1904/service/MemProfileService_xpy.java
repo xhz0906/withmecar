@@ -16,4 +16,6 @@ public interface MemProfileService_xpy {
      * @return
      */
     public boolean updatePro(@Param("memberProfile") MemberProfile memberProfile);
+
+    public boolean updateImg(String img);
 }

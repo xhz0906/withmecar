@@ -6,7 +6,7 @@
         <id property="id" column="id"></id>
         <result property="content" column="content"/>
         <result property="type" column="type"/>
-        <result property="link" column="link"/>
+        <result property="title" column="title"/>
         <result property="isSchedule" column="is_schedule"/>
         <result property="scheduleTime" column="schedule_time"/>
         <result property="sendTime" column="send_time"/>
