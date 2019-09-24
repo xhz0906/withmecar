@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hi.cc.mapper.TagMapper">
+    <resultMap id="TagMap" type="hi.car.pojo.Tag">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="isDeleted" column="is_deleted"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="lastUpdateTime" column="last_update_time"></result>
+        <result property="clickCount" column="click_count"></result>
+        <result property="type" column="type"></result>
+    </resultMap>
+    <select id="findAll" resultMap="TagMap">
+        select
+        *
+        from
+        tag
+    </select>
+    <select id="findQbz" resultMap="TagMap">
+        select
+        *
+        from
+        tag
+        where
+        type =1
+    </select>
+    <select id="findSy" resultMap="TagMap">
+        select
+        *
+        from
+        tag
+        where
+        type =0
+    </select>
+    <select id="findByid" parameterType="int" resultMap="TagMap">
+        select
+        *
+        from
+        tag
+        where
+        id=#{tagid}
+    </select>
+    <update id="updateById" parameterType="hi.car.pojo.Tag" >
+        update
+        tag
+        set
+        name=#{tag.name},
+        click_count=#{tag.clickCount},
+        last_update_time=#{tag.lastUpdateTime}
+        where
+        id=#{tag.id}
+    </update>
+    <select id="findByName" parameterType="string" resultMap="TagMap">
+        select
+        *
+        from
+        tag
+        where
+        name=#{name}
+    </select>
+    <update id="updateLoc1" >
+        update
+        tag
+        set
+       type =0
+        where
+        id=#{id}
+    </update>
+    <update id="updateLoc2" >
+        update
+        tag
+        set
+       type =1
+        where
+        id=#{id}
+    </update>
+</mapper>

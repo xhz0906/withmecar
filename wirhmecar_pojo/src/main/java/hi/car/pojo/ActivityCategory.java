@@ -1,12 +1,16 @@
 package hi.car.pojo;
 
-import java.io.Serializable;
+import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+@Data
 public class ActivityCategory implements Serializable {
     private int id;
     private String name;
     private int isDeleted;
-    private int createTime;
-    private int lastUpdateTime;
+    private Date createTime;
+    private Date lastUpdateTime;
     private String useCount;
 }
