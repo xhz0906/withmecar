@@ -80,21 +80,24 @@ b{
 
 /*登陆*/
 .login_bg {
-	height:590px;
+	height:650px;
     background-color: #081638;
 }
 .login_adBg{
-	height:590px;
 	background:url(../img/carlogin01.jpg) no-repeat;
+    height: 750px;
+    background-size: 100% 120%;
 }
 .login_right{
 	width:380px;
 	height:470px;
 	background:white;
     position: relative;
-    left: 816px;
+    left: 950px;
     top: 36px;
     padding:24px 0 24px 0;
+    filter:alpha(Opacity=80);-moz-opacity:0.9;opacity: 0.9;
+    border-radius:10px 10px 10px 10px;
 }
 .login_h{
 	width:380px;
