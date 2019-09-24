@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class AdminMenuAuth implements Serializable {
     private int id;
     private String controller;
-    private String action;
+    private String action ="false";
     private String name;
     private String classname;
     private int status;
