@@ -28,21 +28,21 @@ public interface TagMapper_xpy {
      * @param map
      * @return
      */
-    public int deleteMemTag(@Param("map") Map<String, Integer> map);
+    public int deleteMemTag(@Param("map") Map<String,Integer> map);
 
     /**
      * 添加会员标签
      * @param map
      * @return
      */
-    public int saveMemTag(@Param("mt") MemberTag mt);
+    public int saveMemTag(@Param("mt")MemberTag mt);
 
     /**
      * 根据id查询标签
      * @param id
      * @return
      */
-    public Tag findNameById(@Param("map") Map<String, Integer> map);
+    public Tag findNameById(@Param("map")Map<String,Integer> map);
 
     public Tag findByName(String name);
 }

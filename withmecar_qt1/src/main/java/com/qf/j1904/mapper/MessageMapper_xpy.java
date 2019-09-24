@@ -14,7 +14,7 @@ public interface MessageMapper_xpy {
      * @param map
      * @return
      */
-    public List<Message> findMessByTime(@Param("map") Map<String, String> map);
+    public List<Message> findMessByTime(@Param("map") Map<String,String> map);
 
     /**
      * 根据时间降序排序

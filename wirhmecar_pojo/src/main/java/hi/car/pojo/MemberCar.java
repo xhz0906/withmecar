@@ -18,4 +18,5 @@ public class MemberCar implements Serializable {
     private int type;//	座驾类型		tinyint
     private String createTime;//	创建时间		int(11)
     private String updateTime;//	最后更新时间		int(11)
+    private Car car;
 }

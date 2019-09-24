@@ -23,4 +23,10 @@ public class ProfileServiceImpl_xpy implements MemProfileService_xpy {
         int c = memProfileMapper.updatePro(memberProfile);
         return c>0?true:false;
     }
+
+    @Override
+    public boolean updateImg(String img) {
+        int c = memProfileMapper.updateImg(img);
+        return c>0?true:false;
+    }
 }

@@ -20,4 +20,10 @@
           description=#{memberProfile.description},
           address=#{memberProfile.address}
     </update>
+    <update id="updateImg" parameterType="string">
+        update
+        member_profile
+        set
+        avatar_url=#{img}
+    </update>
 </mapper>

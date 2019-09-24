@@ -23,8 +23,8 @@
         member_car
         set
         member_id=#{mcar.memberId},brand_id=#{mcar.brandId},make_id=#{mcar.makeId},model_id=#{mcar.modelId},
-        car_id=#{mcar.carId},buy_year=#{mcar.buyYear},current_mileage=#{mcar.currentMileage},remark=#{mcar.remark},
-        type=#{mcar.type},createTime=#{mcar.createTime},updateTime=#{updateTime}
+        buy_year=#{mcar.buyYear},current_mileage=#{mcar.currentMileage},remark=#{mcar.remark},
+        type=#{mcar.type},create_time=#{mcar.createTime},last_update_time=#{mcar.updateTime}
         where
         id=#{mcar.id}
     </update>

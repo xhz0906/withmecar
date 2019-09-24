@@ -13,7 +13,7 @@ public interface CarService_xpy {
      * @param car
      * @return
      */
-    public boolean updateCar(@Param("car") Car car);
+    public boolean updateCar(@Param("car")Car car);
     /**
      * 添加car
      * @return
@@ -26,7 +26,7 @@ public interface CarService_xpy {
     public int findMaxId();
     /**
      * 根据车款车系id查询
-     * @param map
+     * @param cid
      * @return
      */
     public Car findCarByBranMake(int cid);
@@ -62,7 +62,7 @@ public interface CarService_xpy {
      * @param rows
      * @return
      */
-    public List<Car> findAllPage(int page, int rows);
+    public List<Car> findAllPage(int page,int rows);
 
     /**
      * 查询最大页数

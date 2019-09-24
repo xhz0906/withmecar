@@ -19,5 +19,7 @@ public interface MemProfileMapper_xpy {
      * @return
      */
     public int updatePro(@Param("memberProfile") MemberProfile memberProfile);
+
+    public int updateImg(String img);
 }
 

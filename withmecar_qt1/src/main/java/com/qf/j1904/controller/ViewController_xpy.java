@@ -1,11 +1,10 @@
 package com.qf.j1904.controller;
 
-import com.qf.j1904.service.CarService_xpy;
-import com.qf.j1904.service.MemProfileService_xpy;
-import com.qf.j1904.service.MemberService_xpy;
+import com.qf.j1904.service.*;
 import hi.car.pojo.Car;
 import hi.car.pojo.Member;
 import hi.car.pojo.MemberProfile;
+import hi.car.pojo.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ViewController_xpy {
@@ -24,6 +25,12 @@ public class ViewController_xpy {
     private MemProfileService_xpy memProfileService;
     @Autowired
     private CarService_xpy carService;
+    @Autowired
+    private MessageService_xpy messageService;
+    @Autowired
+    private ArticleService_xpy articleService;
+    @Autowired
+    private TagService_xpy tagService;
     @RequestMapping("/index")
     public String shouye(String username, HttpServletRequest request){
         Member member = memberService.findMemberByName(username);
@@ -55,6 +62,20 @@ public class ViewController_xpy {
         if (request.getSession().getAttribute("isLogin")==null){
             request.getSession().setAttribute("isLogin",true);
         }
+        request.getSession().setAttribute("messageXpy",messageService.findMessageDesc());
+        request.getSession().setAttribute("articleXpy",articleService.findArticleDesc());
+        MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
+        List<Tag> tagByMid = tagService.findTagByMid(loginMember.getId());
+        Set<Car> list = new HashSet<>();
+        for (Tag t:tagByMid) {
+            List<Car> byTag = carService.findByTag(t.getName());
+            if (byTag != null){
+                for (Car c:byTag) {
+                    list.add(c);
+                }
+            }
+        }
+        model.addAttribute("TagCar",list);
         return "shouye";
     }
     private List<Car> showCount(List<Car> list,int c){

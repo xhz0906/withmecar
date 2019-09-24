@@ -3,6 +3,8 @@ package com.qf.j1904.service;
 import hi.car.pojo.MemberCar;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface MemCarService_xpy {
     /**
      * 修改信息
@@ -16,7 +18,7 @@ public interface MemCarService_xpy {
      * @param id
      * @return
      */
-    public MemberCar findMemCarById(int id, int type);
+    public List<MemberCar> findMemCarById(int id, int type);
     /**
      * 添加座驾
      * @param memcar

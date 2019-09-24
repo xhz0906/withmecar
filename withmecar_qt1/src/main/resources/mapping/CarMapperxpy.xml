@@ -63,7 +63,7 @@
         update
         car
         set
-        brand_id=#{car.brandId},brand_name=#{car.brandName},make_id=#{car.makeId},make_name=#{car.name},name=#{car.name},country_class=#{car.countryClass},country_class_name=#{car.countryClassName},create_time=#{car.createName}
+        brand_id=#{car.brandId},brand_name=#{car.brandName},make_id=#{car.makeId},make_name=#{car.makeName},name=#{car.name},country_class=#{car.countryClass},country_class_name=#{car.countryClassName},create_time=#{car.createTime}
         where
         id=#{car.id}
     </update>
@@ -90,6 +90,12 @@
           car_image
         where
           id=#{cid}
+    </select>
+    <select id="findAllCar" resultMap="carMap">
+        select
+          *
+        from
+          car
     </select>
     <select id="findAll" resultMap="carMap">
         select 
@@ -151,6 +157,7 @@
         where
           name=#{name}
     </select>
+
     <select id="findByTag" parameterType="string" resultMap="carMap">
         select
         *

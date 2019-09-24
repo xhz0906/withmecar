@@ -141,8 +141,7 @@
                 <div class="ms-side" style="margin-top: 20px;">
                     <article class="side-menu side-menu-off">
                         <dl class="side-menu-tree" style="padding-left: 50px;">
-                            <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
-                            <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
+                            <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
                             <dd>
                                 <a href="MemManager">个人资料</a>
                                 <a href="MyTag">我的标签</a>
@@ -153,13 +152,13 @@
                                 <a href="MyCar?type=1">已有座驾</a>
                                 <a href="MyCar?type=2">期望座驾</a>
                             </dd>
-                            <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>
+                            <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>跳转</dt>
                             <dd>
-                                <a >退换货</a>
+                                <a href="shouye">回到首页</a>
 
                             </dd>
                             <dd>
-                                <a>意见/投诉</a>
+                                <a href="loginOut">退出登录</a>
 
                             </dd>
                         </dl>
@@ -177,154 +176,131 @@
                         <div class="server-tab" style="margin-top: 26px;">
                             <div style=" float: left;vertical-align: bottom;text-align: center;">
                                 <div style="width: 800px;float: left;">
-                                    <div style="width: 800px;padding: 10px;height: 220px;background-color: #fff;">
-                                        <div style="width: 340px;height: 200px;float: left;padding-top: 30px;margin-left: 100px;">
-                                            <style>
-                                                .ul1 li{
-                                                    height: 30px;
-                                                }
-                                            </style>
-                                            <ul class="ul1" style="text-align: left;">
-                                                <li><span style="font-size: 17px;">账号：<font th:text="${session.loginMember.mobile}"></font></span></li>
-                                                <li><span style="font-size: 17px;">密码：*********</span></li>
-                                                <li><span id="sp1" style="font-size: 17px;">昵称：<font th:text="${session.loginMember.nickname}"></font></span></li>
-                                                <li><span style="font-size: 17px;">会员等级：<font th:text="${session.loginMember.level}"></font></span></li>
-                                                <li><span style="font-size: 17px;">邮箱：<font th:text="${session.loginMember.email}"></font></span></li>
-                                                <li><span style="font-size: 17px;">注册时间：<font th:text="${session.loginMember.register_time}"></font></span></li>
-                                            </ul>
-                                        </div>
-                                        <div style="width: 300px;height: 200px;float: left;padding-top: 30px;">
-                                            <img style="width: 100px;height: 100px;" th:src="${session.loginMember.avatar_url}"><br>
-                                            <button>修改头像</button>
-                                        </div>
-                                    </div>
-                                    <style>
 
-                                    </style>
                                     <div style="margin-top: 30px;width: 800px;padding:10px;display: inline-block; float: left;margin-top: 20px;background-color: #fff;">
-                                        <div th:if="${session.type == 1}" style="margin-left: 50px;width: 200px">
+                                        <div th:if="${session.type == 1}" style="margin-left: 50px;width: 350px">
                                             <span style="font-size: 20px">我的座驾 >> 已有座驾 >>修改座驾</span>
                                         </div>
-                                        <div th:if="${session.type == 2}" style="margin-left: 50px;width: 200px">
+                                        <div th:if="${session.type == 2}" style="margin-left: 50px;width: 350px">
                                             <span style="font-size: 20px">我的座驾 >> 期望座驾 >>修改座驾</span>
                                         </div>
-                                    </div>
-                                    <style>
-                                        .car1{
-                                            width: 250px;
-                                            height: 200px;
-                                        }
-                                        .ipi{
-                                            font-size:1.4em;
-                                            width: 300px;
-                                            height:30px;
-                                            border-radius:4px;
-                                            border:1px solid #c8cccf;
-                                            color:#6a6f77;
-                                        }
-                                        tarea{
-                                            font-size:1em;
-                                            width: 300px;
-                                            height:100px;
-                                            border-radius:4px;
-                                            border:1px solid #c8cccf;
-                                            color:#6a6f77;
-                                        }
-                                        tr{
-                                            height: 60px;
-                                        }
-                                    </style>
-                                    <hr>
-                                    <div style="margin-top: 30px;margin-bottom: 30px;margin-left: 50px">
-                                        <table style="width: 500px;">
-                                            <tr>
-                                                <td style="text-align: right;width: 100px">
-                                                    图片：
-                                                </td>
-                                                <td>
-                                                    <img id="tupian" th:src="${MyCar.car.carImage.imgUrl}" style="height: 50px;width: 50px"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;width: 100px">
-                                                    品牌：
-                                                </td>
-                                                <td>
-                                                    <input class="ipi" type="text" id="pinpai" th:value="${MyCar.car.brandName}"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;width: 100px">
-                                                    车系：
-                                                </td>
-                                                <td>
-                                                    <input class="ipi" type="text" id="chexi" th:value="${MyCar.car.makeName}"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;width: 100px">
-                                                    车款：
-                                                </td>
-                                                <td>
-                                                    <input class="ipi" type="text" id="chekuan" th:value="${MyCar.car.name}" disabled/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;width: 100px">
-                                                    购买年份：
-                                                </td>
-                                                <td>
-                                                    <input class="ipi" type="text" id="buyyear" th:value="${MyCar.buyYear}"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;width: 100px">
-                                                    当前里程：
-                                                </td>
-                                                <td>
-                                                    <input class="ipi" type="text" th:value="${MyCar.currentMileage}" id="currentm" disabled/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;width: 100px">
-                                                    备注：
-                                                </td>
-                                                <td>
-                                                    <textarea class="tarea" type="text" id="beizhu" th:value="${MyCar.remark}"></textarea>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    <input id="in1" type="hidden" th:value="${MyCar.id}">
-                                                    <input id="in2" type="hidden" th:value="${MyCar.car.id}">
-                                                    <button  class="btn btn-info" id="commit">提交</button>
-                                                </td>
-                                            </tr>
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $("#commit").click(function () {
-                                                        var pinpai = $("#pinpai").val();
-                                                        var chexi = $("#chexi").val();
-                                                        var chekuan = $("#chekuan").val();
-                                                        var buyyear = $("#buyyear").val();
-                                                        var current = $("#currentm").val();
-                                                        var beizhu = $("#beizhu").val();
-                                                        var id = $("#in1").val();
-                                                        var cid = $("#in2").val();
-                                                        $.post("updateMyCar",{"id":id,"cid":cid,"pinpai":pinpai,"chexi":chexi,"chekuan":chekuan,
-                                                        "buyyear":buyyear,"current":current,"beizhu":beizhu},function (data) {
-                                                            if (data == true){
-                                                                alert("修改信息成功");
-                                                                location.href = "MyCarOne";
-                                                            } else {
-                                                                alert("修改失败");
-                                                            }
+                                        <style>
+                                            .car1{
+                                                width: 250px;
+                                                height: 200px;
+                                            }
+                                            .ipi{
+                                                font-size:15px;
+                                                width: 300px;
+                                                height:30px;
+                                                border-radius:4px;
+                                                border:1px solid #c8cccf;
+                                                color:#6a6f77;
+                                            }
+                                            .tarea{
+                                                font-size:15px;
+                                                width: 300px;
+                                                height:100px;
+                                                border-radius:4px;
+                                                border:1px solid #c8cccf;
+                                                color:#6a6f77;
+                                            }
+                                            tr{
+                                                height: 60px;
+                                            }
+                                        </style>
+                                        <hr>
+                                        <div style="margin-top: 30px;margin-bottom: 30px;margin-left: 150px">
+                                            <table style="width: 500px;">
+                                                <tr>
+                                                    <td style="text-align: right;width: 100px">
+                                                        图片：
+                                                    </td>
+                                                    <td>
+                                                        <img id="tupian" th:src="${MyCar.car.carImage.imgUrl}" style="height: 50px;width: 50px"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;width: 100px">
+                                                        品牌：
+                                                    </td>
+                                                    <td>
+                                                        <input class="ipi" type="text" id="pinpai" th:value="${MyCar.car.brandName}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;width: 100px">
+                                                        车系：
+                                                    </td>
+                                                    <td>
+                                                        <input class="ipi" type="text" id="chexi" th:value="${MyCar.car.makeName}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;width: 100px">
+                                                        车款：
+                                                    </td>
+                                                    <td>
+                                                        <input class="ipi" type="text" id="chekuan" th:value="${MyCar.car.name}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;width: 100px">
+                                                        购买年份：
+                                                    </td>
+                                                    <td>
+                                                        <input class="ipi" type="text" id="buyyear" th:value="${MyCar.buyYear}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;width: 100px">
+                                                        当前里程：
+                                                    </td>
+                                                    <td>
+                                                        <input class="ipi" type="text" th:value="${MyCar.currentMileage}" id="currentm"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;width: 100px">
+                                                        备注：
+                                                    </td>
+                                                    <td>
+                                                        <textarea class="tarea" type="text" id="beizhu" th:value="${MyCar.remark}"></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <input id="in1" type="hidden" th:value="${MyCar.id}">
+                                                        <input id="in2" type="hidden" th:value="${MyCar.car.id}">
+                                                        <button  class="btn btn-info" id="commit">提交</button>
+                                                    </td>
+                                                </tr>
+                                                <script type="text/javascript">
+                                                    $(function () {
+                                                        $("#commit").click(function () {
+                                                            var pinpai = $("#pinpai").val();
+                                                            var chexi = $("#chexi").val();
+                                                            var chekuan = $("#chekuan").val();
+                                                            var buyyear = $("#buyyear").val();
+                                                            var current = $("#currentm").val();
+                                                            var beizhu = $("#beizhu").val();
+                                                            var id = $("#in1").val();
+                                                            var cid = $("#in2").val();
+                                                            $.post("updateMyCar",{"id":id,"cid":cid,"pinpai":pinpai,"chexi":chexi,"chekuan":chekuan,
+                                                                "buyyear":buyyear,"current":current,"beizhu":beizhu},function (data) {
+                                                                if (data == true){
+                                                                    alert("修改信息成功");
+                                                                    location.href = "MyCarOne";
+                                                                } else {
+                                                                    alert("修改失败");
+                                                                }
+                                                            });
                                                         });
-                                                    });
-                                                })
-                                            </script>
-                                        </table>
+                                                    })
+                                                </script>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +314,7 @@
                                     </div>
                                     <div th:each="a:${session.articleXpy}">
                                         <hr style="color: #0e93d7">
-                                        <a href="#">
+                                        <a href="zixun">
                                             <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
                                             <span><font th:text="${a.summary}"></font></span><br>
                                             <span><font th:text="${a.submitTime}"></font></span><br>
@@ -355,7 +331,7 @@
                                     <div th:each="a:${session.messageXpy}">
                                         <hr style="color: #0e93d7">
                                         <a href="#">
-                                            <span style="color: #0a6999"><font th:text="${a.link}"></font></span><br>
+                                            <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
                                             <span><font th:text="${a.content}"></font></span><br>
                                             <span><font th:text="${a.sendTime}"></font></span><br>
                                         </a>

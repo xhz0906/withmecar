@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -26,7 +27,7 @@ public class MemCarServiceImpl_xpy implements MemCarService_xpy {
     }
 
     @Override
-    public MemberCar findMemCarById(int id,int type) {
+    public List<MemberCar> findMemCarById(int id, int type) {
         Map<String,Integer> map = new HashMap<>();
         map.put("id",id);
         map.put("type",type);
