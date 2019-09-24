@@ -9,8 +9,8 @@ public class Tag implements Serializable {
     private int id;
     private String name;
     private int isDeleted;
-    private int createTime;
-    private int lastUpdateTime;
+    private String createTime;
+    private String lastUpdateTime;
     private int clickCount;
     private int type;
 }

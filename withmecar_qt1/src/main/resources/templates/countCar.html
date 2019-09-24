@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="header_1">
+        <ul class="header_1ul">
+            <li><a href="shouye">首页</a></li>
+            <li style="width: 80px;"><a href="">伴我汽车官网</a></li>
+            <li><a href="">Select Region</a></li>
+            <li class="xialacaidan">
+                <a class="header_1_8" href="">更多精彩</a>
+                <div class="header_xiala">
+                    <div class="header_1_xiala">
+                        <dl class="header_xiala_1">
+                            <dt><a href="">暂无</a></dt>
+                            <dt><a href="">暂无</a></dt>
+                            <dt><a href="">暂无</a></dt>
+                            <dt><a href="">暂无</a></dt>
+                        </dl>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="header_ul">
+            <li th:if="${session.isLogin==true}">
+                <a href="http://localhost:8080/login">请登录</a></li>
+            <li th:if="${session.isLogin==true}">
+                <a href="http://localhost:8080/register">注册</a>
+            </li>
+            <li style="width: 130px" th:if="${session.isLogin==false}">
+                <a>欢迎您：<font th:text="${session.loginMember.nickname}"></font></a>
+            </li>
+            <li th:if="${session.isLogin==false}">
+                <a href="loginOut">退出</a>
+            </li>
+            <li>
+                <a href="">个人中心</a>
+            </li>
+            <li>
+                <a href="">我的收藏</a>
+            </li>
+            <li class="xialacaidan">
+                <a href="">客户服务
+                </a>
+                <div class="b">
+                    <div class="b-1">
+                        <dl class="b-1-1">
+                            <dt><a href="">服务中心</a></dt>
+                            <dt><a href="">联系客服</a></dt>
+                        </dl>
+                    </div>
+                </div>
+            </li>
+            <li class="header_ul_5">
+                <a style="width: 90px;" href=""><i class="iconfont icon-caidanlangouwuche"></i>购物车(0)</a>
+                <div class="z">
+                    <div class="dropdown-minicart">
+                        <div class="dropdown-m">
+                            <p>
+                                <span class="icon-minicart"><i class="iconfont icon-caidanlangouwuche"></i></span>
+                            </p>
+                            <p>您的购物车是空的赶紧选购吧~</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="header_top">
+    <div class="header_two">
+        <div class="header_left">
+            <div class="header_log">
+                <a href="" class="header_a">
+                    <img class="header_img" src="img/Carlogo.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="header_right">
+            <form class="header_form" action="">
+                <input type="text" class="text" placeholder="">
+                <input type="submit" class="submit">
+            </form>
+        </div>
+    </div>
+</div>
+<div style="padding-top:10px;width: 100%;height: 230px;margin-left: 150px">
+    <table>
+        <tr style="height: 35px;text-align: center;">
+            <td style="text-align: center;">
+                <a href="countCar?count=中国">
+                <p><span style="font-size: 19px;color: #B40707">中国:&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+
+            <td th:each="z:${zhong}" style="text-align: center;">
+                <a th:href="@{pinpai(name=${z.name})}">
+                <p><span style="font-size: 19px;"><font th:text="${z.name}"></font>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+        </tr>
+        <tr   style="height: 35px;text-align: center;">
+            <td style="text-align: center;">
+                <a href="countCar?count=法国">
+                <p><span style="font-size: 19px;color: #B40707">法国:&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+
+            <td th:each="z:${fa}" style="text-align: center;">
+                <a th:href="@{pinpai(name=${z.name})}">
+                <p><span style="font-size: 19px"><font th:text="${z.name}"></font>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+        </tr>
+        <tr style="height: 35px;text-align: center;">
+            <td style="text-align: center;">
+                <a href="countCar?count=德国">
+                <p><span style="font-size: 19px;color: #B40707">德国:&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+
+            <td th:each="z:${de}" style="text-align: center;">
+                <a th:href="@{pinpai(name=${z.name})}">
+                <p><span style="font-size: 19px"><font th:text="${z.name}"></font>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+        </tr>
+        <tr style="height: 35px;text-align: center;">
+            <td style="text-align: center;">
+                <a href="countCar?count=日本">
+                <p><span style="font-size: 19px;color: #B40707">日本:&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+            <td th:each="z:${ri}" style="text-align: center;">
+                <a th:href="@{pinpai(name=${z.name})}">
+                <p><span style="font-size: 19px"><font th:text="${z.name}"></font>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+        </tr>
+        <tr style="height: 35px;text-align: center;">
+            <td style="text-align: center;">
+                <a href="countCar?count=欧美">
+                <p><span style="font-size: 19px;color: #B40707">欧美:&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+            <td th:each="z:${ou}" style="text-align: center;">
+                <a th:href="@{pinpai(name=${z.name})}">
+                <p><span style="font-size: 19px"><font th:text="${z.name}"></font>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+        </tr>
+        <tr style="height: 35px;text-align: center;">
+            <td style="text-align: center;">
+                <a href="countCar?count=意大利">
+                <p><span style="font-size: 19px;color: #B40707">意大利:&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+            <td th:each="z:${yi}" style="text-align: center;">
+                <a th:href="@{pinpai(name=${z.name})}">
+                <p><span style="font-size: 19px"><font th:text="${z.name}"></font>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div style="padding-top:10px;width: 1200px;height: 30px;background-color: #c4c4c4;margin-left: 150px;">
+    <div style="float: left;">
+        <span style="font-size: 20px"><a href="shouye">首页</a></span>
+        <span style="font-size: 20px"> >> <a th:href="@{countCar(count=${country})}"><font th:text="${country}"></font></a></span>
+        <span style="font-size: 20px" th:if="${isPinPai == true}"> >> <font th:text="${pinpaiName}"></font></span>
+    </div>
+</div>
+<div style="margin-left: 150px;" class="banner_3" >
+    <ul class="banner_3_1">
+        <li class="center_rxdp_right1" th:each="n:${carList}">
+            <a th:href="@{detail(cid=${n.id})}">
+                <p class="center_p_1">
+                    <img th:src="${n.carImage.imgUrl}" alt="">
+                </p>
+                <div class="center_rxdp_1"><font th:text="${n.name}"></font></div>
+                <p class="grid-1">最低价：￥<font th:text="${n.priceLow}"></font></p>
+                <p>最高价：￥<font th:text="${n.priceHigh}"></font></p>
+                <p class="grid-2"><font th:text="${n.countryClassName}"></font></p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="banner_10">
+    <a href="">
+        <img src="img/hb02.jpg" alt="">
+    </a>
+</div>
+
+<!-- 口号 -->
+<div class="zhanwei1"></div>
+<div class="slogan-container">
+    <div class="slogan">
+        <ul>
+            <li class="s1">
+                <a href="">
+                    <i></i>
+                    百强企业&nbsp;品质保证
+                </a>
+            </li>
+            <li class="s1">
+                <a href="">
+                    <i></i>
+                    七天退货&nbsp;十五天换货
+                </a>
+            </li>
+            <li class="s1">
+                <a href="">
+                    <i></i>
+                    48元起免运费
+                </a>
+            </li>
+            <li class="s1">
+                <a href="">
+                    <i></i>
+                    1000家维修网点&nbsp;全国联保
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 服务 -->
+<div class="service-container">
+    <div class="service">
+        <div class="service-l-fl">
+            <div class="a1">
+                <dt>
+                    <p>购物相关</p>
+                </dt>
+                <dd>
+                    <ol>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                    </ol>
+                </dd>
+            </div>
+            <div class="a1">
+                <dt>
+                    <p>购物相关</p>
+                </dt>
+                <dd>
+                    <ol>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                    </ol>
+                </dd>
+            </div>
+            <div class="a1">
+                <dt>
+                    <p>购物相关</p>
+                </dt>
+                <dd>
+                    <ol>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                    </ol>
+                </dd>
+            </div>
+            <div class="a1">
+                <dt>
+                    <p>购物相关</p>
+                </dt>
+                <dd>
+                    <ol>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                    </ol>
+                </dd>
+            </div>
+            <div class="a1">
+                <dt>
+                    <p>购物相关</p>
+                </dt>
+                <dd>
+                    <ol>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                    </ol>
+                </dd>
+            </div>
+            <div class="a1">
+                <dt>
+                    <p>购物相关</p>
+                </dt>
+                <dd>
+                    <ol>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                        <li>
+                            <a href="">购物指南</a>
+                        </li>
+                    </ol>
+                </dd>
+            </div>
+        </div>
+        <div class="service-r-fl">
+            <div class="s7">
+                <dt>
+                    <p class="title">400-088-6888</p>
+                </dt>
+                <dd><a href="">7*24小时客服热线(仅收市话)</a></dd>
+                <dd>
+                    <a class="xxx" href="">
+                        <i class="iconfont icon-zaixiankefu"></i>
+                        在线客服
+                    </a>
+                </dd>
+            </div>
+            <div class="service-code-clearfix">
+                <h2>关注Vmall:</h2>
+                <ul class="clearfix">
+                    <li>
+                        <a href=""><i class="iconfont icon-weixin"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="iconfont icon-zaixiankefu"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="iconfont icon-weibo"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="iconfont icon-huawei"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer-container">
+    <div class="footer">
+        <div class="footer1">
+            <p class="footerp">
+                <a href="">
+                </a>
+            </p>
+            <div class="f1">
+                <ul>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                    <li>
+                        <a href="">伴我汽车</a>
+                    </li>
+                </ul>
+                <a class="a11" href="">隐私声明</a>
+                <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                <a class="a11" href="">隐私隐私声明隐私声明声明</a>
+                <a class="a11" href="">隐私隐私声明声明</a>
+                <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                <br>
+                <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+            </div>
+            <a class="aaa1" href=""><img src="img/20160226162415360.png" alt=""></a>
+            <a class="aaa2" href=""><img src="img/20180522101715775.jpg" alt=""></a>
+        </div>
+    </div>
+</div>
+<!-- 悬浮窗口 -->
+<div class="xfck">
+    <div class="xfck_1">
+        <a href="">
+            <i class="iconfont icon-caidanlangouwuche"></i>
+            <span style="display:none;"></span>
+            <p>购物车<span></span></p>
+        </a>
+    </div>
+    <div class="xfck_1">
+        <a href="">
+            <i class="iconfont icon-zaixiankefu"></i>
+            <span style="display:none;"></span>
+            <p>在线客服<span></span></p>
+        </a>
+    </div>
+    <div class="xfck_1">
+        <a href="">
+            <i class="iconfont icon-yijianfankui"></i>
+            <span style="display:none;"></span>
+            <p>意见反馈<span></span></p>
+        </a>
+    </div>
+    <!-- <div class="xfck_1">
+        <a href="">
+            <i class="iconfont icon-fanhuidingbu"></i>
+            <span style="display:none;"></span>
+            <p>返回顶部<span></span></p>
+        </a>
+    </div> -->
+</div>
+</body>
+<script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+    })
+</script>
+</html>
+<script src="js/jQuery.js"></script>
+<script src="js/index.js"></script>
+<script src="js/shouye.js"></script>

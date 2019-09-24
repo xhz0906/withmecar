@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<!-- header -->
+<div class="header">
+        <div class="header_1">
+            <ul class="header_1ul">
+                <li><a href="shouye">首页</a></li>
+                <li style="width: 80px;"><a href="">伴我汽车官网</a></li>
+                <li><a href="">Select Region</a></li>
+                <li class="xialacaidan">
+                    <a class="header_1_8" href="">更多精彩</a>
+                    <div class="header_xiala">
+                        <div class="header_1_xiala">
+                            <dl class="header_xiala_1">
+                                <dt><a href="">暂无</a></dt>
+                                <dt><a href="">暂无</a></dt>
+                                <dt><a href="">暂无</a></dt>
+                                <dt><a href="">暂无</a></dt>
+                            </dl>
+                        </div>	
+                    </div>	
+                </li>
+            </ul>
+            <ul class="header_ul">
+                <li th:if="${session.isLogin==true}">
+                <a href="http://localhost:8080/login">请登录</a></li>
+                <li th:if="${session.isLogin==true}">
+                    <a href="http://localhost:8080/register">注册</a>
+                </li>
+                <li style="width: 200px" th:if="${session.isLogin==false}">
+                    <a>欢迎您：<font th:text="${session.loginMember.nickname}"></font></a>
+                </li>
+                <li th:if="${session.isLogin==false}">
+                    <a href="loginOut">退出</a>
+                </li>
+                <li th:if="${session.isLogin==true}">
+                    <a href="http://localhost:8080/login">个人中心</a></li>
+                <li th:if="${session.isLogin==false}">
+                    <a href="MemManager">个人中心</a>
+                </li>
+                <li>
+                    <a href="">我的收藏</a>
+                </li>
+                <li class="xialacaidan">
+                    <a href="">客户服务
+                    </a>
+                    <div class="b">
+                        <div class="b-1">
+                            <dl class="b-1-1">
+                                <dt><a href="">服务中心</a></dt>
+                                <dt><a href="">联系客服</a></dt>
+                            </dl>
+                        </div>
+                    </div>
+                </li>
+                <li class="header_ul_5">
+                    <a style="width: 90px;" href=""><i class="iconfont icon-caidanlangouwuche"></i>购物车(0)</a>
+                    <div class="z">
+                        <div class="dropdown-minicart">
+                            <div class="dropdown-m">
+                                <p>
+                                    <span class="icon-minicart"><i class="iconfont icon-caidanlangouwuche"></i></span>
+                                </p>
+                                <p>您的购物车是空的赶紧选购吧~</p>
+                            </div>
+                        </div>	
+                    </div>
+                </li>
+            </ul>		
+        </div>
+    </div>
+<!-- header_top -->
+<div class="header_top">
+    <div class="header_two">
+        <div class="header_left">
+            <div class="header_log">
+                <a href="" class="header_a">
+                    <img class="header_img" src="img/Carlogo.png" alt="">
+                </a>
+            </div>
+        </div>
+            <div class="header_right">
+                <form class="header_form" action="">
+                    <input type="text" class="text" placeholder="">
+                    <input type="submit" class="submit">
+                </form>
+            </div>
+        </div>
+    <hr style="color: #1d7400">
+    </div>
+<!--banner-->
+<div id="box1" style="width:100%;height:550px;" class="banner">
+		<div id="banner_img">
+					<ul class="pic-list">
+						<li><img src="img/lunbo01.jpg"></li>
+						<li><img src="img/lunbo02.jpg"></li>
+						<li><img src="img/lunbo03.jpg"></li>
+						<li><img src="img/lunbo04.jpg"></li>
+						<li><img src="img/lunbo05.jpg"></li>
+                        <li><img src="img/lunbo06.jpg"></li>
+					</ul>
+					<div class="btn next">&gt;</div>
+					<div class="btn prev">&lt;</div>
+				</div>
+				<ul class="doudou">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+                    <li></li>
+                    <li></li>
+				</ul>
+        <!-- <a style="width:100%;height:550px;display:block;" href=""></a> -->
+    </div>
+    <div class="banner_daohang">
+            <div id="d1" class="banner_1">
+                <a class="banner_a1" href="countCar?count=中国">
+                    <span>国产</span>
+                </a>	
+                <a class="banner_a2" href="pinpai?name=中华">
+                    <span>中华</span>
+                </a>
+                <a class="banner_a3" href="pinpai?name=奇瑞">
+                    <span>奇瑞</span>
+                </a>
+                <div class="ul1">
+                    <ul class="ul1_1">
+                        <li id="couId" th:each="z:${zhong}">
+                            <a th:href="@{pinpai(name=${z.name})}">
+                                <img th:src="${z.logo}"/>
+                                <p><font th:text="${z.name}"></font></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>	
+            </div>
+
+            <div id="d2" class="banner_1">
+                <a class="banner_a1" href="countCar?count=法国">
+                    <span>法国</span>
+                </a>	
+                <a class="banner_a2" href="pinpai?name=雪铁龙">
+                    <span>雪铁龙</span>
+                </a>
+                <a class="banner_a3" href="pinpai?name=雷诺">
+                    <span>雷诺</span>
+                </a>
+                <div class="ul1">
+                    <ul class="ul1_1">
+                        <li id="couId" th:each="f:${fa}">
+                            <a th:href="@{pinpai(name=${f.name})}">
+                                <img th:src="${f.logo}"/>
+                                <p><font th:text="${f.name}"></font></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="d3" class="banner_1">
+                <a class="banner_a1" href="countCar?count=德国">
+                    <span>德国</span>
+                </a>	
+                <a class="banner_a2" href="pinpai?name=宝马">
+                    <span>宝马</span>
+                </a>
+                <a class="banner_a3" href="pinpai?name=奥迪">
+                    <span>奥迪</span>
+                </a>
+                <div class="ul1">
+                    <ul class="ul1_1">
+                        <li id="couId" th:each="d:${de}">
+                            <a th:href="@{pinpai(name=${d.name})}">
+                                <img th:src="${d.logo}"/>
+                                <p><font th:text="${d.name}"></font></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>	
+            </div>
+            <div id="d4" class="banner_1">
+                <a class="banner_a1" href="countCar?count=欧美">
+                    <span>欧美</span>
+                </a>	
+                <a class="banner_a2" href="pinpai?name=福特">
+                    <span>福特</span>
+                </a>
+                <a class="banner_a3" href="pinpai?name=雪佛兰">
+                    <span>雪佛兰</span>
+                </a>
+                <div class="ul1">
+                    <ul class="ul1_1">
+                        <li id="couId" th:each="o:${ou}">
+                            <a th:href="@{pinpai(name=${o.name})}">
+                                <img th:src="${o.logo}"/>
+                                <p><font th:text="${o.name}"></font></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>	
+            </div>
+            <div id="d5" class="banner_1">
+                <a class="banner_a1" href="countCar?count=日本">
+                    <span>日本</span>
+                </a>	
+                <a class="banner_a2" href="pinpai?name=本田">
+                    <span>本田</span>
+                </a>
+                <a class="banner_a3" href="pinpai?name=丰田">
+                    <span>丰田</span>
+                </a>
+                <div class="ul1">
+                    <ul class="ul1_1">
+                        <li id="couId" th:each="r:${ri}">
+                            <a th:href="@{pinpai(name=${r.name})}">
+                                <img th:src="${r.logo}"/>
+                                <p><font th:text="${r.name}"></font></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>	
+            </div>
+
+    </div>
+    <div class="ssss"></div>
+    <!--header_2-->
+    <ul class="header_2">
+        <li class="hr_left">
+            <div class="hr_left1">
+                <div class="hr_left1_1">
+                    <img src="img/img_not_logged_in.png" alt="">
+                </div>
+                <div class="hr_left1_2">
+                    <div  th:if="${session.isLogin==true}" class="hr_left1_2_1">
+                        您好！请
+                        <a href="http://localhost:8080/login">登陆</a>
+                        <span>&nbsp;/&nbsp;</span>
+                        <a href="http://localhost:8080/register">注册</a>
+                    </div>
+                    <div  th:if="${session.isLogin==false}" class="hr_left1_2_1">
+                        您好！
+                        <a><font th:text="${session.loginMember.nickname}"></font></font></a>
+                    </div>
+                    <div class="hr_left1_2_2">
+                        <a class="new" href="">新人福利</a>
+                        <a class="nea" href="">会员频道</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="hr_center">
+            <ul class="hr_center_ul">
+                <li class="hr_center_1">
+                    <a href="">
+                        <div class="p_img">
+                            <img class="img_0" src="img/92e09f39752d34a979cef2aae0efeee5.png" alt="">
+                        </div>
+                            <div class="p_div">企业购特惠</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="hr_right">
+            <div class="hr_reght1">
+                <div class="hr_reght1_1">
+                    <a href="">
+                        <span>公告</span>
+                    </a>
+                </div>
+                <div class="hr_reght1_2">
+                    <div class="box">
+                        <div class="t_news">
+                            <b>测试</b>
+                            <ul class="news_li">
+                                <li><a href="#" >华为华为华为华为华为</a></li>
+                            </ul>
+                            <ul class="swap"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hr_reght2">
+                <ul>
+                    <li>
+                        <a href="">
+                            <span>
+                                <img class="hr_reght2_img" src="img/92e09f39752d34a979cef2aae0efeee5.png" alt="">
+                            </span>
+                            优购码
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>
+                                <img class="hr_reght2_img1" src="img/92e09f39752d34a979cef2aae0efeee5.png" alt="">
+                            </span>
+                            实名认证
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>
+                                <img class="hr_reght2_img2" src="img/92e09f39752d34a979cef2aae0efeee5.png" alt="">
+                            </span>
+                            补够保障
+                        </a>
+                    </li>				
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <!--banner-4-->
+    <div class="h" style="margin-left: 140px;">
+        <div class="h_wk">
+            <ul class="h_1">
+                <li>
+                    <a href="">
+                        <img src="img/sy01.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/sy02.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/sy03.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/sy04.jpg" alt="">
+                    </a>
+                </li>						
+            </ul>
+        </div>
+    </div>
+    <!--center_rxdp-->
+    <div class="center_rxdp">
+        <h2 class="center_h2">热销单品</h2>
+        <div class="center_rxdp_left">
+            <a href="">
+                <img src="img/cebiao01.jpg" alt="">
+            </a>
+        </div>
+        <ul class="center_rxdp_right" >
+            <li class="center_rxdp_right1" th:each="s:${staCar}">
+                <a th:href="@{detail(cid=${s.id})}">
+                    <p class="center_p_1">
+                        <img th:src="${s.carImage.imgUrl}" alt="">
+                    </p>
+                    <div class="center_rxdp_1"><font th:text="${s.name}"></font></div>
+                    <p class="grid-1">最低价：￥<font th:text="${s.priceLow}"></font></p>
+                    <p>最高价：￥<font th:text="${s.priceHigh}"></font></p>
+                    <p class="grid-2"><font th:text="${s.countryClassName}"></font></p>
+                    <p class="grid-3">
+                        <em>
+                            <span>热销</font></span>
+                        </em>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!--banner_2-->
+    <div class="banner_zhanwei"></div>
+    <div id="box2" class="banner_2">
+        <a href="">
+            <img src="img/hb01.jpg" alt="">
+        </a>
+    </div>
+    
+    <!--banner_3-->
+    <div class="banner_3">
+        <div class="div_h">
+            <h2 class="channel-title_fl">新品上市</h2>
+            <ul class="channel-nav_fl">
+                <li>
+                    <a href="">荣耀</a>
+                </li>
+
+            </ul>
+            <div class="channel-more_fr">
+                <a href="show">查看更多<i class="iconfont icon-jiantou"></i></a>
+            </div>
+        </div>	
+            <ul class="banner_3_1">
+                <li class="banner_3_1_1">
+                    <a href="commodity.html">
+                        <img src="img/cebiao02.jpg">
+                    </a>
+                </li>
+            <li class="center_rxdp_right1" th:each="n:${newCar}">
+                <a th:href="@{detail(cid=${n.id})}">
+                    <p class="center_p_1">
+                        <img th:src="${n.carImage.imgUrl}" alt="">
+                    </p>
+                    <div class="center_rxdp_1"><font th:text="${n.name}"></font></div>
+                    <p class="grid-1">最低价：￥<font th:text="${n.priceLow}"></font></p>
+                    <p>最高价：￥<font th:text="${n.priceHigh}"></font></p>
+                    <p class="grid-2"><font th:text="${n.countryClassName}"></font></p>
+                    <p class="grid-3">
+                        <em>
+                            <span>新品上市</span>
+                        </em>
+                    </p>
+                </a>
+            </li>
+            </ul>
+    </div>
+
+    <!-- banner_10图片 -->
+    <div class="banner_10">
+        <a href="">
+            <img src="img/hb02.jpg" alt="">
+        </a>
+    </div>
+    
+    <!-- 口号 -->
+    <div class="zhanwei1"></div>
+    <div class="slogan-container">
+        <div class="slogan">
+            <ul>
+                <li class="s1">
+                    <a href="">
+                        <i></i>
+                        百强企业&nbsp;品质保证
+                    </a>
+                </li>
+                <li class="s1">
+                    <a href="">
+                        <i></i>
+                        七天退货&nbsp;十五天换货
+                    </a>
+                </li>
+                <li class="s1">
+                    <a href="">
+                        <i></i>
+                        48元起免运费
+                    </a>
+                </li>
+                <li class="s1">
+                    <a href="">
+                        <i></i>
+                        1000家维修网点&nbsp;全国联保
+                    </a>
+                </li>			
+            </ul>
+        </div>	
+    </div>
+    
+    <!-- 服务 -->
+    <div class="service-container">
+        <div class="service">
+            <div class="service-l-fl">
+                <div class="a1">
+                    <dt>
+                        <p>购物相关</p>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>						
+                        </ol>
+                    </dd>
+                </div>
+                <div class="a1">
+                    <dt>
+                        <p>购物相关</p>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>						
+                        </ol>
+                    </dd>
+                </div>
+                <div class="a1">
+                    <dt>
+                        <p>购物相关</p>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>						
+                        </ol>
+                    </dd>
+                </div>
+                <div class="a1">
+                    <dt>
+                        <p>购物相关</p>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>						
+                        </ol>
+                    </dd>
+                </div>
+                <div class="a1">
+                    <dt>
+                        <p>购物相关</p>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>						
+                        </ol>
+                    </dd>
+                </div>
+                <div class="a1">
+                    <dt>
+                        <p>购物相关</p>
+                    </dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>
+                            <li>
+                                <a href="">购物指南</a>
+                            </li>						
+                        </ol>
+                    </dd>
+                </div>			
+            </div>
+            <div class="service-r-fl">
+                <div class="s7">
+                    <dt>
+                        <p class="title">400-088-6888</p>
+                    </dt>
+                    <dd><a href="">7*24小时客服热线(仅收市话)</a></dd>
+                    <dd>
+                        <a class="xxx" href="">
+                            <i class="iconfont icon-zaixiankefu"></i>
+                            在线客服
+                        </a>
+                    </dd>
+                </div>
+                <div class="service-code-clearfix">
+                    <h2>关注Vmall:</h2>
+                    <ul class="clearfix">
+                        <li>
+                            <a href=""><i class="iconfont icon-weixin"></i></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="iconfont icon-zaixiankefu"></i></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="iconfont icon-weibo"></i></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="iconfont icon-huawei"></i></a>
+                        </li>										
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部 -->
+    <div class="footer-container">
+        <div class="footer">
+            <div class="footer1">
+                <p class="footerp">
+                    <a href="">
+                    </a>
+                </p>
+                <div class="f1">
+                    <ul>
+                        <li>
+                            <a href="">华为集团</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                        <li>
+                            <a href="">伴我汽车</a>
+                        </li>
+                    </ul>
+                    <a class="a11" href="">隐私声明</a>
+                    <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                    <a class="a11" href="">隐私隐私声明隐私声明声明</a>
+                    <a class="a11" href="">隐私隐私声明声明</a>
+                    <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                    <br>
+                    <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                    <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                    <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                    <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                    <a class="a11" href="">隐私声明隐私声明隐私声明</a>
+                </div>
+                    <a class="aaa1" href=""><img src="img/20160226162415360.png" alt=""></a>
+                    <a class="aaa2" href=""><img src="img/20180522101715775.jpg" alt=""></a>
+            </div>
+        </div>
+    </div>
+    <!-- 悬浮窗口 -->
+    <div class="xfck">
+        <div class="xfck_1">
+            <a href="">
+                <i class="iconfont icon-caidanlangouwuche"></i>
+                <span style="display:none;"></span>
+                <p>购物车<span></span></p>
+            </a>
+        </div>
+        <div class="xfck_1">
+            <a href="">
+                <i class="iconfont icon-zaixiankefu"></i>
+                <span style="display:none;"></span>
+                <p>在线客服<span></span></p>
+            </a>
+        </div>
+        <div class="xfck_1">
+            <a href="">
+                <i class="iconfont icon-yijianfankui"></i>
+                <span style="display:none;"></span>
+                <p>意见反馈<span></span></p>
+            </a>
+        </div>
+        <!-- <div class="xfck_1">
+            <a href="">
+                <i class="iconfont icon-fanhuidingbu"></i>
+                <span style="display:none;"></span>
+                <p>返回顶部<span></span></p>
+            </a>
+        </div> -->
+    </div>
+</body>
+<script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        /*$("#couId").click(function () {
+            var cid = $("#inp1").val();
+            location.href = "?cid="+cid;
+        });*/
+    })
+</script>
+</html>
+<script src="js/jQuery.js"></script>
+<script src="js/index.js"></script>
+<script src="js/shouye.js"></script>

@@ -1,0 +1,317 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/safe/css.css" />
+    <link rel="stylesheet" href="css/safe/common.min.css" />
+    <link rel="stylesheet" href="css/safe/ms-style.min.css" />
+    <link rel="stylesheet" href="css/safe/personal_member.min.css" />
+    <link rel="stylesheet" href="css/safe/Snaddress.min.css" />
+    <link rel="stylesheet" href="css/sui.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="js/sui.js" ></script>
+    <style>
+        body {
+            background: #f5f5f5;
+        }
+        .sui-table th{
+            padding: 16px 8px;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: middle;
+            border-top: 1px solid #e6e6e6;
+            font-weight: normal;
+            font-size: 14px;
+            color: #333333;
+        }
+        .sui-table td {
+            padding: 16px 8px;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: middle;
+            border-top: 1px solid #e6e6e6;
+            font-weight: normal;
+            font-size: 12px;
+            color: #333333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            /*vertical-align: bottom;*/
+            border: 0;
+            -ms-interpolation-mode: bicubic;
+            margin-left: -10px;
+        }
+        a{
+            color: #000000;
+        }
+    </style>
+    <title>我的标签</title>
+</head>
+
+<div class="ms-body">
+    <div class="ng-top-banner"></div>
+    <div class="ng-toolbar">
+        <div class="ng-toolbar-con wrapper">
+        </div>
+    </div>
+    <header class="ms-header ms-header-inner ms-head-position">
+        <article class="ms-header-menu" style="height: 60px;">
+            <style type="text/css">
+                .nav-manage .list-nav-manage {
+                    position: absolute;
+                    padding: 15px 4px 10px 15px;
+                    left: 0;
+                    top: -15px;
+                    width: 90px;
+                    background: #FFF;
+                    box-shadow: 1px 1px 2px #e3e3e3, -1px 1px 2px #e3e3e3;
+                    z-index: 10;
+                }
+
+                .ms-nav li {
+                    float: left;
+                    position: relative;
+                    padding: 0 20px;
+                    height: 44px;
+                    font: 14px/26px "Microsoft YaHei";
+                    color: #FFF;
+                    cursor: pointer;
+                    z-index: 10;
+                }
+                .personal-member .main-wrap {
+                    width: 1068px;
+                    margin: 15px 0 30px 180px;
+                    padding: 0 0 39px 0;
+                    border: 1px solid #ddd;
+                    background: none;
+                }
+            </style>
+            <div class="header-menu">
+                <div class="ms-logo">
+                    <a href="" class="header_a">
+                        <img class="header_img" src="img/Carlogo.png" style="width: 205px;height: 36px;">
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+        <article class="ms-useinfo" style="height: 45px;">
+            <div class="header-useinfo" id="">
+                <div class="ms-avatar">
+                    <div class="useinfo-avatar">
+                        <img th:src="${session.loginMember.avatar_url}">
+                        <div class="edit-avatar"></div>
+                    </div>
+                    <a><font th:text="${session.loginMember.nickname}"></font></a>
+                </div>
+
+                <div class="ms-name-info">
+                    <div class="link-myinfo">
+                        <a>我的资料</a>
+                    </div>
+                    <div class="info-member">
+							<span class="name-member member-1">
+        				 <i></i><a target="_blank" >会员等级：<font th:text="${session.loginMember.level}"></font></a></span>
+                    </div>
+                    <div class="info-safety">
+							<span class="safety-lv lv-3">
+        				<a >安全等级：<span>中</span></a>
+							</span>
+                        <a class="bind-phone">
+                            <i style="background-image: url(img/修改手机.png);"></i>修改手机</a>
+                        <a class="bind-email">
+                            <i style="background-image: url(img/绑定邮箱.png);"></i>修改邮箱</a>
+                        <a class="manage-addr"><i style="background-image: url(img/地址管理.png);"></i>地址管理</a>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </header>
+    <div id="ms-center" class="personal-member">
+        <div class="cont">
+            <div class="cont-side">
+                <div class="side-neck" style="margin-top: 20px;">
+                    <i></i>
+                </div>
+                <div class="ms-side" style="margin-top: 20px;">
+                    <article class="side-menu side-menu-off">
+                        <dl class="side-menu-tree" style="padding-left: 50px;">
+                            <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
+                            <dd>
+                                <a href="MemManager">个人资料</a>
+                                <a href="MyTag">我的标签</a>
+                                <a href="MyIntegral">我的积分</a>
+                            </dd>
+                            <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>我的座驾</dt>
+                            <dd>
+                                <a href="MyCar?type=1">已有座驾</a>
+                                <a href="MyCar?type=2">期望座驾</a>
+                            </dd>
+                            <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>跳转</dt>
+                            <dd>
+                                <a href="shouye">回到首页</a>
+
+                            </dd>
+                            <dd>
+                                <a href="loginOut">退出登录</a>
+
+                            </dd>
+                        </dl>
+
+                        <a ison="on" class="switch-side-menu icon-up-side"><i></i></a>
+                    </article>
+                </div>
+            </div>
+            <div class="cont-main">
+                <div class="main-wrap mt15" style="border: 0px;">
+                    <!--<h3>
+                        <strong>我的会员等级</strong>
+                    </h3>-->
+                    <div class="server-wrapper">
+                        <div class="server-tab" style="margin-top: 26px;">
+                            <div style=" float: left;vertical-align: bottom;text-align: center;">
+                                <div style="width: 800px;float: left;">
+                                    <div style="width: 800px;padding:10px;display: inline-block; float: left;background-color: #fff;">
+                                        <div style="width: 800px">
+                                            <span style="font-size: 20px">我的标签</span>
+                                        </div>
+                                        <hr>
+                                        <style>
+                                            button{
+                                                height: 35px;
+                                                width: 100px;
+                                                margin-left: 10px;
+                                            }
+                                            .c1{
+                                                width: 100px;
+                                                height: 35px;
+                                                margin-left: 20px;
+                                                float: left;
+                                                margin-bottom: 10px;
+                                            }
+                                        </style>
+                                        <div id="d1"  style="margin-left: 50px;margin-right: 50px;width: 800px;height: 200px">
+                                            <div class="c1" th:each="t:${session.tagMem}">
+                                                <a th:href="@{delTag(tid=${t.id})}" class="btn btn-primary btn-sm"><font th:text="${t.name}"></font></a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div style="width: 800px;">
+                                            <span style="font-size: 20px">全部标签</span>
+                                        </div>
+                                        <hr>
+                                        <div id="d2" style="margin-left: 50px;margin-right: 50px;width: 800px;height: 200px;">
+                                            <div class="c1" th:each="t:${session.tagAll}">
+                                                <a th:href="@{addTag(tid=${t.id})}" class="btn btn-primary btn-sm"><font th:text="${t.name}"></font></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div style="float: left;width:220px ;margin-left: 30px;display: inline-block;">
+                                <div style="background-color: #fff;padding: 10px" >
+                                    <div style="padding: 10px;height: 40px;">
+                                        <span style="font-size: 20px;color: #3c763d">最新资讯</span>
+                                    </div>
+                                    <div th:each="a:${session.articleXpy}">
+                                        <hr style="color: #0e93d7">
+                                        <a href="zixun">
+                                            <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
+                                            <span><font th:text="${a.summary}"></font></span><br>
+                                            <span><font th:text="${a.submitTime}"></font></span><br>
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><font th:text="${a.commentCount}"></font>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span><font th:text="${a.likeCount}"></font>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span><font th:text="${a.favCount}"></font>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style="background-color: #fff;margin-top: 30px;padding: 10px">
+                                    <div style="padding: 10px;height: 40px">
+                                        <span style="font-size: 20px;color: #3c763d">消息</span>
+                                    </div>
+                                    <div th:each="a:${session.messageXpy}">
+                                        <hr style="color: #0e93d7">
+                                        <a href="#">
+                                            <span style="color: #0a6999"><font th:text="${a.link}"></font></span><br>
+                                            <span><font th:text="${a.content}"></font></span><br>
+                                            <span><font th:text="${a.sendTime}"></font></span><br>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--右侧---end------->
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear "></div>
+    <div class="ng-footer ">
+
+			<textarea class="footer-dom " id="footer-dom-02 ">
+			</textarea>
+        <div class="ng-fix-bar "></div>
+    </div>
+    <style type="text/css ">
+
+        .ng-footer {
+            height: 130px;
+            margin-top: 0;
+        }
+
+
+        .ng-s-footer {
+            height: 130px;
+            background: none;
+            text-align: center;
+        }
+
+        .ng-s-footer p.ng-url-list {
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .ng-s-footer p.ng-url-list a {
+            color: #666666;
+        }
+
+        .ng-s-footer p.ng-url-list a:hover {
+            color: #f60;
+        }
+
+        .ng-s-footer .ng-authentication {
+            float: none;
+            margin: 0 auto;
+            height: 25px;
+            width: 990px;
+            margin-top: 5px;
+        }
+
+        .ng-s-footer p.ng-copyright {
+            float: none;
+            width: 100%;
+        }
+
+        .root1200 .ng-s-footer p.ng-copyright {
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript " src="js/safe/ms_common.min.js "></script>
+    </body>
+
+</html>
