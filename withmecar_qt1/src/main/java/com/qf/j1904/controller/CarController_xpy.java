@@ -2,10 +2,7 @@ package com.qf.j1904.controller;
 
 import com.qf.j1904.service.CarService_xpy;
 import com.qf.j1904.service.MemCarService_xpy;
-import hi.car.pojo.Car;
-import hi.car.pojo.CarLogo;
-import hi.car.pojo.MemberCar;
-import hi.car.pojo.MemberProfile;
+import hi.car.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,6 +93,7 @@ public class CarController_xpy {
     @RequestMapping("/saveMyCar")
     public boolean saveMyCar(String pinpai,String chexi,String chekuan,
             int buyyear,int current,String beizhu,HttpServletRequest request){
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String updateTime = dateFormat.format(new Date());
         MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
@@ -127,10 +125,13 @@ public class CarController_xpy {
                                int buyyear,int current,String beizhu,HttpServletRequest request){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String updateTime = dateFormat.format(new Date());
+        int type = (int) request.getSession().getAttribute("type");
+        System.out.println(type);
         MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
         MemberCar memberCar = new MemberCar();
         memberCar.setMemberId(loginMember.getId());
         memberCar.setBuyYear(buyyear);
+        memberCar.setType(type);
         memberCar.setCreateTime(updateTime);
         memberCar.setUpdateTime(updateTime);
         memberCar.setRemark(beizhu);

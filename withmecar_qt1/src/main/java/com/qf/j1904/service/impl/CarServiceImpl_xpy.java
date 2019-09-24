@@ -19,7 +19,6 @@ public class CarServiceImpl_xpy implements CarService_xpy {
     @Autowired
     private CarMapper_xpy carMapper;
 
-
     @Override
     public boolean updateCar(Car car) {
         int c = carMapper.updateCar(car);
@@ -84,7 +83,6 @@ public class CarServiceImpl_xpy implements CarService_xpy {
     public CarLogo findCarLgByName(String name) {
         return carMapper.findCarLgByName(name);
     }
-
 
 
     @Override

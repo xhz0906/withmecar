@@ -21,7 +21,7 @@ public interface MemCarMapper_xpy {
      * @param id
      * @return
      */
-    public List<MemberCar> findMemCarById(@Param("map") Map<String, Integer> map);
+    public List<MemberCar> findMemCarById(@Param("map")Map<String,Integer> map);
 
     /**
      * 添加座驾

@@ -102,7 +102,7 @@
     <article class="ms-useinfo" style="height: 45px;">
         <div class="header-useinfo" id="">
             <div class="ms-avatar">
-                <div class="useinfo-avatar">
+                <div id="upimg" class="useinfo-avatar">
                     <img th:src="${session.loginMember.avatar_url}">
                     <div class="edit-avatar"></div>
                 </div>
@@ -141,7 +141,7 @@
             <div class="ms-side" style="margin-top: 20px;">
                 <article class="side-menu side-menu-off">
                     <dl class="side-menu-tree" style="padding-left: 50px;">
-                        <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
+                        <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
                         <dd>
                             <a href="MemManager">个人资料</a>
                             <a href="MyTag">我的标签</a>
@@ -152,13 +152,13 @@
                             <a href="MyCar?type=1">已有座驾</a>
                             <a href="MyCar?type=2">期望座驾</a>
                         </dd>
-                        <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>
+                        <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>跳转</dt>
                         <dd>
-                            <a >退换货</a>
+                            <a href="shouye">回到首页</a>
 
                         </dd>
                         <dd>
-                            <a>意见/投诉</a>
+                            <a href="loginOut">退出登录</a>
 
                         </dd>
                     </dl>
@@ -193,13 +193,47 @@
                                         </ul>
                                     </div>
                                     <div style="width: 300px;height: 200px;float: left;padding-top: 30px;">
-                                        <img style="width: 100px;height: 100px;" th:src="${session.loginMember.avatar_url}"><br>
-                                        <button>修改头像</button>
+                                        <div>
+                                            <img id="touxiang" style="width: 100px;height: 100px;" th:src="${session.loginMember.avatar_url}"><br>
+                                        </div>
+                                        <div>
+                                            <input id="up1" type="file" th:value="修改头像"><br>
+                                            <button id="bu1">提交</button>
+                                        </div>
                                     </div>
+                                    <style>
+
+                                    </style>
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $("#bu1").click(function () {
+                                                var formdata = new FormData();
+                                                formdata.append("simgs",$("#up1")[0].files[0]);
+                                                if ($("#up1")[0].files[0].length == 0){
+                                                    $.ajax({
+                                                        url:"updateImg",
+                                                        type:"post",
+                                                        data:formdata,
+                                                        contentType:false,//这两个false很关键，（设置不解析此数据）
+                                                        processData:false,
+                                                        success:function (result) {
+                                                            if (result.length != 0){
+                                                                $("#touxiang").removeAttr("src");
+                                                                $("#upimg").removeAttr("src");
+                                                                $("#upimg").attr("src",result);
+                                                                $("#touxiang").attr("src",result);
+                                                                $("#up1").val("");
+                                                            }
+                                                        }
+                                                    })
+                                                }
+                                            });
+                                        })
+                                    </script>
                                 </div>
                                 <style>
                                     .ipi{
-                                        font-size:1.4em;
+                                        font-size:15px;
                                         width: 300px;
                                         height:30px;
                                         border-radius:4px;
@@ -207,7 +241,7 @@
                                         color:#6a6f77;
                                     }
                                     .tarea{
-                                        font-size:1em;
+                                        font-size: 15px;
                                         width: 300px;
                                         height:100px;
                                         border-radius:4px;
@@ -244,8 +278,11 @@
                                                 <td style="text-align: right;width: 100px">
                                                     性别：
                                                 </td>
-                                                <td>
-                                                    <input class="ipi" type="text" id="sex" th:value="${session.loginMember.gender}" disabled/>
+                                                <td th:if="${session.loginMember.gender == 1}">
+                                                    <input class="ipi" type="text" id="sex" value="男"/>
+                                                </td>
+                                                <td th:if="${session.loginMember.gender == 2}">
+                                                    <input class="ipi" type="text" id="sex" value="女"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -348,7 +385,7 @@
                                     </div>
                                     <div th:each="a:${session.articleXpy}">
                                         <hr style="color: #0e93d7">
-                                        <a href="#">
+                                        <a href="zixun">
                                         <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
                                         <span><font th:text="${a.summary}"></font></span><br>
                                         <span><font th:text="${a.submitTime}"></font></span><br>
@@ -365,7 +402,7 @@
                                     <div th:each="a:${session.messageXpy}">
                                         <hr style="color: #0e93d7">
                                         <a href="#">
-                                        <span style="color: #0a6999"><font th:text="${a.link}"></font></span><br>
+                                        <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
                                         <span><font th:text="${a.content}"></font></span><br>
                                         <span><font th:text="${a.sendTime}"></font></span><br>
                                         </a>

@@ -26,7 +26,7 @@ public interface TagService_xpy {
      * @param map
      * @return
      */
-    public boolean deleteMemTag(int mid, int tid);
+    public boolean deleteMemTag(int mid,int tid);
 
     /**
      * 添加会员标签
@@ -39,7 +39,7 @@ public interface TagService_xpy {
      * @param id
      * @return
      */
-    public Tag findNameById(int mid, int tid);
+    public Tag findNameById(int mid,int tid);
 
     public Tag findByName(String name);
 }

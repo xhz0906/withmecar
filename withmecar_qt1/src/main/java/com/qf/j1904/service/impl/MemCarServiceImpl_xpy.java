@@ -27,7 +27,7 @@ public class MemCarServiceImpl_xpy implements MemCarService_xpy {
     }
 
     @Override
-    public List<MemberCar> findMemCarById(int id,int type) {
+    public List<MemberCar> findMemCarById(int id, int type) {
         Map<String,Integer> map = new HashMap<>();
         map.put("id",id);
         map.put("type",type);

@@ -141,8 +141,7 @@
                 <div class="ms-side" style="margin-top: 20px;">
                     <article class="side-menu side-menu-off">
                         <dl class="side-menu-tree" style="padding-left: 50px;">
-                            <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
-                            <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
+                            <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>信息管理</dt>
                             <dd>
                                 <a href="MemManager">个人资料</a>
                                 <a href="MyTag">我的标签</a>
@@ -153,13 +152,13 @@
                                 <a href="MyCar?type=1">已有座驾</a>
                                 <a href="MyCar?type=2">期望座驾</a>
                             </dd>
-                            <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>
+                            <dt><img src="img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>跳转</dt>
                             <dd>
-                                <a >退换货</a>
+                                <a href="shouye">回到首页</a>
 
                             </dd>
                             <dd>
-                                <a>意见/投诉</a>
+                                <a href="loginOut">退出登录</a>
 
                             </dd>
                         </dl>
@@ -177,30 +176,7 @@
                         <div class="server-tab" style="margin-top: 26px;">
                             <div style=" float: left;vertical-align: bottom;text-align: center;">
                                 <div style="width: 800px;float: left;">
-                                    <div style="width: 800px;padding: 10px;height: 220px;background-color: #fff;">
-                                        <div style="width: 340px;height: 200px;float: left;padding-top: 30px;margin-left: 100px;">
-                                            <style>
-                                                .ul1 li{
-                                                    height: 30px;
-                                                }
-                                            </style>
-                                            <ul class="ul1" style="text-align: left;">
-                                                <li><span style="font-size: 17px;">账号：<font th:text="${session.loginMember.mobile}"></font></span></li>
-                                                <li><span style="font-size: 17px;">密码：*********</span></li>
-                                                <li><span id="sp1" style="font-size: 17px;">昵称：<font th:text="${session.loginMember.nickname}"></font></span></li>
-                                                <li><span style="font-size: 17px;">会员等级：<font th:text="${session.loginMember.level}"></font></span></li>
-                                                <li><span style="font-size: 17px;">邮箱：<font th:text="${session.loginMember.email}"></font></span></li>
-                                                <li><span style="font-size: 17px;">注册时间：<font th:text="${session.loginMember.register_time}"></font></span></li>
-                                            </ul>
-                                        </div>
-                                        <div style="width: 300px;height: 200px;float: left;padding-top: 30px;">
-                                            <img style="width: 100px;height: 100px;" th:src="${session.loginMember.avatar_url}"><br>
-                                            <button>修改头像</button>
-                                        </div>
-                                    </div>
-                                    <style>
 
-                                    </style>
                                     <div style="margin-top: 30px;width: 800px;padding:10px;display: inline-block; float: left;margin-top: 20px;background-color: #fff;">
                                         <div th:if="${session.type == 1}" style="margin-left: 50px;width: 200px">
                                                 <span style="font-size: 20px">我的座驾 >> 已有座驾</span>
@@ -211,14 +187,14 @@
 
                                         <style>
                                             .car1{
-                                                width: 250px;
-                                                height: 200px;
+                                                width: 220px;
+                                                height: 220px;
                                             }
                                         </style>
                                         <hr>
                                         <div style="margin-top: 30px;margin-bottom: 30px;margin-left: 50px">
-                                            <div style="height: 300px;width: 800px;padding-top: 40px" th:each="c:${myDriver}">
-                                                <div style="float: left;width: 220px">
+                                            <div style="height: 400px;width: 800px;padding-top: 40px" th:each="c:${myDriver}">
+                                                <div style="float: left;width: 220px;padding-top: 30px">
                                                     <img class="car1" th:src="${c.car.carImage.imgUrl}">
                                                 </div>
                                                 <div style="float: left;width: 400px;margin-left: 30px;float: left;">
@@ -243,13 +219,16 @@
                                                         <li><span style="font-size: 17px;">上次修改时间：<font th:text="${c.updateTime}" disabled></font></span></li>
                                                         <li><span style="font-size: 17px;">备注：<font th:text="${c.remark}" disabled></font></span></li>
                                                         <li style="height: 40px"><button class="btn btn-primary btn-sm"><a th:href="@{deleteMyCar(mcid=${c.id})}"><span class="glyphicon glyphicon-remove"></span>删除</a></button>
-                                                            <button class="btn btn-primary btn-sm"><a th:href="@{UpdateCar(mcid=${c.id})}"><span class="glyphicon glyphicon-remove"></span>修改</a></button>
+                                                            <button class="btn btn-primary btn-sm"><a th:href="@{UpdateCar(mcid=${c.id})}"><span class="glyphicon glyphicon-pencil"></span>修改</a></button>
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <br>
-                                                <hr>
                                             </div>
+                                            <hr>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary btn-sm"><a th:href="@{addMyCar}"><span class="glyphicon glyphicon-plus"></span>新增座驾</a></button>
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +242,7 @@
                                         </div>
                                         <div th:each="a:${session.articleXpy}">
                                             <hr style="color: #0e93d7">
-                                            <a href="#">
+                                            <a href="zixun">
                                                 <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
                                                 <span><font th:text="${a.summary}"></font></span><br>
                                                 <span><font th:text="${a.submitTime}"></font></span><br>
@@ -280,7 +259,7 @@
                                         <div th:each="a:${session.messageXpy}">
                                             <hr style="color: #0e93d7">
                                             <a href="#">
-                                                <span style="color: #0a6999"><font th:text="${a.link}"></font></span><br>
+                                                <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
                                                 <span><font th:text="${a.content}"></font></span><br>
                                                 <span><font th:text="${a.sendTime}"></font></span><br>
                                             </a>
