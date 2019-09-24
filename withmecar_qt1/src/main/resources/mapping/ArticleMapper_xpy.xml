@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.j1904.mapper.ArticleMapper_xpy">
+    <resultMap id="ArticleMapOne" type="hi.car.pojo.Article">
+        <id property="id" column="id"></id>
+        <result property="title" column="title"></result>
+        <result property="author" column="author"></result>
+        <result property="summary" column="summary"></result>
+        <result property="commentCount" column="comment_count"></result>
+        <result property="likeCount" column="like_count"></result>
+        <result property="favCount" column="fav_count"></result>
+        <result property="submitTime" column="submit_time"></result>
+    </resultMap>
+    <select id="findArticleDesc" resultMap="ArticleMapOne">
+        SELECT
+        *
+        FROM
+        article
+        where
+        home_top=1
+        ORDER BY
+        submit_time
+        DESC
+        limit
+        0,4
+    </select>
+</mapper>

@@ -175,7 +175,7 @@
 							if (data != 0){
 								if (data == 1){
 									alert("前台");
-									location.href = "http://192.168.1.100:9090/index?username="+username;
+									location.href = "http://localhost:9090/index?username="+username;
 								} else {
 									location.href = "main";
 								}
@@ -231,7 +231,7 @@
 					$.post("",{"email":email,"auth":auth},function (data) {
 						if (data == true){
 							if (auth == 1) {
-								location.href="http://192.168.1.100:9090/index?username="+username;
+								location.href="http://localhost:9090/index?username="+username;
 							} else {
 								location.href="main";
 							}
