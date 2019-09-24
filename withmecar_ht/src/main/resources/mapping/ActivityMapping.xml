@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hi.cc.mapper.ActivityMapper">
+    <resultMap id="myactivity" type="hi.car.pojo.Activity">
+        <id property="id" column="id"/>
+<!--        private String title;-->
+<!--        //类型-->
+<!--        private int categoryId;-->
+<!--        //   连接-->
+<!--        private String url;-->
+<!--       //-->
+<!--        private int state;-->
+<!--        private int createUid;-->
+<!--        //时间-->
+<!--        private Date createTime;-->
+<!--        private int likeCount;-->
+<!--        //收藏量-->
+<!--        private int shareCount;-->
+<!--        //访问量-->
+<!--        private int viewCount;-->
+        <result property="title" column="title"></result>
+<!--        <result property="categoryId" column="category_id"></result>-->
+        <result property="url" column="url"></result>
+        <result property="state" column="state"></result>
+<!--        <result property="createUid" column="create_uid"></result>-->
+        <result property="createTime" column="create_time"></result>
+        <result property="likeCount" column="like_count"></result>
+        <result property="shareCount" column="share_count"></result>
+        <result property="viewCount" column="view_count"></result>
+       <association property="adminUser" javaType="hi.car.pojo.AdminUser">
+           <id property="id" column="create_uid"></id>
+           <result property="name" column="username"></result>
+       </association>
+        <association property="activityCategory" javaType="hi.car.pojo.ActivityCategory">
+            <id property="id" column="category_id"></id>
+            <result property="name" column="name"></result>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="myactivity">
+      select
+        a.create_time,a.id,a.title,a.category_id,a.url,a.state,a.create_uid,a.like_count,a.share_count,a.view_count,u.username,c.`name`
+        from
+        activity as a,
+        admin_user as u,
+		activity_category as c
+        where
+            a.create_uid=u.id
+		AND a.category_id=c.id
+    </select>
+    <select id="findCount" resultType="int">
+        select
+        count(id)
+        from
+         activity
+    </select>
+    <select id="findByStatus" resultMap="myactivity" parameterType="int">
+          select
+        a.create_time,a.id,a.title,a.category_id,a.url,a.state,a.create_uid,a.like_count,a.share_count,a.view_count,u.username,c.`name`
+        from
+        activity as a,
+        admin_user as u,
+		activity_category as c
+        where
+            a.create_uid=u.id
+		AND a.category_id=c.id
+		and a.category_id=#{category_id}
+    </select>
+    <select id="findByRS" parameterType="int" resultMap="myactivity">
+          select
+       a.create_time,a.id,a.title,a.category_id,a.url,a.state,a.create_uid,a.like_count,a.share_count,a.view_count,u.username,c.`name`
+        from
+        activity as a,
+        admin_user as u,
+		activity_category as c
+        where
+            a.create_uid=u.id
+		AND a.category_id=c.id
+		and a.state=#{state}
+    </select>
+    <select id="findByTitleOrName" resultMap="myactivity">
+         select
+        a.create_time,a.id,a.title,a.category_id,a.url,a.state,a.create_uid,a.like_count,a.share_count,a.view_count,u.username,c.`name`
+        from
+        activity as a,
+        admin_user as u,
+		activity_category as c
+        where
+            a.create_uid=u.id
+		AND a.category_id=c.id
+         and
+           a.title like "%"#{title}"%"
+    </select>
+</mapper>

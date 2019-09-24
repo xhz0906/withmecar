@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hi.cc.mapper.AactivityCategoryMapper">
+<!--    <sql id="aa1">-->
+<!--           id,-->
+<!--           name,-->
+<!--           is_deleted,-->
+<!--           create_time,-->
+<!--           last_update_time,-->
+<!--           use_count-->
+<!--    </sql>-->
+    <resultMap id="aaMap" type="hi.car.pojo.ActivityCategory">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="lastUpdateTime" column="last_update_time"/>
+        <result property="useCount" column="use_count"/>
+    </resultMap>
+    <select id="findAll" resultMap="aaMap">
+        select
+        *
+        from
+        activity_category
+    </select>
+    <select id="findByName" resultMap="aaMap">
+        select
+        *
+        from
+        activity_category
+        where
+        name like "%"#{name}"%"
+    </select>
+    <select id="findById" resultMap="aaMap">
+        select
+        *
+        from
+        activity_category
+        where
+        id=#{id}
+    </select>
+    <delete id="deleteaa" parameterType="int">
+        delete
+        from
+        activity_category
+        where
+        id=#{id}
+    </delete>
+    <update id="updateaa">
+        update
+         activity_category
+         set
+         name=#{activityCategory.name},last_update_time=#{activityCategory.lastUpdateTime}
+         where id=#{activityCategory.id}
+    </update>
+    <insert id="addaa" >
+        insert
+        activity_category
+        values (default,#{activityCategory.name},default,#{activityCategory.createTime},default,default)
+    </insert>
+    <select id="findOneByName" parameterType="string" resultMap="aaMap">
+        select
+        *
+        from
+        activity_category
+        where
+        name=#{name}
+    </select>
+
+</mapper>
