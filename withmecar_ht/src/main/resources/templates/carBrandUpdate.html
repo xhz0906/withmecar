@@ -161,10 +161,10 @@
                         <span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">1 </span></span>
                         <ul style="margin-top:10px;display:none;">
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
+                                <a href="messageListView"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
+                                <a href="addMessageView"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
                             </li>
                         </ul>
                     </li>
@@ -221,7 +221,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <ol class="breadcrumb">
                 <li><a href="main">首页</a></li>
-                <li><a href="adminis">管理员列表</a></li>
+                <li><a href="findCarBrand">品牌列表</a></li>
                 <li class="active">修改</li>
             </ol>
             <div class="panel panel-default">
@@ -240,14 +240,6 @@
                                 <option selected="selected" value="0">--请选择品牌-- </option>
                             </SELECT>
                         </div>
-                      <!--  <div class="form-group">
-                            <label for="createTime">创建时间</label>
-                            <input id="createTime" name="createTime" type="text" class="form-control" th:value="${brand.createTime}">
-                        </div>
-                        <div class="form-group">
-                            <label for="updateTime">更改时间</label>
-                            <input id="updateTime" name="updateTime" type="text" class="form-control" th:value="${brand.updateTime}">
-                        </div>-->
                         <button id="commit" type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> 修改</button>
                         <button type="reset" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
                     </form>

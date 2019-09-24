@@ -161,10 +161,10 @@
                         <span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">1 </span></span>
                         <ul style="margin-top:10px;display:none;">
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
+                                <a href="messageListView"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
+                                <a href="addMessageView"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
                             </li>
                         </ul>
                     </li>
@@ -221,7 +221,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <ol class="breadcrumb">
                 <li><a href="main">首页</a></li>
-                <li><a href="adminis">管理员列表</a></li>
+                <li><a href="findParam">参数列表</a></li>
                 <li class="active">修改</li>
             </ol>
             <div class="panel panel-default">
@@ -233,21 +233,21 @@
                             <input id="name"  name="name" type="text"  th:value="${carParam.name}"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <input id="id" th:value="${carParam.id}" type="hidden">
+                            <input id="id1" th:value="${carParam.id}" type="hidden">
                             <label for="type1">参数分类名称</label>
                             <SELECT  id="type1"  name="type1"   style="width:220px;height: 35px;"  class="form-control" >
-                                <option selected="selected" value="0">--请选择参数分类-- </option>
+                                <option selected="selected" value="0">--请选择参数分类--</option>
                             </SELECT>
                         </div>
                         <div class="form-group">
                             <label for="state">状态</label>
                             <SELECT  id="state" name="state" th:value="${carParam.state}"  style="width:220px;height: 35px;"  class="form-control">
-                                <option selected="selected" value="0">--请选择状态-- </option>
+                                <option selected="selected" value="0">--请选择状态--</option>
                                 <option>生效</option>
                                 <option>未生效</option>
                             </SELECT>
                         </div>
-                        <a id="commit" type="submit" class="btn btn-success" th:onclick="change([[${carParam.id}]])"><i class="glyphicon glyphicon-edit" ></i> 修改</a>
+                        <a id="commit" type="submit" class="btn btn-success" onclick="change()"><i class="glyphicon glyphicon-edit" >修改</i> </a>
                         <button type="reset" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
                     </form>
                 </div>
@@ -284,23 +284,22 @@
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
-<script>
-        $.post("findType0000",function (data) {
-            alert(data);
+<script type="text/javascript">
+        $.post("findType0000",{"type":0},function (data) {
             for(var i=0;i<data.length;i++){
                 var option=$("<option >" + data[i] + "</option>");
                 $("#type1").append(option);
             }
         })
-    function change(id) {
+    function change() {
+        var id=$("#id1").val();
         var name=$("#name").val();
         var state=$("#state").val();
         var type=$("#type1").val();
-        window.location.href="updateCarParam2?name="+name+"&id="+id+"&state="+state+“”"&type="+type;
+        window.location.href="updateCarParam2?name="+name+"&id="+id+"&state="+state+"&type="+type;
     }
 
     $(function () {
-
         $(".list-group-item").click(function(){
             if ( $(this).find("ul") ) {
                 $(this).toggleClass("tree-closed");
