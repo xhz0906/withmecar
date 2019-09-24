@@ -33,6 +33,22 @@ public class CarParamController {
         model.addAttribute("maxPage",maxPage);
         return "carParam";
     }
+    @RequestMapping("/findParam1")
+    public String findParam1(@RequestParam(required = false,defaultValue = "1") int page,
+                            @RequestParam(required = false,defaultValue = "10") int rows, Model model,String param){
+        int maxPage =carParamService.getMaxPage1(param,rows);
+        if (page > maxPage){
+            page = 1;
+        }
+        if (page < 1){
+            page = maxPage;
+        }
+        List<CarParam> carParam1= carParamService.findParam1(param,page,rows);
+        model.addAttribute("carParam1",carParam1);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("maxPage",maxPage);
+        return "carParam1";
+    }
     @RequestMapping("/carParamAdd")
     public String carParamTypeAdd(){
         return "carParamSave";
@@ -54,4 +70,13 @@ public class CarParamController {
         boolean b = carParamService.updateCarParam(id,name,type,state);
         return "redirect:findParam";
     }
+    @RequestMapping("findType0000")
+    @ResponseBody
+    public List<String> findType001(){
+        System.out.println("111111");
+        List<String> type001 = carParamService.findType001();
+        System.out.println(type001);
+        return type001;
+    }
+
 }

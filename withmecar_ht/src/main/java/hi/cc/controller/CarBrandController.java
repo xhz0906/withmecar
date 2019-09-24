@@ -51,7 +51,7 @@ public class CarBrandController {
 
     /**
      * 添加品牌
-     * @param request
+     * @param
      * @return
      */
     @RequestMapping(value = "/saveCarBrand")
@@ -152,5 +152,34 @@ public class CarBrandController {
         System.out.println(brandLogo);
         String brandName2 = carBrandService.findBrandName2(brandLogo);
         return brandName2;
+    }
+    @RequestMapping("/findCountry")
+    @ResponseBody
+    public List<String> findCountry(){
+        List<String> country = carBrandService.findCountry();
+        return country;
+    }
+    @RequestMapping("/findBrand01")
+    @ResponseBody
+    public List<String> findBrand01(String country){
+        List<String> brandName = carBrandService.findBrand01(country);
+        return brandName;
+    }
+    @RequestMapping("findCarBrand1")
+    public String findBrand02(@RequestParam(required = false,defaultValue = "1") int page,
+                              @RequestParam(required = false,defaultValue = "10") int rows,String brandName,Model model){
+        int maxPage = carBrandService.getMaxPage1(brandName,rows);
+        if (page > maxPage){
+            page = 1;
+        }
+        if (page < 1){
+            page = maxPage;
+        }
+        List<CarBrand> brandName1 =carBrandService.findBrand02(brandName,page,rows);
+        System.out.println(brandName1);
+        model.addAttribute("brandName1",brandName1);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("maxPage",maxPage);
+        return "carBrand1";
     }
 }

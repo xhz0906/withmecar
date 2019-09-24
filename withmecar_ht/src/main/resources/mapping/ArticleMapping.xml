@@ -17,7 +17,7 @@
         <result property="favCount" column="fav_count"/>
         <result property="lastAuditUid" column="last_audit_uid"/>
         <result property="subMItUid" column="submit_uid"/>
-        <result property="lastAuditUsername" column="last_audit_usrename"/>
+        <result property="lastAuditUsername" column="last_audit_username"/>
         <result property="homeTop" column="home_top"/>
         <result property="publishUname" column="publish_uname"/>
     </resultMap>
@@ -56,8 +56,8 @@
         select * from article where state in(1,2,3) order by id desc
     </select>
     <!--审核资讯 通过 驳回-->
-    <update id="tgArticle" parameterType="int">
-        update article set state=3 where id=#{id}
+    <update id="tgArticle" parameterType="hi.car.pojo.Article">
+        update article set state=3,last_audit_username=#{lastAuditUsername} where id=#{id}
     </update>
     <update id="bhArticle" parameterType="int">
         update article set state=2 where id=#{id}
@@ -66,8 +66,8 @@
     <select id="findFbArticle" resultMap="articleMap">
         select * from article where state in(3,4) order by id desc
     </select>
-    <update id="fbArticle" parameterType="int">
-        update article set state=4 where id=#{aid}
+    <update id="fbArticle" parameterType="hi.car.pojo.Article">
+        update article set state=4,publish_uname=#{publishUname} where id=#{id}
     </update>
     <!--通过id查询资讯状态-->
     <select id="findArticleStateById" parameterType="int" resultType="int">

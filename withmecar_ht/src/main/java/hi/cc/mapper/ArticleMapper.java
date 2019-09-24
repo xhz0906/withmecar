@@ -22,12 +22,12 @@ public interface ArticleMapper {
     List<Article> findAllArticleCg();
     List<Article> findAllArticleSh();
     //审核资讯 通过 驳回
-    int tgArticle(int id);
+    int tgArticle(Article article);
     int bhArticle(int id);
 
     //发布资讯
     List<Article> findFbArticle();
-    boolean fbArticle(int aid);
+    boolean fbArticle(Article article);
     //查询资讯状态通过id
     int findArticleStateById(int aid);
     //是否推荐

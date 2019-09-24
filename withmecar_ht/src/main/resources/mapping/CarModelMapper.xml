@@ -32,6 +32,9 @@
     <select id="findCarModel" resultMap="modelMap">
         select * from car_model
     </select>
+    <select id="findCarModel1" parameterType="string" resultMap="modelMap">
+        select * from car_model where name=#{name} and level_name=#{levelName}
+    </select>
     <select id="findModel1" resultType="string">
         select name from car_model1
     </select>
@@ -73,5 +76,22 @@
         COUNT(name)
         FROM
         car_model
+    </select>
+    <!--查出总数-->
+    <select id="getMaxCount1" parameterType="map"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_model
+        where
+        name=#{name}
+        and
+        level_name=#{levelName}
+    </select>
+    <select id="findModel01" parameterType="string" resultType="string">
+        select name from car_model where level_name=#{levelName}
+    </select>
+    <select id="findModelBy" resultType="string">
+        select name from car_type
     </select>
 </mapper>

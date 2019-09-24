@@ -19,6 +19,17 @@ public interface CarService {
      */
     public int getMaxPage(int rows);
     /**
+     * 查询所有车款
+     * @return
+     */
+    public List<Car> findCar11(String name,int page,int rows);
+    /**
+     * 得出最大页
+     * @param rows
+     * @return
+     */
+    public int getMaxPage1(String brandName,int rows);
+    /**
      * 通过车型id查年款
      * @param modelId
      * @return

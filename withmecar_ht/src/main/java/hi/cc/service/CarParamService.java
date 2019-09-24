@@ -16,6 +16,16 @@ public interface CarParamService {
      * @return
      */
     public int getMaxPage(int rows);
+    /*
+  查询参数分类
+   */
+    public List<CarParam> findParam1(String param,int page, int rows);
+    /**
+     * 得出最大页
+     * @param rows
+     * @return
+     */
+    public int getMaxPage1(String param,int rows);
     /**
      * 根据id查出要修改的
      * @param id
@@ -30,4 +40,7 @@ public interface CarParamService {
      * @return
      */
     public boolean updateCarParam(int id,String name,String type,String state);
+
+
+    public List<String> findType001();
 }

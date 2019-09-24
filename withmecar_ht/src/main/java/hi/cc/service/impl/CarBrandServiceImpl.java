@@ -108,4 +108,28 @@ public class CarBrandServiceImpl implements CarBrandService {
         return count%rows==0?count/rows:count/rows+1;
     }
 
+    @Override
+    public List<String> findCountry() {
+        List<String> country = carBrandMapper.findCountry();
+        return country;
+    }
+
+    @Override
+    public List<String> findBrand01(String country) {
+        List<String> brand01 = carBrandMapper.findBrand01(country);
+        return brand01;
+    }
+
+    @Override
+    public List<CarBrand> findBrand02(String brandName,int page,int rows) {
+        PageHelper.startPage(page,rows);
+        List<CarBrand> brand02 = carBrandMapper.findBrand02(brandName);
+        return  brand02;
+    }
+    @Override
+    public int getMaxPage1(String brandName,int rows) {
+        int count=carBrandMapper.getMaxCount1(brandName);
+        return count%rows==0?count/rows:count/rows+1;
+    }
+
 }

@@ -271,12 +271,19 @@
                 <div class="panel-body">
                     <form class="form-inline" role="form" style="float:left;">
                         <div class="form-group has-feedback">
-                            <div class="input-group">
-                                <div class="input-group-addon">查询条件</div>
-                                <input class="form-control has-success" type="text" placeholder="请输入查询条件">
+                            <div class="form-group">
+                                <SELECT  id="brandName" name="brandName" style="width:220px;height: 35px;"  class="form-control" onclick="coun()">
+                                    <option selected="selected" value="0">--请选择品牌--</option>
+                                </SELECT>
                             </div>
+                            <div class="form-group">
+                                <SELECT  id="manufacturer" name="manufacturer" style="width:220px;height: 35px;"  class="form-control" >
+                                    <option selected="selected" value="0">--请选择厂商--</option>
+                                </SELECT>
+                            </div>
+
                         </div>
-                        <button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        <a  class="btn btn-warning" onclick="sear()"><i class="glyphicon glyphicon-search"></i>搜索</a>
                     </form>
                     <a type="button" class="btn btn-primary" style="float:right;" href="carManufacturerAdd"><i class="glyphicon glyphicon-plus"></i> 新增</a>
                     <br>
@@ -333,6 +340,26 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
 <script type="text/javascript">
+    $.post("findBrandByM",{"type":0},function (data) {
+        for(var i=0;i<data.length;i++){
+            var option=$("<option >" + data[i] + "</option>");
+            $("#brandName").append(option);
+        }
+    })
+    function coun(){
+        var brandName=$("#brandName").val();
+        $.post("findManufacturer01",{"brandName":brandName},function (data) {
+            $("#manufacturer").empty();
+            for(var i=0;i<data.length;i++){
+                var option=$("<option >" + data[i] + "</option>");
+                $("#manufacturer").append(option);
+            }
+        })
+    }
+    function sear(){
+        var name=$("#manufacturer").val();
+        location.href="findManufacturer1?name="+name;
+    }
     function del(id){
         if(confirm("您确定要删除么?")!=true){
             return false;

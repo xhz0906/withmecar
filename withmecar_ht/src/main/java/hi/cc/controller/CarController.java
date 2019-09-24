@@ -44,6 +44,22 @@ public class CarController {
         model.addAttribute("maxPage",maxPage);
         return "car1";
     }
+    @RequestMapping("/findCar1")
+    public String findCar1(@RequestParam(required = false,defaultValue = "1") int page,
+                          @RequestParam(required = false,defaultValue = "10") int rows,Model model,String brandName){
+        int maxPage = carService.getMaxPage1(brandName,rows);
+        if (page > maxPage){
+            page = 1;
+        }
+        if (page < 1){
+            page = maxPage;
+        }
+        List<Car> car1 = carService.findCar11(brandName,page,rows);
+        model.addAttribute("car1",car1);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("maxPage",maxPage);
+        return "car2";
+    }
     @RequestMapping("/saveCar")
     public String saveCar(String name, String brandName, String manuName, String makeName, String year, String levelName){
         //通过品牌名查询品牌id

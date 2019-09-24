@@ -18,6 +18,16 @@ public interface CarMapper {
      * @return
      */
     public int getMaxCount();
+    /**
+     * 查询所有车款
+     * @return
+     */
+    public List<Car> findCar11(String brandName);
+    /**
+     * 查询汽车车款总个数
+     * @return
+     */
+    public int getMaxCount1(String brandName);
 
     /**
      * 通过车型id查年款

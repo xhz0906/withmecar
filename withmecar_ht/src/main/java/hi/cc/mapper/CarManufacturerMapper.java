@@ -20,6 +20,22 @@ public interface CarManufacturerMapper {
      */
     public int getMaxCount();
     /**
+     * 查询厂商
+     * @return
+     */
+    public List<CarManufacturer> findManufacturer1(String name);
+    /**
+     * 查询汽车厂商总个数
+     * @return
+     */
+    public int getMaxCount1(String name);
+    public List<String> findManufacturer01(String brandName);
+    /**
+     * 查brandname
+     * @return
+     */
+    public List<String> findBrandByM();
+    /**
      * 增加
      * @return
      */

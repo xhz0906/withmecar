@@ -56,6 +56,10 @@
     <select id="findCar" resultMap="carMap">
         select * from car
     </select>
+    <!--查出车款-->
+    <select id="findCar11" parameterType="string" resultMap="carMap">
+        select * from car where brand_name=#{brandName}
+    </select>
     <!--查指定id-->
     <select id="findCarId" resultType="int">
         select id from car
@@ -111,6 +115,16 @@
         COUNT(name)
         FROM
         car
+    </select>
+    <!--查出总数-->
+    <select id="getMaxCount1" parameterType="string"  resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car
+        where
+        brand_name=#{brandName}
+
     </select>
     <select id="findConfig" parameterType="int" resultMap="carMap">
         select * from car where id=#{id}

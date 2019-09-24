@@ -12,6 +12,21 @@
         FROM
         car_param
     </select>
+    <select id="findType001" resultType="string">
+        select name from car_param_type
+    </select>
+    <select id="findParam1" parameterType="string" resultType="hi.car.pojo.CarParam">
+        select * from car_param where name=#{param}
+    </select>
+    <!--查出总数-->
+    <select id="getMaxCount1"  parameterType="string" resultType="int">
+        SELECT
+        COUNT(name)
+        FROM
+        car_param
+        where
+        name=#{param}
+    </select>
     <!--通过id查出指定name-->
     <select id="findCarParam" parameterType="int" resultType="hi.car.pojo.CarParam">
         select * from car_param where id=#{id}

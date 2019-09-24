@@ -229,13 +229,13 @@
                 <div class="panel-body">
                     <form role="form" >
                         <div class="form-group">
-                            <label for="name">参数分类名称</label>
+                            <label for="name">参数名称</label>
                             <input id="name"  name="name" type="text"  th:value="${carParam.name}"  class="form-control">
                         </div>
                         <div class="form-group">
                             <input id="id" th:value="${carParam.id}" type="hidden">
-                            <label for="type">参数分类名称</label>
-                            <SELECT  id="type"  name="type" th:value="${carParam.type}"  style="width:220px;height: 35px;"  class="form-control">
+                            <label for="type1">参数分类名称</label>
+                            <SELECT  id="type1"  name="type1"   style="width:220px;height: 35px;"  class="form-control" >
                                 <option selected="selected" value="0">--请选择参数分类-- </option>
                             </SELECT>
                         </div>
@@ -247,7 +247,7 @@
                                 <option>未生效</option>
                             </SELECT>
                         </div>
-                        <a id="commit" type="submit" class="btn btn-success" onclick="change()"><i class="glyphicon glyphicon-edit" ></i> 修改</a>
+                        <a id="commit" type="submit" class="btn btn-success" th:onclick="change([[${carParam.id}]])"><i class="glyphicon glyphicon-edit" ></i> 修改</a>
                         <button type="reset" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
                     </form>
                 </div>
@@ -284,15 +284,23 @@
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
-<script type="text/javascript">
-    function change() {
-        var id=$("#id").val();
+<script>
+        $.post("findType0000",function (data) {
+            alert(data);
+            for(var i=0;i<data.length;i++){
+                var option=$("<option >" + data[i] + "</option>");
+                $("#type1").append(option);
+            }
+        })
+    function change(id) {
         var name=$("#name").val();
         var state=$("#state").val();
-        var type=$("#type").val();
-        window.location.href="updateCarParam2?name="+name+"&id="+id+"&state="+state+“”"&type"+type;
+        var type=$("#type1").val();
+        window.location.href="updateCarParam2?name="+name+"&id="+id+"&state="+state+“”"&type="+type;
     }
+
     $(function () {
+
         $(".list-group-item").click(function(){
             if ( $(this).find("ul") ) {
                 $(this).toggleClass("tree-closed");

@@ -76,5 +76,20 @@ public interface CarBrandService {
      * @return
      */
     public int getMaxPage(int rows);
+    /*
+   查询国家
+    */
+    public List<String> findCountry();
+    /*
+查询品牌
+ */
+    public List<String> findBrand01(String country);
+    /**
+     * 条件查品牌
+     * @param brandName
+     * @return
+     */
+    public List<CarBrand> findBrand02(String brandName,int page,int rows);
+    public int getMaxPage1(String brandName,int rows);
 }
 

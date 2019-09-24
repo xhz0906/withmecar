@@ -28,6 +28,18 @@ public class CarServiceImpl implements CarService {
         int count=carMapper.getMaxCount();
         return count%rows==0?count/rows:count/rows+1;
     }
+    @Override
+    public List<Car> findCar11(String brandName,int page, int rows) {
+        PageHelper.startPage(page,rows);
+        List<Car> car = carMapper.findCar11(brandName);
+        return car;
+    }
+
+    @Override
+    public int getMaxPage1(String brandName,int rows) {
+        int count=carMapper.getMaxCount1(brandName);
+        return count%rows==0?count/rows:count/rows+1;
+    }
 
     @Override
     public List<String> getYearById(int id) {
