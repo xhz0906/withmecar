@@ -3,11 +3,13 @@ package hi.car.pojo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
+
 @Data
 public class Activity implements Serializable {
     private int id;
     private String title;
-    private int categoryId;
+    private ActivityCategory activityCategory;
     private String url;
     private int state;
     private String summary;
@@ -22,8 +24,8 @@ public class Activity implements Serializable {
     private int upCount;
     private int favCount;
     private int publishState;
-    private int createUid;
-    private int createTime;
+    private AdminUser adminUser;
+    private Date createTime;
     private String author;
     private String unpublishUname;
     private String unpublishTime;
