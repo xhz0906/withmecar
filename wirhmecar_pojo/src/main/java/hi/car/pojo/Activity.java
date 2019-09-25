@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class Activity implements Serializable {
+    //跟新上去
     private int id;
     private String title;
     private ActivityCategory activityCategory;
