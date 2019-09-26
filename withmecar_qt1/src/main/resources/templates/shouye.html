@@ -84,7 +84,7 @@
         <div class="header_left">
             <div class="header_log">
                 <a href="" class="header_a">
-                    <img class="header_img" src="img/Carlogo.png" alt="">
+                    <img class="header_img" src="img/Carlogo.png" alt="" style="height: 70px;width: 240px;margin-top: -25px;">
                 </a>
             </div>
         </div>
@@ -132,7 +132,7 @@
                 <a class="banner_a3" href="pinpai?name=奇瑞">
                     <span>奇瑞</span>
                 </a>
-                <div class="ul1">
+                <div class="ul1" id="a1">
                     <ul class="ul1_1">
                         <li id="couId" th:each="z:${zhong}">
                             <a th:href="@{pinpai(name=${z.name})}">
@@ -742,12 +742,6 @@
 </body>
 <script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-    $(function () {
-        /*$("#couId").click(function () {
-            var cid = $("#inp1").val();
-            location.href = "?cid="+cid;
-        });*/
-    })
 </script>
 </html>
 <script src="js/jQuery.js"></script>

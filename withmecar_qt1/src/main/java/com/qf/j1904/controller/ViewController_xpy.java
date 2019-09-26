@@ -62,20 +62,24 @@ public class ViewController_xpy {
         if (request.getSession().getAttribute("isLogin")==null){
             request.getSession().setAttribute("isLogin",true);
         }
-        request.getSession().setAttribute("messageXpy",messageService.findMessageDesc());
-        request.getSession().setAttribute("articleXpy",articleService.findArticleDesc());
-        MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
-        List<Tag> tagByMid = tagService.findTagByMid(loginMember.getId());
-        Set<Car> list = new HashSet<>();
-        for (Tag t:tagByMid) {
-            List<Car> byTag = carService.findByTag(t.getName());
-            if (byTag != null){
-                for (Car c:byTag) {
-                    list.add(c);
+        boolean bool = (boolean) request.getSession().getAttribute("isLogin");
+        if (bool == true){
+            MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
+            List<Tag> tagByMid = tagService.findTagByMid(loginMember.getId());
+            Set<Car> list = new HashSet<>();
+            for (Tag t:tagByMid) {
+                List<Car> byTag = carService.findByTag(t.getName());
+                if (byTag != null){
+                    for (Car c:byTag) {
+                        list.add(c);
+                    }
                 }
             }
+            model.addAttribute("TagCar",list);
         }
-        model.addAttribute("TagCar",list);
+        request.getSession().setAttribute("messageXpy",messageService.findMessageDesc());
+        request.getSession().setAttribute("articleXpy",articleService.findArticleDesc());
+
         return "shouye";
     }
     private List<Car> showCount(List<Car> list,int c){
