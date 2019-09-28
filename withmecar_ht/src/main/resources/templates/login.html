@@ -6,7 +6,23 @@
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <style type="text/css">
-
+	.btn {
+		border: none;
+		color: #f9f9f9;
+		padding: 3px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 2px 1px;
+		cursor: pointer;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+		background:linear-gradient(to bottom, #0099CC,#66F4DF);/*设置按钮为渐变颜色*/
+	}
+	.btn{
+		border-radius: 8px;
+	}
 
 </style>
 <body>
@@ -92,10 +108,14 @@
 				</div>
 
 				<!--邮箱登陆 -->
-				<div id="show2"  class="login_center" style="display:none">
+				<div id="show2"  class="login_center" style="display:none;">
 						<input type="text" id="email"  name="email" placeholder="邮箱地址" autocomplete="off"><br>
-						<button id="getCode"  class="btn btn-success">获取验证码</button>
-						<input type="code" id="code" name="userpass" placeholder="验证码" autocomplete="off">
+					<br/>
+					<br/>
+						<button id="getCode"  class="btn btn-success" >获取验证码</button><br/>
+						<input type="code" id="code" name="code" placeholder="验证码" autocomplete="off">
+					<br/>
+					<br/>
 						<input type="button" class="button-login" id="btnLogin1" data-type="accountLogin" value="登录" tabindex="5" style="outline: none;">
 					<div class="mt-checkbox">
 						<span id="rememberNameSpan1">
@@ -194,6 +214,18 @@
 				})
 			}
 		})
+		$("#show1").click(function(){
+			$("#show2").css("display","block");
+			$("#show1").css("color","#B40707");
+			$("#hide2").css("display","none");
+			$("#hide1").css("color","#000000");
+		});
+		$("#hide1").click(function(){
+			$("#show1").css("color","#000000");
+			$("#show2").css("display","none");
+			$("#hide1").css("color","#B40707");
+			$("#hide2").css("display","block");
+		});
 		$("#getCode").click(function () {
 			var email = $("#email").val();
 

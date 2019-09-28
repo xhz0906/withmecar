@@ -13,7 +13,7 @@ b{
 }
 
 
-/*头部*/
+/*å¤´éƒ¨*/
 .head1{
     background: #FFFBE4;
     height: 1px;
@@ -72,7 +72,7 @@ b{
     padding: 0 20px;
 }
 
-/*扫码登陆*/
+/*æ‰«ç ç™»é™†*/
 .smdl{
     text-align: center;
 }
@@ -92,7 +92,7 @@ b{
 
 
 
-/*登陆*/
+/*ç™»é™†*/
 .login_bg {
 	height:650px;
     background-color: #081638;
@@ -148,6 +148,18 @@ b{
 
 }
 .login_center input[type="text"]{
+	border:none;
+    color: #333333;
+    font-size: 14px;
+    height: 46px;
+    line-height: 46px;
+    border-radius: 0px;
+    outline: none;
+    width:328px;
+    height:46px;
+    border-bottom: 1px solid   rgb(204, 204, 204);
+}
+.login_center input[type="code"]{
 	border:none;
     color: #333333;
     font-size: 14px;
@@ -234,7 +246,7 @@ input::-webkit-input-placeholder{
     cursor:pointer; 
 }
 
-/*底部*/
+/*åº•éƒ¨*/
 .reg-content{
 	width:100%;
 	height:80px;
@@ -249,7 +261,7 @@ input::-webkit-input-placeholder{
 	color: #999;
 }
 
-/*其它登陆方式*/
+/*å…¶å®ƒç™»é™†æ–¹å¼*/
 
 .qtdlfs{
     text-align: center;
@@ -305,7 +317,7 @@ position: relative;
     text-align: center;
     display: inline-block;
 }
-/*滑动图片*/
+/*æ»‘åŠ¨å›¾ç‰‡*/
 .qrCode-help{
     right: 19px;
     top:87px;

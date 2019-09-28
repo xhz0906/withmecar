@@ -89,24 +89,23 @@
             </div>
         </div>
             <div class="header_right">
-                <form class="header_form" action="search">
-                    <input type="text" class="text" placeholder="">
-                    <button type="submit" class="submit"></button>
+                <form class="header_form" action="search"   >
+                    <input type="text" class="text" placeholder="请输入搜索内容...">
+                    <button type="submit" class="submit">搜索</button>
                 </form>
             </div>
         </div>
-    <hr style="color: #1d7400">
     </div>
 <!--banner-->
-<div id="box1" style="width:100%;height:550px;" class="banner">
-		<div id="banner_img">
-					<ul class="pic-list">
-						<li><img src="img/lunbo01.jpg"></li>
-						<li><img src="img/lunbo02.jpg"></li>
-						<li><img src="img/lunbo03.jpg"></li>
-						<li><img src="img/lunbo04.jpg"></li>
-						<li><img src="img/lunbo05.jpg"></li>
-                        <li><img src="img/lunbo06.jpg"></li>
+<div id="box1" style="height:550px;" class="banner">
+		<div id="banner_img" >
+					<ul class="pic-list" >
+						<li><img src="img/lunbo01.jpg" ></li>
+						<li><img src="img/lunbo02.jpg" ></li>
+						<li><img src="img/lunbo03.jpg" ></li>
+						<li><img src="img/lunbo04.jpg" ></li>
+						<li><img src="img/lunbo05.jpg" ></li>
+                        <li><img src="img/lunbo06.jpg" ></li>
 					</ul>
 					<div class="btn next">&gt;</div>
 					<div class="btn prev">&lt;</div>
@@ -228,6 +227,27 @@
                     </ul>
                 </div>	
             </div>
+        <div id="d6" class="banner_1">
+            <a class="banner_a1" href="countCar?count=意大利">
+                <span>意大利</span>
+            </a>
+            <a class="banner_a2" href="pinpai?name=兰博基尼">
+                <span>兰博基尼</span>
+            </a>
+            <a class="banner_a3" href="pinpai?name=法拉利">
+                <span>法拉利</span>
+            </a>
+            <div class="ul1">
+                <ul class="ul1_1">
+                    <li id="couId" th:each="y:${yi}">
+                        <a th:href="@{pinpai(name=${y.name})}">
+                            <img th:src="${y.logo}"/>
+                            <p><font th:text="${y.name}"></font></p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
     </div>
     <div class="ssss"></div>

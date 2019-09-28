@@ -66,4 +66,8 @@ public class viewController {
     public String productyl(){
         return "productyl";
     }
+    @RequestMapping("/main2")
+    public String main2(){
+        return "main1";
+    }
 }
