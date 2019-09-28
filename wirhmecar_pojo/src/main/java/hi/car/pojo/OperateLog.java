@@ -6,17 +6,17 @@ import java.io.Serializable;
 
 @Data
 public class OperateLog implements Serializable {
-    private Long id;
+    private int id;
 
-    private Integer operateTime;
+    private String operateTime;
 
-    private Integer operateUid;
+    private int operateUid;
 
     private String tableName;
 
     private String tableDisname;
 
-    private Long dataId;
+    private int dataId;
 
     private String operateDesc;
 }

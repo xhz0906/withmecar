@@ -3,9 +3,11 @@ package hi.cc.controller;
 import hi.car.pojo.AdminUser;
 import hi.car.pojo.Member;
 import hi.car.pojo.MemberProfile;
+import hi.car.pojo.OperateLog;
 import hi.cc.service.AdminService_Xpy;
 import hi.cc.service.MemProfileService_xpy;
 import hi.cc.service.MemberService_Xpy;
+import hi.cc.service.OperateService;
 import hi.cc.utils.MailUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -28,6 +30,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 @Controller
@@ -41,6 +45,9 @@ public class viewController_Xpy {
     private MemProfileService_xpy memProfileService;
     @Autowired
     private MemberService_Xpy memberService;
+
+    @Autowired
+    private OperateService operateService;
     /*@RequestMapping("/main")
     public String main(){
         return "main";
@@ -67,6 +74,14 @@ public class viewController_Xpy {
             if(subject.isAuthenticated()){//判断是否正确登录
                 //用户信息与权限信息存储
                 System.out.println("登陆成功");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String createTime = dateFormat.format(new Date());
+                OperateLog operateLog = new OperateLog();
+                operateLog.setOperateUid(adminUser.getId());
+                operateLog.setOperateTime(createTime);
+                String desc = "登录成功";
+                operateLog.setOperateDesc(desc);
+                operateService.addOperateLog(operateLog);
                 if (adminUser != null){
                     request.getSession().setAttribute("user",adminUser);
                     b = 2;

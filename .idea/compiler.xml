@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wirhmecar_pojo" />
+        <module name="withmecar_qt" />
         <module name="withmecar_qt1" />
         <module name="withmecar_ht" />
-        <module name="withmecar_qt" />
+        <module name="wirhmecar_pojo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

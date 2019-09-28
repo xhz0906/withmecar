@@ -2,7 +2,9 @@ package hi.cc.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import hi.car.pojo.AdminUser;
+import hi.car.pojo.OperateLog;
 import hi.cc.service.AdminUserServiceXT;
+import hi.cc.service.OperateService;
 import hi.cc.utils.SimpleMD5Utils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -11,12 +13,10 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +29,17 @@ import java.util.List;
 public class AdminController {
     @Resource
     private AdminUserServiceXT adminUserServiceXT;
+    @Autowired
+    OperateService operateService;
+
+    public OperateLog addlog(@ModelAttribute("user") AdminUser user ){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String createTime = dateFormat.format(new Date());
+        OperateLog operateLog = new OperateLog();
+        operateLog.setOperateUid(user.getId());
+        operateLog.setOperateTime(createTime);
+        return operateLog;
+    }
 
     @RequiresPermissions(value = {"memberlistxx"})
     @RequestMapping("/admin")

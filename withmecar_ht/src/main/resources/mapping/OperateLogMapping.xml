@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hi.cc.mapper.LogRecordMapper">
+    <resultMap id="operateLogMap" type="hi.car.pojo.OperateLog">
+        <id property="id" column="id"/>
+        <result property="operateTime" column="operate_time"/>
+        <result property="operateUid" column="operate_uid"/>
+        <result property="tableName" column="table_name"/>
+        <result property="tableDisname" column="table_disname"/>
+        <result property="dataId" column="data_id"/>
+        <result property="operateDesc" column="operate_desc"/>
+    </resultMap>
+    <!--// 查询operateLog日志表（时间排序）
+    public List<OperateLog> findAllOperateLog();-->
+    <select id="findAllOperateLog" resultMap="operateLogMap">
+        select * from operate_log  order by operate_time DESC
+    </select>
+    <!--// 新增log日志
+    public int addOperateLog(OperateLog operateLog);
+    -->
+    <insert id="addOperateLog" parameterType="operateLog">
+        insert operate_log values (default ,#{operateTime},#{operateUid},#{tableName},#{tableDisname},#{dataId},#{operateDesc})
+    </insert>
+
+</mapper>

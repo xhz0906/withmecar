@@ -2,31 +2,58 @@ package hi.cc.controller;
 
 import hi.car.pojo.*;
 import hi.cc.service.MemberServiceXT;
+import hi.cc.service.OperateService;
 import hi.cc.utils.ExportExcel;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.rmi.server.ExportException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
 @Controller
+@SessionAttributes("user")
 public class MemberController {
     @Autowired
     MemberServiceXT memberServiceXT;
+    @Autowired
+    OperateService operateService;
+
+    public OperateLog addlog(@ModelAttribute("user") AdminUser user ){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String createTime = dateFormat.format(new Date());
+        OperateLog operateLog = new OperateLog();
+        operateLog.setOperateUid(user.getId());
+        operateLog.setOperateTime(createTime);
+        return operateLog;
+    }
 
     @RequestMapping("/findAllMemberPro")
-    public String findAllMemberPro(Model model){
+    public String findAllMemberPro(@ModelAttribute("user") AdminUser user , Model model, HttpServletRequest request){
         List<MemberProfile> allMemberPro = memberServiceXT.findAllMemberPro();
+        HttpSession session = request.getSession();
+        String operateDesc = "访问会员管理";
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String createTime = dateFormat.format(new Date());
 
+//        OperateLog operateLog = new OperateLog();
+//        operateLog.setOperateUid(user.getId());
+        OperateLog operateLog = addlog(user);
+         operateLog.setOperateDesc(operateDesc);
+//        operateLog.setOperateTime(createTime);
+        int i = operateService.addOperateLog(operateLog);
+        System.out.println("增加日志成功 " + i);
         model.addAttribute("allMemberPro",allMemberPro);
         return "member";
     }

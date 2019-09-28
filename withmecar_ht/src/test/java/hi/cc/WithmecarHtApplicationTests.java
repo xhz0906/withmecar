@@ -2,6 +2,7 @@ package hi.cc;
 
 import hi.car.pojo.*;
 import hi.cc.mapper.AdminMapperxt;
+import hi.cc.mapper.LogRecordMapper;
 import hi.cc.mapper.MemberMapper;
 import hi.cc.mapper.ZiYouShangPingMapper;
 import hi.cc.service.AdminUserServiceXT;
@@ -41,6 +42,18 @@ public class WithmecarHtApplicationTests {
     RoleService roleService;
     @Resource
     ZiYouShangPingMapper ziYouShangPingMapper;
+    @Resource
+    LogRecordMapper logRecordMapper;
+
+
+    @Test
+    public void testAdmin10(){
+        OperateLog operateLog = new OperateLog();
+        operateLog.setOperateTime("20190927");
+        operateLog.setOperateDesc("登录成功");
+        int i = logRecordMapper.addOperateLog(operateLog);
+        System.out.println("i = " + i);
+    }
     @Test
     public void testAdmin9(){
         String cityById = memberMapper.findCityById(2);
