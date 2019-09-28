@@ -31,7 +31,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <div><a class="navbar-brand" style="font-size:32px;" href="#">伴我汽车 - 控制面板</a></div>
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">伴我汽车后台管理系统</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -49,7 +49,7 @@
                         </ul>
                     </div>
                 </li>
-                <li style="margin-left:10px;padding-top:8px;">
+                <li style=" margin-left:10px;padding-top:8px;">
                     <button type="button" class="btn btn-default btn-danger">
                         <span class="glyphicon glyphicon-question-sign"></span> 帮助
                     </button>
@@ -69,198 +69,193 @@
                     <li class="list-group-item tree-closed">
                         <a href="main"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-ok"></i> 会员 <span class="badge" style="float:right">3</span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="findAllMemberPro"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
+                                <a href="findAllMemberPro" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 会员管理</a>
                             </li>
 
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-ok"></i> 资讯管理 <span class="badge"
                                                                                 style="float:right">3</span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="article"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
+                                <a href="article" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 草稿箱</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="article_sh"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
+                                <a href="article_sh" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 咨询审核</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="article_fb"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
+                                <a href="article_fb" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 咨询发布</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="article_list"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
+                                <a href="article_list" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 咨询列表</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="liuchengtu"><i class="glyphicon glyphicon-check"></i> 流程图</a>
+                                <a href="liuchengtu" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 流程图</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-ok"></i> 标签定义 <span class="badge"
                                                                                 style="float:right">3</span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="addHotel"><i class="glyphicon glyphicon-check"></i> 标签定义</a>
+                                <a href="addHotel" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 标签定义</a>
                             </li>
 
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-ok"></i> 车型库管理 <span class="badge"
                                                                                  style="float:right">3</span></span>
-                        <ul style="margin-top:10px;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="findCarBrand"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
+                                <a href="findCarBrand" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 品牌管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findManufacturer"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
+                                <a href="findManufacturer" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 厂商管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findCarModel"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
+                                <a href="findCarModel" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 车系管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findCar"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
+                                <a href="findCar" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 车款管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findParamType"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
+                                <a href="findParamType" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 参数分类管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="findParam"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
+                                <a href="findParam" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 参数管理</a>
                             </li>
 
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon glyphicon-tasks"></i> 自有商品管理 <span class="badge" style="float:right">1</span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="/zyspgl"><i class="glyphicon glyphicon-user"></i>自有商品管理</a>
+                                <a href="zyspgl" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-user"></i>自有商品管理</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-th-large"></i> 活动管理 <span class="badge" style="float:right">1 </span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 活动列表</a>
+                                <a href="IndentManage" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 活动列表</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 推荐活动</a>
+                                <a href="IndentManage" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 推荐活动</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 类型管理</a>
+                                <a href="IndentManage" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 类型管理</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 渠道管理</a>
+                                <a href="IndentManage" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 渠道管理</a>
                             </li>
 
                         </ul>
                     </li>
                     <!--                    消息管理-->
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-th-large"></i> 消息管理 <span class="badge" style="float:right">2 </span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="messageListView"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
+                                <a href="messageListView" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 消息列表</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="addMessageView"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
+                                <a href="addMessageView" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 新增消息</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-th-large"></i> 角色管理 <span class="badge" style="float:right">1 </span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="shows"><i class="glyphicon glyphicon-check"></i> 角色管理</a>
+                                <a href="shows" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 角色管理</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-th-large"></i> 管理员列表 <span class="badge"
                                                                                        style="float:right">1 </span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="admin"><i class="glyphicon glyphicon-check"></i> 管理员列表</a>
+                                <a href="admin" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 管理员列表</a>
                             </li>
                             <li style="height:30px;">
-                                <a href="admin1"><i class="glyphicon glyphicon-check"></i> 新增管理员</a>
+                                <a href="admin1" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 新增管理员</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-th-large"></i> 操作日志 <span class="badge" style="float:right">1 </span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="IndentManage"><i class="glyphicon glyphicon-check"></i> 操作日志</a>
+                                <a href="IndentManage" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 操作日志</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="list-group-item tree-closed">
+                    <li class="list-group-item tree-closed" >
                         <span><i class="glyphicon glyphicon-th-large"></i> 个人中心 <span class="badge" style="float:right">1 </span></span>
-                        <ul style="margin-top:10px;display:none;">
+                        <ul style="margin-top:10px;display: none;" onclick="show(this)">
                             <li style="height:30px;">
-                                <a href="htPersonalCenter"><i class="glyphicon glyphicon-check"></i> 个人中心</a>
+                                <a href="htPersonalCenter" target="voiceList" onclick="javascript:col(this)" class="home"><i class="glyphicon glyphicon-check"></i> 个人中心</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">控制面板</h1>
-
-            <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/sky" class="img-responsive"
-                         alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                <div class="layui-body">
+                    <!-- 内容主体区域 -->
+                    <div style="margin-top: -50px;">
+                        <iframe class="layadmin-iframe ifrem_voice" src="main2" width="100%" height="1500px" frameborder="0" name="voiceList" scrolling="no"></iframe>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/vine" class="img-responsive"
-                         alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/sky" class="img-responsive"
-                         alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/vine" class="img-responsive"
-                         alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $(".list-group-item").click(function () {
-            // jquery对象的回调方法中的this关键字为DOM对象
-            // $(DOM) ==> JQuery
-            if ($(this).find("ul")) { // 3 li
-                $(this).toggleClass("tree-closed");
-                if ($(this).hasClass("tree-closed")) {
-                    $("ul", this).hide("fast");
-                } else {
-                    $("ul", this).show("fast");
-                }
-            }
+
+    function col(obj){
+        var aList = document.getElementsByTagName("a");
+        for (var i = 0, len = aList.length; i < len; i++) {
+            aList[i].removeAttribute("style");
+        }
+        obj.style.color = "red";  //所要设置的颜色
+    }
+    $(document).on('click','.link_cz > li',function() {
+        $('.link_cz > li').removeClass('active');
+        $(this).addClass('active');
+    });
+    $( document).ready(function() {
+        $('.list-group,.link_cz').find('li.home').on('click', function () {
+            $('.list-group,.link_cz').find('li.home').removeClass('active');
+            $(this).addClass('active');
         });
     });
+        $(function () {
+            $(".list-group-item").click(function () {
+                // jquery对象的回调方法中的this关键字为DOM对象
+                // $(DOM) ==> JQuery
+                if ($(this).find("ul")) { // 3 li
+                    $(this).toggleClass("tree-closed");
+                    if ($(this).hasClass("tree-closed")) {
+                        $("ul", this).hide("fast");
+                    } else {
+                        $("ul", this).show("fast");
+                    }
+                }
+            });
+        });
+
 </script>
 </body>
 </html>
