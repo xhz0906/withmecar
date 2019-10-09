@@ -63,7 +63,7 @@ public class ViewController_xpy {
             request.getSession().setAttribute("isLogin",true);
         }
         boolean bool = (boolean) request.getSession().getAttribute("isLogin");
-        if (bool == true){
+        if (!bool){
             MemberProfile loginMember = (MemberProfile) request.getSession().getAttribute("loginMember");
             List<Tag> tagByMid = tagService.findTagByMid(loginMember.getId());
             Set<Car> list = new HashSet<>();

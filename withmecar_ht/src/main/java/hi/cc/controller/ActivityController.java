@@ -20,17 +20,21 @@ public class ActivityController {
     public String active(@RequestParam(required = false,defaultValue = "1")int page,
                          @RequestParam(required = false,defaultValue = "9") int row,
                         Model model){
+        System.out.println("活动 start");
         int maxPage = activityService.maxPage(row);
+        System.out.println("maxPage"+maxPage);
         if(page<1){
             page=maxPage;
         }else if(page>maxPage){
             page=1;
         }
         List<Activity> all = activityService.findAll(page,row);
+        System.out.println("all"+all);
        // System.out.println(all.size());
         model.addAttribute("all",all);
         model.addAttribute("currentPage",page);
         model.addAttribute("maxPage",maxPage);
+        System.out.println("活动 end");
         return "activity";
     }
     @ResponseBody
