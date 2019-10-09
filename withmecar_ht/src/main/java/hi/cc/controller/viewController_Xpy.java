@@ -76,13 +76,14 @@ public class viewController_Xpy {
                 System.out.println("登陆成功");
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String createTime = dateFormat.format(new Date());
-                OperateLog operateLog = new OperateLog();
-                operateLog.setOperateUid(adminUser.getId());
-                operateLog.setOperateTime(createTime);
-                String desc = "登录成功";
-                operateLog.setOperateDesc(desc);
-                operateService.addOperateLog(operateLog);
+
                 if (adminUser != null){
+                    OperateLog operateLog = new OperateLog();
+                    operateLog.setOperateUid(adminUser.getId());
+                    operateLog.setOperateTime(createTime);
+                    String desc = "登录成功";
+                    operateLog.setOperateDesc(desc);
+                    operateService.addOperateLog(operateLog);
                     request.getSession().setAttribute("user",adminUser);
                     b = 2;
                 } else if (member != null){
