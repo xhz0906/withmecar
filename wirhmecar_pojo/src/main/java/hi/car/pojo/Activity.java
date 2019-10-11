@@ -16,8 +16,8 @@ public class Activity implements Serializable {
     private String summary;
     private String description;
     private String link;
-    private int beginTime;
-    private int endTime;
+    private Date beginTime;
+    private Date endTime;
     private int channelTop;
     private int homeTop;
     private int pvCount;

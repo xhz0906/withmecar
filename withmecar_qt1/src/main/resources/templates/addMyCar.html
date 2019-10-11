@@ -145,6 +145,7 @@
                             <dd>
                                 <a href="MemManager">个人资料</a>
                                 <a href="MyTag">我的标签</a>
+                                <a href="message">我的消息</a>
                                 <a href="MyIntegral">我的积分</a>
                             </dd>
                             <dt><img src="img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>我的座驾</dt>
@@ -332,7 +333,7 @@
                                     </div>
                                     <div th:each="a:${session.messageXpy}">
                                         <hr style="color: #0e93d7">
-                                        <a href="#">
+                                        <a href="message">
                                             <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>
                                             <span><font th:text="${a.content}"></font></span><br>
                                             <span><font th:text="${a.sendTime}"></font></span><br>

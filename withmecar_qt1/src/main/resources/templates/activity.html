@@ -1,0 +1,148 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="mezz">
+<meta name="author" content="mezz">
+<link href="css/css.css" rel="stylesheet">
+<link href="css/chosen.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<!--[if lt IE 9]>
+
+  <link href="css/ie.css" rel="stylesheet" type="text/css" >
+
+    <meta http-equiv="X-UA-Compatible" content="IE=8" >
+<![endif]-->
+<!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
+<link href="favicon.ico" rel="SHORTCUT ICON">
+<title>精彩活动</title>
+</head>
+<body>
+<div class="header" style="width: 1200px;height: 36px;">
+  <div class="header_1">
+    <ul class="header_1ul">
+      <li><a href="shouye">首页</a></li>
+      <li style="width: 80px;"><a href="">伴我汽车官网</a></li>
+      <li><a href="">Select Region</a></li>
+      <li class="xialacaidan">
+        <a class="header_1_8" href="">更多精彩</a>
+        <div class="header_xiala">
+          <div class="header_1_xiala">
+            <dl class="header_xiala_1">
+              <dt><a href="">暂无</a></dt>
+              <dt><a href="">暂无</a></dt>
+              <dt><a href="">暂无</a></dt>
+              <dt><a href="">暂无</a></dt>
+            </dl>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="header_ul">
+      <li th:if="${session.isLogin==true}">
+        <a href="http://localhost:8080/login">请登录</a></li>
+      <li th:if="${session.isLogin==true}">
+        <a href="http://localhost:8080/register">注册</a>
+      </li>
+      <li style="width: 130px" th:if="${session.isLogin==false}">
+        <a>欢迎您：<font th:text="${session.loginMember.nickname}"></font></a>
+      </li>
+      <li th:if="${session.isLogin==false}">
+        <a href="loginOut">退出</a>
+      </li>
+      <li>
+        <a href="MemManager">个人中心</a>
+      </li>
+      <li>
+        <a href="">我的收藏</a>
+      </li>
+      <li class="xialacaidan">
+        <a href="">客户服务
+        </a>
+        <div class="b">
+          <div class="b-1">
+            <dl class="b-1-1">
+              <dt><a href="">服务中心</a></dt>
+              <dt><a href="">联系客服</a></dt>
+            </dl>
+          </div>
+        </div>
+      </li>
+      <li class="header_ul_5">
+        <a style="width: 90px;" href=""><i class="iconfont icon-caidanlangouwuche"></i>购物车(0)</a>
+        <div class="z">
+          <div class="dropdown-minicart">
+            <div class="dropdown-m">
+              <p>
+                <span class="icon-minicart"><i class="iconfont icon-caidanlangouwuche"></i></span>
+              </p>
+              <p>您的购物车是空的赶紧选购吧~</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="header_top" style="width: 1200px;height: 74px;">
+  <div class="header_two">
+    <div class="header_left">
+      <div class="header_log">
+        <a href="" class="header_a">
+          <img class="header_img" src="img/Carlogo.png" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="header_right">
+      <form class="header_form" action="">
+        <input type="text" class="text" placeholder="">
+        <input type="submit" class="submit">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="memwrap wrap clearfix"  style="width: 980px;margin-left: 250px">
+  <div class="section fl">
+    <div class="location tr"><a href="Dinner.html" class="current">精彩活动</a></div>
+    <div class="Participate pd30">
+      <div class="item" th:each="a:${activity}">
+        <div class="hd"><span class="username"><font th:text="${a.title}"></font></span></div>
+        <div class="bd">
+          <div class="Activity-img img"><a th:href="@{activityDetail(id=${a.id})}"><img th:src="${a.coverPic}"></a></div>
+          <div class="txt">
+            <div class="title"><font th:text="${a.summary}"></font></div>
+            <p class="mt10">活动开始时间:<font th:text="${a.beginTime}"></font></p>
+            <p class="mt10">活动截止时间:<font th:text="${a.endTime}"></font></p>
+            <p class="mt10">活动厂商:<font th:text="${a.dealer}"></font></p>
+            <p class="mt10">
+              <span class="glyphicon glyphicon-share" aria-hidden="true"></span><font th:text="${a.shareCount}"></font>&nbsp;&nbsp;|&nbsp;&nbsp;
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span><font th:text="${a.likeCount}"></font>&nbsp;&nbsp;|&nbsp;&nbsp;
+              <span class="glyphicon glyphicon-tags" aria-hidden="true"></span><font th:text="${a.favCount}"></font>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery01.js"></script>
+<script src="js/Action.js"></script>
+<script src="js/chosen.jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function($){
+	//select 样式美化
+	 var config = {
+		'.chosen-select-no-single' : {disable_search_threshold:10}
+	}
+	for (var selector in config) {
+		$(selector).chosen(config[selector]);
+	}
+});
+</script>
+</html>

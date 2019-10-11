@@ -100,4 +100,11 @@ public interface CarMapper_xpy {
     public List<Car> findAllCar();
 
     public List<Car> findByTag(String name);
+
+    /**
+     * 根据活动id查询参与活动的车辆
+     * @param id
+     * @return
+     */
+    public List<Car> findByAct(int id);
 }

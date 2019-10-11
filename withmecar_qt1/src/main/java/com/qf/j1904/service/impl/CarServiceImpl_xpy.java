@@ -89,4 +89,9 @@ public class CarServiceImpl_xpy implements CarService_xpy {
     public List<Car> findByTag(String name) {
         return carMapper.findByTag(name);
     }
+
+    @Override
+    public List<Car> findByAct(int id) {
+        return carMapper.findByAct(id);
+    }
 }

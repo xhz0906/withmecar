@@ -30,4 +30,29 @@
         LIMIT
         0,3
     </select>
+    <select id="findAll" resultMap="resultMapOne">
+        SELECT
+        *
+        FROM
+        message
+        ORDER BY
+        send_time
+        DESC
+    </select>
+    <select id="findById" resultMap="resultMapOne" parameterType="int">
+        SELECT
+        *
+        FROM
+        message
+        where
+        id=#{id}
+    </select>
+    <update id="updateIs" parameterType="int">
+        update
+        message
+        set
+        is_schedule=1
+        where
+        id=#{id}
+    </update>
 </mapper>
