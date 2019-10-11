@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.j1904.mapper.ActivityMapper_xpy">
+    <resultMap id="myactivity" type="hi.car.pojo.Activity">
+        <id property="id" column="id"/>
+        <result property="title" column="title"></result>
+        <result property="url" column="url"></result>
+        <result property="state" column="state"></result>
+        <result property="summary" column="summary"/>
+        <result property="description" column="description"/>
+        <result property="link" column="link"/>
+        <result property="beginTime" column="begin_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="channelTop" column="channel_top"/>
+        <result property="homeTop" column="home_top"/>
+        <result property="pvCount" column="pv_count"/>
+        <result property="uvCount" column="uv_count"/>
+        <result property="upCount" column="up_count"/>
+        <result property="favCount" column="fav_count"/>
+        <result property="publishState" column="publish_state"/>
+        <result property="createTime" column="create_time"></result>
+        <result property="unpublishUname" column="unpublish_uname"/>
+        <result property="unpublishTime" column="unpublish_time"/>
+        <result property="seoKeywords" column="seo_keywords"/>
+        <result property="likeCount" column="like_count"></result>
+        <result property="shareCount" column="share_count"></result>
+        <result property="viewCount" column="view_count"></result>
+        <result property="tags" column="tags"/>
+        <result property="coverPic" column="cover_pic"/>
+        <result property="cars" column="cars"/>
+        <result property="dealer" column="dealer"/>
+    </resultMap>
+    <select id="findAll" resultMap="myactivity">
+        select
+        id,title,url,state,summary,description,link,begin_time,end_time,
+        channel_top,home_top,pv_count,uv_count,up_count,fav_count,publish_state,create_time,
+        unpublish_uname,unpublish_time,seo_keywords,like_count,share_count,view_count,
+        tags,cover_pic,cars,dealer
+        from
+        activity
+        order by
+        create_time
+        desc
+    </select>
+    <select id="findById" parameterType="int" resultMap="myactivity">
+        select
+        id,title,url,state,summary,description,link,begin_time,end_time,
+        channel_top,home_top,pv_count,uv_count,up_count,fav_count,publish_state,create_time,
+        unpublish_uname,unpublish_time,seo_keywords,like_count,share_count,view_count,
+        tags,cover_pic,cars,dealer
+        from
+        activity
+        where
+        id=#{id}
+    </select>
+</mapper>

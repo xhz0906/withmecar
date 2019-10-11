@@ -180,7 +180,7 @@
                                 <div style="width: 800px;float: left;">
                                     <div style="width: 800px;padding:10px;display: inline-block; float: left;background-color: #fff;">
                                         <div style="width: 800px">
-                                            <span style="font-size: 20px">我的标签</span>
+                                            <span style="font-size: 20px">我的消息</span>
                                         </div>
                                         <hr>
                                         <style>
@@ -196,21 +196,27 @@
                                                 float: left;
                                                 margin-bottom: 10px;
                                             }
+                                            p{
+                                                text-align:center;
+                                            }
                                         </style>
                                         <div id="d1"  style="margin-left: 50px;margin-right: 50px;width: 800px;height: 200px">
-                                            <div class="c1" th:each="t:${session.tagMem}">
-                                                <a th:href="@{delTag(tid=${t.id})}" class="btn btn-primary btn-sm"><font th:text="${t.name}"></font></a>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div style="width: 800px;">
-                                            <span style="font-size: 20px">全部标签</span>
-                                        </div>
-                                        <hr>
-                                        <div id="d2" style="margin-left: 50px;margin-right: 50px;width: 800px;height: 200px;">
-                                            <div class="c1" th:each="t:${session.tagAll}">
-                                                <a th:href="@{addTag(tid=${t.id})}" class="btn btn-primary btn-sm"><font th:text="${t.name}"></font></a>
-                                            </div>
+                                            <table>
+                                                <tr style="height: 30px;" th:each="m:${mess}">
+                                                    <td style="width: 370px;" th:onclick="read([[${m.id}]])" th:text="${m.title}"></td>
+                                                    <td style="width: 180px;" th:text="${m.sendTime}"></td>
+                                                    <td style="width: 40px;" th:if="${m.isSchedule == 0}">未读</td>
+                                                    <td style="width: 40px;" th:if="${m.isSchedule == 1}">已读</td>
+                                                </tr>
+                                            </table>
+                                            <script type="text/javascript">
+                                                    function read(id) {
+                                                        $.post("readMessage",{"id":id},function (data) {
+                                                            alert(data);
+                                                            location.href = "message";
+                                                        });
+                                                    }
+                                            </script>
                                         </div>
                                     </div>
 
@@ -237,10 +243,10 @@
                                     </div>
                                 </div>
                                 <div style="background-color: #fff;margin-top: 30px;padding: 10px">
-                                    <div style="padding: 10px;height: 40px;text-align: center;">
+                                    <div style="padding: 10px;height: 40px">
                                         <span style="font-size: 20px;color: #3c763d">消息</span>
                                     </div>
-                                    <div th:each="a:${session.messageXpy}" style="text-align: center">
+                                    <div th:each="a:${session.messageXpy}">
                                         <hr style="color: #0e93d7">
                                         <a href="message">
                                             <span style="color: #0a6999"><font th:text="${a.title}"></font></span><br>

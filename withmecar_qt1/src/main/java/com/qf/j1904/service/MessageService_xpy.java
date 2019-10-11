@@ -19,4 +19,23 @@ public interface MessageService_xpy {
      * @return
      */
     public List<Message> findMessageDesc();
+    /**
+     * 查询所有
+     * @return
+     */
+    public List<Message> findAll();
+
+    /**
+     * 根据id查询消息
+     * @param id
+     * @return
+     */
+    public Message findById(int id);
+
+    /**
+     * 根据id修改信息的状态
+     * @param id
+     * @return
+     */
+    public int updateIs(int id);
 }

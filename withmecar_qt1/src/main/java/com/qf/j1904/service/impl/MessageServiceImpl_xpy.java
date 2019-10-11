@@ -22,4 +22,19 @@ public class MessageServiceImpl_xpy implements MessageService_xpy {
     public List<Message> findMessageDesc() {
         return messageMapper.findMessageDesc();
     }
+
+    @Override
+    public List<Message> findAll() {
+        return messageMapper.findAll();
+    }
+
+    @Override
+    public Message findById(int id) {
+        return messageMapper.findById(id);
+    }
+
+    @Override
+    public int updateIs(int id) {
+        return messageMapper.updateIs(id);
+    }
 }
