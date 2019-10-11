@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.net.InetAddress;
@@ -30,13 +32,22 @@ public class MemberController {
     @Autowired
     OperateService operateService;
 
+    // 增加操作日志
     public OperateLog addlog(@ModelAttribute("user") AdminUser user ){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createTime = dateFormat.format(new Date());
         OperateLog operateLog = new OperateLog();
         operateLog.setOperateUid(user.getId());
+        operateLog.setTableName(user.getName());
         operateLog.setOperateTime(createTime);
         return operateLog;
+    }
+    //  查询操作日志
+    @RequestMapping("/findLog")
+    public String findLog(Model model){
+        List<OperateLog> allOperateLog = operateService.findAllOperateLog();
+        model.addAttribute("allOperateLog",allOperateLog);
+        return "logOperate";
     }
 
     @RequestMapping("/findAllMemberPro")

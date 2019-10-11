@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>log</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="script/docs.min.js"></script>
 </head>
 <body>
-
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="panel-heading">
         <h1>日志操作</h1>
         <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 会员管理</h3>
@@ -15,7 +21,7 @@
         </ol>
     </div>
     <div>
-        <table>
+        <table class="table table-hover">
             <tr>
                 <th>id</th>
                 <th>操作人员id</th>
@@ -23,14 +29,15 @@
                 <th>上次操作时间</th>
                 <th>操作内容</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr th:each="aLog:${allOperateLog}">
+                <td th:text="${aLog.id}"></td>
+                <td th:text="${aLog.operateUid}"></td>
+                <td th:text="${aLog.tableName}"></td>
+                <td th:text="${aLog.operateTime}"></td>
+                <td th:text="${aLog.operateDesc}"></td>
             </tr>
         </table>
     </div>
+</div>
 </body>
 </html>

@@ -80,6 +80,7 @@ public class viewController_Xpy {
                 if (adminUser != null){
                     OperateLog operateLog = new OperateLog();
                     operateLog.setOperateUid(adminUser.getId());
+                    operateLog.setTableName(adminUser.getName());
                     operateLog.setOperateTime(createTime);
                     String desc = "登录成功";
                     operateLog.setOperateDesc(desc);
